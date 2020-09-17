@@ -1,0 +1,206 @@
+---
+title: 'Basic R Notebook: Lecture 2'
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document: default
+---
+
+
+R stores objects in a variety of classes - numeric, integer, character, logical, list, matrix, dataframe and has logical overriding operations when you convert from one class to another.
+```{r}
+z <- 0:9
+z
+class(z) # integer
+
+z1 <- c("a", "b")
+z1
+class(z1) # character
+
+w <- as.character(z)
+w
+class(w) # character
+
+as.integer(w)
+
+as.logical(c(5, 0))
+# TRUE FALSE 
+# converts all non-zeros to TRUE, 0 to FALSE
+
+z > 1
+as.numeric(z > 1)
+
+
+w1 <- c(1, "a")
+w1
+class(w1) # character
+
+T # shortform for TRUE and FALSE
+F
+
+```
+
+
+Factors: 
+```{r}
+ct <- c("jap", "kor", "sin", "kor", "jap", "sin", "sin")
+class(ct) # character
+
+# factor function is used to identify identical values to belong to one categor
+# such that we can know how many levels (ie. different cities) in the ct vector
+fct <- as.factor(ct)
+
+levels(fct)
+# returns "jap" "kor" "sin"
+
+summary(fct)
+# jap kor sin 
+#   2   2   3 
+
+table(fct) # alternative command for summary()
+# table and summary give the same results returned
+
+```
+
+
+The function tapply:
+```{r}
+?tapply(vector, index, function)
+income <- c(500, 1000, 4000, 1244, 3400, 2000, 5000)
+mean(income) 
+# returns mean over all values in the vector
+
+# take the object income to 
+tapply(income, fct, mean)
+# index: according to what parameter/category to use the function
+# returns
+#     jap      kor      sin 
+# 1950.000 1122.000 3666.667
+
+med <- data.frame(patient = 1:100, age = rnorm(100, mean = 60, sd = 12), treatment = gl(2, 50, labels = c("treatment", "control")))
+head(med)
+
+tapply(med$age, med$treatment, mean)
+```
+
+Matrix and arrays
+
+Matrix operations:
+```{r}
+r <- matrix(c(3:8), nrow = 3, ncol = 2, byrow = F)
+# filled up column-wise
+r
+
+r[2,2]
+r[5] # indexing still reads column wise, so the 5th element of input into the matrix
+
+class(r) # "matrix" "array"
+
+rownames(r)<- c("A", "B", "C")
+colnames(r) <- c("a", "a")
+
+r
+```
+
+
+Array operations:
+```{r}
+a <- array(3:8, c(3, 2)) # values to input, c(row, col)
+a
+class(a)
+
+z <- 1:50
+dim(z) <- c(5, 2, 5)
+z[5, 2, 3]
+
+class(z)
+```
+
+Other operations with matrices:
+```{r}
+diag(10)
+# to get diagonal matrix where the diagonals are filled with 1 and remaining filled with 0
+
+diag(c(5, 3, 2))
+# state the specific values to fill in the diagonals, and the remaining filled with 0
+
+rbing(c(1, 2, 3), c(4, 5, 6))
+```
+
+Matrix multiplication:
+```{r}
+x <- matrix(5:10, nrow = 3, ncol = 2)
+y <- matrix(1:6, nrow = 3, ncol = 2)
+x
+y
+
+x*y
+
+x%*%t(y)
+```
+
+
+
+Solutions of linear equations:
+```{r}
+a <- array(c(2, 1, -1, 2), c(2, 2))
+b <- c(4, 4)
+
+a
+b
+
+solve(a, b)
+
+solve(a)
+# if b is not specified, takes b as an identity matrix and solve it
+
+```
+
+Eigen decomposition of a matrix:
+```{r}
+eigen(a)
+E <- eigen(a)
+E$values
+E$vectors
+```
+
+
+
+List consists of an ordered collection of objects that can be of different or the same type.
+```{r}
+c(1, 2, "a")
+
+barack <- list(age = 59, sex = "M", child.ages = c(22, 19))
+class(barack) # list
+
+# accessing elements in the list
+ 
+barack$age
+barack[1]
+
+class(barack[1])
+class(barack[[1]]) # first component of the sublist in the first element of the list
+
+serena <- list(age = 39, sex = "F", child.ages = 3)
+class(serena) # list
+
+celg <- c(barack, serena)
+celg[6]
+```
+
+
+
+Dataframes are a tightly coupled collection of variables that share many of the properties of matrices and lists and is the fundamental data structure that will be used in most of this course.
+```{r}
+A <- data.frame(names = c("barack", "serena"), ages = c(58, 39), children = c(2, 1))
+A
+
+A$names
+class(A) # dataframe
+class(A$ages) # numeric
+
+A$spouse = c("michel", "alexis")
+
+A
+```
+

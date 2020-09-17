@@ -1,0 +1,198 @@
+---
+title: 'Basic R Notebook: Lecture 2'
+output:
+  pdf_document: default
+  html_document: default
+  html_notebook: default
+---
+
+R stores objects in a variety of classes - *numeric, integer, character, logical, list, matrix, dataframe* and has logical overriding operations when you convert from one class to another.
+
+
+
+```{r}
+z <- 0:9
+z
+class(z)
+z1 <- c("a","b")
+z1
+class(z1)
+w <- as.character(z)
+w
+class(w)
+as.integer(w)
+as.logical(c(5,0))
+
+z>1
+as.numeric(z>1)
+
+w <- c(1,"a")
+w
+class(w)
+T
+F
+```
+
+**Factors**: 
+```{r}
+ct <- c("jap","kor","sin","kor","jap","sin","sin")
+class(ct)
+fct <- factor(ct)
+fct
+levels(fct)
+summary(fct) 
+# alternatively
+table(fct)
+```
+
+The function tapply:
+```{r}
+income <- c(500,1200,4000,2300,2300,1234,1345)
+income
+tapply(income,fct,mean)
+?tapply
+med <- data.frame(patient = 1:100, age = rnorm(100, mean = 60, sd = 12), treatment = gl(2, 50,
+                 labels = c("Treatment", "Control")))
+head(med)
+tapply(med$age, med$treatment, mean)
+```
+
+**Matrix and arrays**
+
+Matrix operations:
+```{r}
+?matrix
+r <- matrix(c(3,4,5,6,7,8),nrow=3,ncol=2)
+r
+dim(r)
+r[2,2]
+r[5]
+r[1,]
+class(r)
+rownames(r)<- c("Jack","Jane","Jules")
+colnames(r)<- c("apples","oranges")
+rownames(r)
+```
+
+Array operations:
+```{r}
+?array
+s <- array(c(3,4,5,6,7,8),c(3,2))
+s
+class(s)
+z <- 1:50
+z
+?dim
+dim(z) <- c(5,2,5)
+z[5,2,5]
+z[5,2,1:5]
+class(z)
+```
+
+Other operations with matrices:
+```{r}
+diag(10)
+?cbind
+cbind(c(1,2,3),c(4,5,6))
+rbind(c(1,2,3),c(4,5,6))
+
+```
+
+Matrix multiplication:
+```{r}
+
+z <- matrix(c(5,7,9,6,3,4),nrow=3,ncol=2)
+y <- matrix(c(1,3,0,9,5,-1),nrow=3,ncol=2)
+z
+y
+z*y
+
+help("%*%")
+z %*% t(y)
+```
+
+Solutions of linear equations:
+```{r}
+a <- array(c(2,1,-1,2),c(2,2))
+b <- c(4,4)
+a
+b
+?solve
+solve(a,b)
+solve(a)
+```
+
+Eigen decomposition of a matrix:
+```{r}
+a
+eigen(a)
+E <- eigen(a)
+E$value
+E$vectors
+```
+
+List consists of an ordered collection of objects that can be of different or the same type.
+```{r}
+c(1,2,"a")
+?list
+barack <- list(age=59,sex="M",child.ages=c(22,19))
+class(barack)
+barack
+serena <- list(age=39,sex="F",child.ages=3)
+serena
+barack$age
+barack$child.ages
+barack$child.ages[1]
+barack[1]
+barack[2]
+barack[3]
+class(barack[1])
+barack[[1]]
+class(barack[[1]])
+
+celg <- c(barack,serena)
+celg
+celg$age
+celg[1]
+celg[3]
+celg[4]
+```
+
+Dataframes are a tightly coupled collection of variables that share many of the properties of matrices and lists and is the fundamental data structure that will be used in most of this course.
+```{r}
+?data.frame
+A <- data.frame(names=c("barack","serena"),ages=c(58,38),children=c(2,1))
+class(A)
+A$names
+class(A$names)
+A$ages
+class(A$ages)
+A$spouse <- c("michel","alexis")
+A
+```
+
+Dyplr and tibble ... not covered now but good to know
+
+```{r}
+library(tidyverse)
+starwars
+class(starwars)
+starwars 
+
+starwars %>% dim()
+#starwars %>% summary()
+
+starwars %>% select(mass) %>% summary()
+
+starwars %>% filter(sex=="female")
+
+
+starwars %>% arrange(height,mass)
+
+starwars %>% arrange(desc(height))
+
+starwars %>% slice_head(n=3)
+
+```
+
+
