@@ -28,7 +28,7 @@ setwd("/Users/yingxuan/Documents/SUTD/Term 6/TAE/W1")
 
 Lists the files in a directory
 ```{r}
-dir("directory pathway")
+dir("/Users/yingxuan/Documents/SUTD/Term 6/TAE/W1")
 ```
 
 Lists objects stored in the R workspace
@@ -39,11 +39,13 @@ ls()
 Assigns a number to a variable
 ```{r}
 x <- 1
+x
 ```
 
 (Alternative to) assigning a number to a variable. Mostly '<-' is preferred for assignment.
 ```{r}
 x = 1
+x
 ```
 
 Common functions - exponential, inverse, power, addition
@@ -81,15 +83,18 @@ y <- c(x, 1, x)
 You can overload the sum operator by recycling the shorter vector - mathematically adding vectors of different sizes are not permitted 
 ```{r}
 x + y
+# if one variable is only of one value, it is used as an addition to all elements of the vector variable
+# if both variables are vectors of different length, addition is not permitted
+# if both variables are vectors of the same length, addition is done according to vector element sequence
 ```
 
 
 Finding the maximum and minimum elements and identifying the location (index) of the first max and all max
 ```{r}
-max(x)
-which.max(x)
+max(x) # returns value
+which.max(x) # returns index
 # OR
-which(x == max(x))
+which(x == max(x)) #returns index
 
 min(x)
 which.min(x)
@@ -113,12 +118,23 @@ summary(x)
 
 
 Maximum entry in a concatenated vector
+```{r}
 max(x, y)
+```
+
 
 Parallel maximum returns a vector of length equal to the longest argument that contains in each element, the largest element in that position of any of the vector
 ```{r}
 ?pmax
+x <- c(1, -2, 3, 5, 3)
+y <- c(x, 1, x)
+x
+y
 pmax(x, y)
+
+# returns maximum value of each index no matter which individual vector it is from
+# length of vector returned is equivalent to the longest vector in the argument
+# arguments are to be of either the same length, or else an argument will be fractionally recycled (re-used to give a common length across all vectors)
 ```
 
 
@@ -132,13 +148,13 @@ rm(list=ls())
 Differences in the assignment using <- and ==. Try exp(a=1:5) and exp(a<-1:5)
 ```{r}
 exp(a <- 1:5)
-exp(a = 1:5)
+# exp(a = 1:5)
 ```
 
 
 Generating vectors using a variety of commands
 ```{r}
-x <- -3 : 8
+x <- -3:8
 seq(-3, 8, 2) # last parameter = interval
 rep(x, times = 3) # times parameter = number of times to repeat (one full cycle repeated)
 rep(x, each = 3) # each parameter = number of times each element to appear (together in sequence)
@@ -155,6 +171,8 @@ x > 1
 Dealing with missing entries 
 ```{r}
 is.na(x)
+y <- c(x, NA)
+is.na(y)
 ```
 
 

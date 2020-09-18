@@ -25,7 +25,7 @@ as.integer(w)
 
 as.logical(c(5, 0))
 # TRUE FALSE 
-# converts all non-zeros to TRUE, 0 to FALSE
+# converts all non-zero values to TRUE, 0 to FALSE
 
 z > 1
 as.numeric(z > 1)
@@ -65,7 +65,7 @@ table(fct) # alternative command for summary()
 
 The function tapply:
 ```{r}
-?tapply(vector, index, function)
+# tapply(vector, index, function)
 income <- c(500, 1000, 4000, 1244, 3400, 2000, 5000)
 mean(income) 
 # returns mean over all values in the vector
