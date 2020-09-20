@@ -13,14 +13,15 @@ data()
 
 Loads the Old Faithful Geyser dataset
 ```{r}
-
+faithful
+rm(list=ls())
 ```
 
 
 Display (compactly) the internal structure of the R object - here it is a dataframe with 272 observations and 2 variables
 
 ```{r}
-
+str(faithful)
 ```
 
 
@@ -30,26 +31,41 @@ The **Old Faithful Geyser** is a hot spring that occasionally becomes unstable a
 
 *Scatter plot*
 ```{r}
+library(ggplot2)
 
+ggplot(data = faithful, aes(x = eruptions, y = waiting)) + geom_point()
 ```
 
 *Histogram*
 ```{r}
+ggplot(data = faithful, aes(x = eruptions)) + geom_histogram()
+ggplot(data = faithful, aes(x = eruptions)) + geom_histogram(binwidth = 0.3, color = "blue", fill = "yellow")
 ```
 
 *Time series plot*
 ```{r}
+# index refers to the sequence of eruption
+ggplot(data = faithful) + geom_line(aes(x = 1:length(eruptions), y = eruptions)) + xlab("Index")
+# alternative code
+ggplot(data = faithful, aes(x = 1:length(eruptions), y = eruptions)) + geom_line() + xlab("Index")
 
+
+ggplot(faithful)+geom_line(aes(x=1:length(waiting),y=waiting))+xlab("Index")
 ```
 
 *Empirical cdf plot for eruptions*
 
 ```{r}
-
+# stat_ecdf() function to compute empirical cumulative distribution
+ggplot(data = faithful, aes(x = eruptions)) + stat_ecdf() + ggtitle("Empirical CDF of eruptions")
 ```
 
 *Normal quantile plots*
 ```{r}
+# stat_qq() function to generate qq plots
+ggplot(data = faithful, aes(sample = eruptions)) + stat_qq() + ggtitle("Normal QQ plot of eruptions") 
+ggplot(data = subset(faithful, eruptions > 3), aes(sample = eruptions)) + stat_qq() + ggtitle("Normal QQ plot of eruptions which are > 3")
+ggplot(data = subset(faithful, eruptions <= 3), aes(sample = eruptions)) + stat_qq() + ggtitle("Normal QQ plot of eruptions which are <= 3") 
 
 ```
 
@@ -67,7 +83,13 @@ The **Old Faithful Geyser** is a hot spring that occasionally becomes unstable a
 2. With 95% confidence, if the eruption time < 3, the average waiting time is between 53.3 and 55.67.
 3. With 95% confidence, if the eruption time >= 3, the average waiting time is between 79.1 and 80.89. 
 ```{r}
+mean_waiting <- mean(faithful$waiting)
+df1 <- subset(faithful, faithful$eruptions < 3)
+df2 <- subset(faithful, faithful$eruptions >= 3)
 
+?t.test
+t.test(df1$waiting, conf.level = 0.95, mu = mean_waiting)
+t.test(df2$waiting, conf.level = 0.95, mu = mean_waiting)
 
 ```
 

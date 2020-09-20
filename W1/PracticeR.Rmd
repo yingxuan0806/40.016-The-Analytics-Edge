@@ -14,6 +14,7 @@ for (i in 100:1) {
 }
 
 # alternative
+rep(10:1, c(10:1))
 rep(100:1, c(100:1))
 ```
 2. Suppose you have a vector `A <- c(1,2,0,4)` and a vector `B <- c(3,6)`, then what is the
@@ -22,6 +23,9 @@ result of `A*B` in R?
 A <- c(1, 2, 0, 4)
 B <- c(3, 6)
 A*B
+# the shorter vector is recycled
+# longer vector must be of a multiple of shorter vector length
+# 1*3  2*6  0*3  4*6
 # 3 12 0 24
 ```
 
@@ -36,15 +40,13 @@ table(gender)
 # female   male 
 #     91     92 
 
-
 gender1 <- factor(gender, levels=c("male", "female"))
-table(gender1)
+table(gender1) # will give the same result as gender. because the levels are defined correctly
   
+
 gender2 <- factor(gender, levels=c("Male", "female"))
 table(gender2)
-# "Male" level will be of 0 value because the spelling is different (M is capitalised)
-
-
+# "Male" level will be of 0 value because the spelling is different (because M is capitalised)
 ```
 4. Suppose we want to convert a factor variable to a numeric variable in, how do we do so? For
 example, convert the factor variable below to numeric.  
@@ -53,6 +55,10 @@ example, convert the factor variable below to numeric.
 ```{r}
 X <- factor(c(4, 5, 6, 6, 4))
 X
+
+# as.numeric(X) returns 1 2 3 3 1
+# each factor is labelled a number, return value indicates which factor the element in the vector belongs to
+
 x_numeric <- as.numeric(as.character(X))
 x_numeric
 ```
@@ -71,7 +77,15 @@ the same number of cylinders.
 
 ```{r}
 library(ggplot2)
-ggplot(mtcars, aet(wt, mpg, color = cyl, size = disp)) + geom_point()
+mtcars
+
+# part (a)
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + geom_point()
+
+# part (b)
+ggplot(mtcars, aes(x = wt, y = mpg, color = cyl, size = disp)) + geom_point()
+
+# part (c)
 tapply(mtcars$mpg, mtcars$cyl, sd)
 
 

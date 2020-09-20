@@ -27,7 +27,7 @@ First we have a look at the data set
 library(ggplot2)
 WHO <- read.csv("WHO.csv")
 str(WHO)
-which(WHO$Country=="Singapore")
+which(WHO$Country == "Singapore")
 WHO[155,]
 summary(WHO$Over60)
 summary(WHO$Under15)
@@ -41,6 +41,10 @@ Let us see how many countries are there in each region
 ```{r}
 bar <- ggplot(WHO) + geom_bar(mapping = aes(x = Region, fill = Region), show.legend = FALSE, width = 1) +  theme(aspect.ratio = 1) + labs(x = NULL, y = NULL)
 bar
+
+bar + coord_flip() # flip x and y
+bar + coord_polar() # polar chart for bar charts. ie. radial chart
+
 ```
 
 
@@ -53,51 +57,55 @@ Now we compare the following
 
 We also subgroup by region sometimes
 
-
 ```{r}
-a<-ggplot(WHO,aes(x=GNI,y=FertilityRate))
+# 1. GNI vs Fertility rate
+a <- ggplot(WHO, aes(x = GNI, y = FertilityRate))
 
-a+geom_point(na.rm=TRUE)+facet_grid(.~Region)+ ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
- #facet_grid will give different regions, plots separated based on the region
+a + geom_point(na.rm = TRUE) + facet_grid(.~Region) + ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
+ #facet_grid will give different panels of plots (instead of one combined plot), plots separated based on the region
  
-#  a+geom_point(na.rm=TRUE)+geom_smooth(na.rm=TRUE)+ ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
+a + geom_point(na.rm = TRUE) + geom_smooth(na.rm = TRUE) + ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
 
 # color by region
-acol <- ggplot(WHO,aes(x=GNI,y=FertilityRate, color=Region))
+acol <- ggplot(WHO, aes(x = GNI, y = FertilityRate, color = Region))
 
- acol+geom_point(na.rm=TRUE)+ ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
-#  acol+geom_point(na.rm=TRUE)+geom_smooth(na.rm=TRUE)+ ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
-#
+acol + geom_point(na.rm = TRUE) + ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
 
-#  a+geom_point(na.rm=TRUE)+facet_wrap(~Region,nrow=2)+ ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
-# #
-# #
-# b<-ggplot(WHO,aes(x=GNI,y=LiteracyRate,color=Region))+ggtitle("Literacy Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
-# 
-# b+geom_point(na.rm=TRUE)
+# add geom_smooth
+acol + geom_point(na.rm = TRUE) + geom_smooth(na.rm = TRUE) + ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
 
-#  subset(WHO,GNI>75000)
-# # 
-#  WHOL<-subset(WHO,LiteracyRate>90)
-# # 
-# c<-ggplot(WHOL,aes(x=GNI,y=LiteracyRate,color=Region))
-# 
-# c+geom_point(na.rm=TRUE)+ggtitle("Literacy Rate vs. Gross National Income (top 90 percent literacy)") + xlab("Gross National Income") + ylab("Fertility Rate")
+# multiple panels of plots, split by Region column
+a + geom_point(na.rm = TRUE) + facet_wrap(~Region, nrow = 2) + ggtitle("Fertility Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
 
 
-# 
-# d<-ggplot(WHO,aes(x=GNI,y=LifeExpectancy,color=Region))
-# d+geom_point(na.rm=TRUE)+ggtitle("Literacy Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Life Expectancy")
-# ggplot(WHO,aes(x=GNI,y=LifeExpectancy))+geom_point(na.rm=TRUE)+ facet_wrap(~Region,nrow=2)+ggtitle("Literacy Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Life Expectancy")
-# 
+
+# 2. GNI vs Literacy rate
+b <- ggplot(WHO, aes(x = GNI, y = LiteracyRate, color = Region)) + ggtitle("Literacy Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Fertility Rate")
+
+b + geom_point(na.rm = TRUE)
+
+subset(WHO, GNI > 75000)
+
+# filter out a selected part of the original dataset
+WHOL <- subset(WHO, LiteracyRate > 90)
+
+c <- ggplot(WHOL, aes(x = GNI, y = LiteracyRate, color = Region))
+
+c + geom_point(na.rm = TRUE) + ggtitle("Literacy Rate vs. Gross National Income (top 90 percent literacy)") + xlab("Gross National Income") + ylab("Fertility Rate")
 
 
+
+# 3. GNI vs Life expectancy
+d <- ggplot(WHO, aes(x = GNI, y = LifeExpectancy, color = Region))
+
+d + geom_point(na.rm = TRUE) + ggtitle("Literacy Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Life Expectancy")
+
+ggplot(WHO, aes(x = GNI, y = LifeExpectancy)) + geom_point(na.rm = TRUE) + facet_wrap(~Region, nrow = 2) + ggtitle("Literacy Rate vs. Gross National Income") + xlab("Gross National Income") + ylab("Life Expectancy")
 ```
 
 **Certain observations from the plots above**
 
 1. The plots above indicate an inverse relation between income and fertility.  This suggests that reproductive restraint arises often as a consequence of economic progress or lower fertility leads to more resources being available per child, making them more productive (causality is not observable). This is often referred to as the *demographic-economic paradox*.
-
 
 2. We also color the points as per the regions by adding the color argument to the aesthetic option. 
 This helps see the trend by regions. For example Europe has high GNI, low fertility rates while Africa has low GNI and high ferility rates.
