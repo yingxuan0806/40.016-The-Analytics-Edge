@@ -85,14 +85,14 @@ head(Stats)
 Let us do some basic principal component analysis for social progress. 
 ```{r}
 pr.out.ns = prcomp(spi2020, scale = F)
-pr.out.ns$x[1:10,1:5]
+pr.out.ns$x[1:10, 1:5]
 #plot scree
-plot(pr.out.ns, type="l", main="Scree plot")
+plot(pr.out.ns, type = "l", main = "Scree plot")
 #plot cumulative prop
 pr.var.ns = pr.out.ns$sdev^2
 pve.ns = pr.out.ns$sdev^2/sum(pr.out.ns$sdev^2)
 plot(cumsum(pve.ns), xlab = "Principal Component", ylab = "Cumulative Proportion of Variance Explained",
-     ylim = c(0,1),type='b') + abline(h=0.9,col="red")
+     ylim = c(0,1), type = 'b') + abline(h = 0.9, col = "red")
 # first PC explanation
 pve.ns[1]
 ```
@@ -121,28 +121,28 @@ Stats[1:5,]
 Clearly, these are the components with very high variance anyway. Hence what is often suggested here is to standardize or scale the data.
 
 ```{r}
-pr.out=prcomp(spi2020, scale=TRUE)
-plot(pr.out, type="l", main="Scree plot")
-# plot(pr.out, type="l", main="Scree plot")+abline(h=1,col="red")
-# pr.var=pr.out$sdev^2
-# pr.var
-# pve=pr.var/sum(pr.var)
-# pve
-# plot(pve, xlab="Principal Component", ylab="Proportion of Variance Explained", ylim=c(0,1),type='b')
-# plot(cumsum(pve), xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", ylim=c(0,1),type='b')  #+ abline(h=0.8,col="red")+abline(v=6,col="blue")
-# 
-# ## Which components and which country?
-#  sp4<-data.frame(pr.out$x[,1:4])
-#  sp4[order(-sp4$PC1),]
-#   cosp4<-data.frame(pr.out$rotation[,1:4])
-#  cosp4[order(-cosp4[,1]),]
-#  ## Correlation plot
-#  ## Check Stats earlier
-#  library(corrplot)
-#  corspi<-cor(spi2020)
-#  dim(corspi)
-#  rownames(corspi)<-colnames(corspi)<-1:54
-#  corrplot(corspi,type="upper")
+pr.out = prcomp(spi2020, scale = TRUE)
+plot(pr.out, type = "l", main = "Scree plot")
+plot(pr.out, type = "l", main = "Scree plot") + abline(h = 1, col = "red")
+pr.var = pr.out$sdev^2
+pr.var
+pve = pr.var/sum(pr.var)
+pve
+plot(pve, xlab = "Principal Component", ylab = "Proportion of Variance Explained", ylim = c(0,1), type = 'b')
+plot(cumsum(pve), xlab="Principal Component", ylab="Cumulative Proportion of Variance Explained", ylim = c(0,1), type = 'b')  + abline(h=0.8,col="red")+abline(v=6,col="blue")
+
+# Which components and which country?
+sp4<-data.frame(pr.out$x[,1:4])
+sp4[order(-sp4$PC1),]
+cosp4<-data.frame(pr.out$rotation[,1:4])
+cosp4[order(-cosp4[,1]),]
+## Correlation plot
+## Check Stats earlier
+library(corrplot)
+corspi<-cor(spi2020)
+dim(corspi)
+rownames(corspi)<-colnames(corspi)<-1:54
+corrplot(corspi,type="upper")
 ```
 
 Now, we can go back to the documentation of the data and see that the primary components here are not the core metrics computed. There are three big dimensions: 
@@ -156,13 +156,13 @@ The SPI is an average of these three quantities which are again averages of four
   bigdim<-c("Basic.Human.Needs","Foundations.of.Wellbeing","Opportunity")
  medcomp<-c("Nutrition.and.Basic.Medical.Care","Water.and.Sanitation","Shelter","Personal.Safety","Access.to.Basic.Knowledge","Access.to.Information.and.Communications","Health.and.Wellness","Environmental.Quality","Personal.Rights","Personal.Freedom.and.Choice","Inclusiveness","Access.to.Advanced.Education")
  
- # spi2020core<-spi2020[,!names(spi2020)%in% c(bigdim,medcomp)]
- # dim(spi2020core)
- # 
- # 
- # corspicore<-cor(spi2020core)
- # rownames(corspicore)<-colnames(corspicore)<-1:dim(corspicore)
- # corrplot(corspicore,type="upper")
+ spi2020core<-spi2020[,!names(spi2020)%in% c(bigdim,medcomp)]
+ dim(spi2020core)
+
+
+ corspicore<-cor(spi2020core)
+ rownames(corspicore)<-colnames(corspicore)<-1:dim(corspicore)
+ corrplot(corspicore,type="upper")
 ```
 
  Now we conduct a PCA.
