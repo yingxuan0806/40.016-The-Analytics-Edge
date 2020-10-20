@@ -17,7 +17,7 @@ x + y # element-wise addition = 5 2 5
 x * y # element-wise multiplication = 4 0 -6
 x - 2 # element-wise subtraction = 2 0 4
 x^2 # element-wise exponential = 16 4 36
-x * y[1:2] #returns error as the first two elements of y is not a multiple of x vector
+x * y[1:2] # element-wise multiplication, shorter vector (in this case, vector y) recycled = 4 0 6
 
 
 
@@ -26,7 +26,7 @@ x * y[1:2] #returns error as the first two elements of y is not a multiple of x 
 seq(2, 9) # 2 3 4 5 6 7 8 9
 seq(4, 10, by = 2) # 4 6 8 10
 
-seq(3, 30, length = 10) # total of 10 elements to be returned
+seq(3, 30, length = 10) # length = total of 10 elements to be returned
 # interval = (30 - 3) / (10 - 1) = 27 / 9 = 3
 # returns 3  6  9 12 15 18 21 24 27 30
 
@@ -36,9 +36,7 @@ seq(6, -4, by = -2) # 6 4 2 0 -2 -4
 
 # Question 3
 ?rep
-rep(2, 4) # rep(2, times = 4) = 2 2 2 2
-# OR rep(2, each = 4)
-# OR rep(2, length.out = 4)
+rep(2, 4) # rep(x = 2, times = 4) = 2 2 2 2
 
 rep(c(1, 5), 4) # 1 5 four times
 # 1 5 1 5 1 5 1 5 1 5 
@@ -56,6 +54,7 @@ x[2:4] # 9 2 3
 x[c(2, 3, 6)] # 9 2 6
 x[c(1:5, 10:12)] # 5 9 2 3 4 12 2 9
 x[-(10:12)] # all elements except the 10th to 12 element
+# negative sign in indexing signifies to drop the element at that index, but still counting the usual way from the beginning
 # 5 9 2 3 4 6 7 0 8
 
 
@@ -102,6 +101,9 @@ t(y)
 
 solve(x)
 # get inverse matrix of x
+#       [,1] [,2]
+# [1,]    1    2
+# [2,]   -1   -3
 
 x[1, ] # 3 2
 x[2, ] # -1 -1
@@ -263,7 +265,8 @@ str(swiss)
 
 # part (a)
 ?stars() # radar plots
-# default key.loc = NULL. add a coordinate to the plot to include the variable legend radar plot
+# default key.loc = NULL
+# add a coordinate to the plot to include the variable legend radar plot
 stars(x = swiss, key.loc = c(5, 20))
 # The county (canton) of Sierre has a high percentage of Catholics, 
 # high fertility rate and a large number of men working in agricluture (rural county). 
@@ -283,7 +286,7 @@ stars(x = swiss[ , c(2, 3, 5, 6)], location = swiss[ , c(4, 1)], len = 3,
       axes = T, main = "Fertility against Education", xlab = "Education", ylab = "Fertility")
 
 stars(x = swiss[ , c(2, 3, 5, 6)], location = swiss[ , c(4, 1)], labels = NULL, len = 3,
-      # labels = NULL to remove star plot labels (the data points)
+      # labels = NULL to remove star plot labels (names of the data points)
       axes = T, main = "Fertility against Education", xlab = "Education", ylab = "Fertility")
 
 
@@ -331,7 +334,7 @@ ggplot(data = Parole, aes(x = Age)) + geom_histogram()
 # part (d)
 ggplot(data = Parole, aes(x = Age)) + geom_histogram(binwidth = 5, center = 17.5, closed = c("left"))
 # center = 17.5 to set the center of one of the bins
-# closed = c("left) to indicate that left endpoint is included in the bin, but the right endpoint is not
+# closed = c("left") to indicate that left endpoint is included in the bin, but the right endpoint is not
 # default bins: left closed, right opened [x, y)
 
 # [20,25) age bracket has the most parolees
@@ -346,7 +349,6 @@ ggplot(data = Parole, aes(x = Age)) + geom_histogram(binwidth = 5, center = 17.5
 ggplot(data = Parole, aes(x = Age)) + geom_histogram(binwidth = 5, center = 17.5, closed = c("left"), color = c("blue")) + facet_grid(Male ~ .)
 # facet_grid to create separate plots based on a specified category
 # horizontal bars, plots are on top of each other
-
 # [35,40) age bracket has the most female parolees
 
 # split in vertical direction (plots are stacked): col ~ . 

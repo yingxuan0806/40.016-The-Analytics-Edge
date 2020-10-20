@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Bikram" />
+<meta name="author" content="Ying Xuan" />
 
 
 <title>Basic R Notebook: Lecture 1</title>
@@ -1745,7 +1745,7 @@ summary {
 
 
 <h1 class="title toc-ignore">Basic R Notebook: Lecture 1</h1>
-<h4 class="author">Bikram</h4>
+<h4 class="author">Ying Xuan</h4>
 
 </div>
 
@@ -1785,47 +1785,82 @@ summary {
 <p>Lists the files in a directory</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGlyKFwiL1VzZXJzL3lpbmd4dWFuL0RvY3VtZW50cy9TVVREL1Rlcm0gNi9UQUUvVzFcIilcbmBgYCJ9 -->
-<pre class="r"><code>dir(&quot;/Users/yingxuan/Documents/SUTD/Term 6/TAE/W1&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGlyKFwiL1VzZXJzL3lpbmd4dWFuL0RvY3VtZW50cy9TVVREL1Rlcm0gNi9UQUUvVzFcIilcblxuYGBgIn0= -->
+<pre class="r"><code>dir(&quot;/Users/yingxuan/Documents/SUTD/Term 6/TAE/W1&quot;)
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkV4ZXJjaXNlXCIgICAgICAgICAgICAgICAgXCJPbGQgZmFpdGhmdWxcIiAgICAgICAgICAgIFwiUHJhY3RpY2VSLlJtZFwiICAgICAgICAgICBcIlJFQURNRS5tZFwiICAgICAgICAgICAgICAgXCJ3ZWVrMWxlYzFfY2xhc3MubmIuaHRtbFwiXG4gWzZdIFwid2VlazFsZWMxX2NsYXNzLlJtZFwiICAgICBcIndlZWsxbGVjMV91cC5wZGZcIiAgICAgICAgXCJ3ZWVrMWxlYzFfdXAuUm1kXCIgICAgICAgIFwid2VlazFsZWMyX2NsYXNzLm5iLmh0bWxcIiBcIndlZWsxbGVjMl9jbGFzcy5SbWRcIiAgICBcblsxMV0gXCJ3ZWVrMWxlYzIuUm1kXCIgICAgICAgICAgIFwiV0hPXCIgICAgICAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code> [1] &quot;Exercise&quot;                &quot;Old faithful&quot;            &quot;PracticeR.Rmd&quot;           &quot;README.md&quot;               &quot;week1lec1_class.nb.html&quot;
+ [6] &quot;week1lec1_class.Rmd&quot;     &quot;week1lec1_up.pdf&quot;        &quot;week1lec1_up.Rmd&quot;        &quot;week1lec2_class.nb.html&quot; &quot;week1lec2_class.Rmd&quot;    
+[11] &quot;week1lec2.Rmd&quot;           &quot;WHO&quot;                    </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Lists objects stored in the R workspace</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubHMoKVxuYGBgIn0= -->
-<pre class="r"><code>ls()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubHMoKVxuXG5gYGAifQ== -->
+<pre class="r"><code>ls()
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiY2hhcmFjdGVyKDApXG4ifQ== -->
+<pre><code>character(0)</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Assigns a number to a variable</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSAxXG54XG5gYGAifQ== -->
-<pre class="r"><code>x &lt;- 1
-x</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFxuXG5gYGAifQ== -->
+<pre class="r"><code>x
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>(Alternative to) assigning a number to a variable. Mostly ‘&lt;-’ is preferred for assignment.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA9IDFcbnhcbmBgYCJ9 -->
-<pre class="r"><code>x = 1
-x</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFxuXG5gYGAifQ== -->
+<pre class="r"><code>x
+</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Common functions - exponential, inverse, power, addition</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhwKHgpXG4xL3hcbnheM1xueSA8LSB4ICsgNlxueVxuYGBgIn0= -->
-<pre class="r"><code>exp(x)
-1/x
-x^3
-y &lt;- x + 6
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSAxXG5leHAoeClcbmBgYCJ9 -->
+<pre class="r"><code>x &lt;- 1
+exp(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIuNzE4MjgyXG4ifQ== -->
+<pre><code>[1] 2.718282</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuMS94XG5gYGAifQ== -->
+<pre class="r"><code>1/x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueF4zXG5gYGAifQ== -->
+<pre class="r"><code>x^3</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueSA8LSB4ICsgNlxueVxuYGBgIn0= -->
+<pre class="r"><code>y &lt;- x + 6
 y</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDdcbiJ9 -->
+<pre><code>[1] 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Remove a variable from the workspace</p>
@@ -1840,88 +1875,171 @@ y</code></pre>
 <p>Concatenates (combines) numbers to form a vector</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG5gYGAifQ== -->
-<pre class="r"><code>x &lt;- c(1, 2, 3)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG54XG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+x</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEgMiAzXG4ifQ== -->
+<pre><code>[1] 1 2 3</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Accessing specific elements of the vector</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFszXVxuYGBgIn0= -->
-<pre class="r"><code>x[3]</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG54WzNdXG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+x[3]</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDNcbiJ9 -->
+<pre><code>[1] 3</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Applying operations to the vector - term by term inverse, concatenate vectors, exponentiation</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueSA8LSBjKHgsIDEsIHgpXG5gYGAifQ== -->
-<pre class="r"><code>y &lt;- c(x, 1, x)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG55IDwtIGMoeCwgMSwgeClcbnkgXG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+y &lt;- c(x, 1, x)
+y </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEgMiAzIDEgMSAyIDNcbiJ9 -->
+<pre><code>[1] 1 2 3 1 1 2 3</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>You can overload the sum operator by recycling the shorter vector - mathematically adding vectors of different sizes are not permitted</p>
+<p>You can overload the sum operator by recycling the shorter vector</p>
+<ul>
+<li><p>mathematically adding vectors of different sizes are not permitted</p></li>
+<li><p>if one variable is only of one value, it is used as an element wise addition to all elements of the vector variable</p></li>
+<li><p>if both variables are vectors of different length, element wise addition still happens, and the shorter vector is recycled for element wise addition</p></li>
+<li><p>if both variables are vectors of the same length, addition is done according to vector element sequence</p></li>
+</ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCArIHlcbiMgaWYgb25lIHZhcmlhYmxlIGlzIG9ubHkgb2Ygb25lIHZhbHVlLCBpdCBpcyB1c2VkIGFzIGFuIGFkZGl0aW9uIHRvIGFsbCBlbGVtZW50cyBvZiB0aGUgdmVjdG9yIHZhcmlhYmxlXG4jIGlmIGJvdGggdmFyaWFibGVzIGFyZSB2ZWN0b3JzIG9mIGRpZmZlcmVudCBsZW5ndGgsIGFkZGl0aW9uIGlzIG5vdCBwZXJtaXR0ZWRcbiMgaWYgYm90aCB2YXJpYWJsZXMgYXJlIHZlY3RvcnMgb2YgdGhlIHNhbWUgbGVuZ3RoLCBhZGRpdGlvbiBpcyBkb25lIGFjY29yZGluZyB0byB2ZWN0b3IgZWxlbWVudCBzZXF1ZW5jZVxuYGBgIn0= -->
-<pre class="r"><code>x + y
-# if one variable is only of one value, it is used as an addition to all elements of the vector variable
-# if both variables are vectors of different length, addition is not permitted
-# if both variables are vectors of the same length, addition is done according to vector element sequence</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG55IDwtIGMoeCwgMSwgeClcbnogPC0geCArIHlcbmBgYCJ9 -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+y &lt;- c(x, 1, x)
+z &lt;- x + y</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoibG9uZ2VyIG9iamVjdCBsZW5ndGggaXMgbm90IGEgbXVsdGlwbGUgb2Ygc2hvcnRlciBvYmplY3QgbGVuZ3RoXG4ifQ== -->
+<pre><code>longer object length is not a multiple of shorter object length</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuelxuYGBgIn0= -->
+<pre class="r"><code>z</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIgNCA2IDIgMyA1IDRcbiJ9 -->
+<pre><code>[1] 2 4 6 2 3 5 4</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Finding the maximum and minimum elements and identifying the location (index) of the first max and all max</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF4KHgpICMgcmV0dXJucyB2YWx1ZVxud2hpY2gubWF4KHgpICMgcmV0dXJucyBpbmRleFxuIyBPUlxud2hpY2goeCA9PSBtYXgoeCkpICNyZXR1cm5zIGluZGV4XG5cbm1pbih4KVxud2hpY2gubWluKHgpXG5gYGAifQ== -->
-<pre class="r"><code>max(x) # returns value
-which.max(x) # returns index
-# OR
-which(x == max(x)) #returns index
-
-min(x)
-which.min(x)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG5tYXgoeCkgIyByZXR1cm5zIHZhbHVlXG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+max(x) # returns value</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDNcbiJ9 -->
+<pre><code>[1] 3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2gubWF4KHgpICMgcmV0dXJucyBpbmRleFxuYGBgIn0= -->
+<pre class="r"><code>which.max(x) # returns index</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDNcbiJ9 -->
+<pre><code>[1] 3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPUlxud2hpY2goeCA9PSBtYXgoeCkpICNyZXR1cm5zIGluZGV4XG5gYGAifQ== -->
+<pre class="r"><code># OR
+which(x == max(x)) #returns index</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDNcbiJ9 -->
+<pre><code>[1] 3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWluKHgpXG5gYGAifQ== -->
+<pre class="r"><code>min(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud2hpY2gubWluKHgpXG5gYGAifQ== -->
+<pre class="r"><code>which.min(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Other operations - sum, product, mean, variance, standard deviation</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBnaXZlbiB4IGlzIGEgdmVjdG9yOlxuc3VtKHgpXG5wcm9kKHgpXG5tZWFuKHgpXG5zZCh4KVxuYGBgIn0= -->
-<pre class="r"><code># given x is a vector:
-sum(x)
-prod(x)
-mean(x)
-sd(x)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG5zdW0oeClcbmBgYCJ9 -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+sum(x)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDZcbiJ9 -->
+<pre><code>[1] 6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJvZCh4KVxuYGBgIn0= -->
+<pre class="r"><code>prod(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDZcbiJ9 -->
+<pre><code>[1] 6</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbih4KVxuYGBgIn0= -->
+<pre class="r"><code>mean(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDJcbiJ9 -->
+<pre><code>[1] 2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2QoeClcbmBgYCJ9 -->
+<pre class="r"><code>sd(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDFcbiJ9 -->
+<pre><code>[1] 1</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>For a vector, it provides a six number summary including min, max, mean, 1st quartile, median and 3rd quartile. This can be used with other objects too.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeSh4KVxuYGBgIn0= -->
-<pre class="r"><code>summary(x)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG5zdW1tYXJ5KHgpXG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+summary(x)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgTWluLiAxc3QgUXUuICBNZWRpYW4gICAgTWVhbiAzcmQgUXUuICAgIE1heC4gXG4gICAgMS4wICAgICAxLjUgICAgIDIuMCAgICAgMi4wICAgICAyLjUgICAgIDMuMCBcbiJ9 -->
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    1.0     1.5     2.0     2.0     2.5     3.0 </code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Maximum entry in a concatenated vector</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF4KHgsIHkpXG5gYGAifQ== -->
-<pre class="r"><code>max(x, y)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIDIsIDMpXG55IDwtIGMoNCwgNSwgNylcbm1heCh4LCB5KVxuYGBgIn0= -->
+<pre class="r"><code>x &lt;- c(1, 2, 3)
+y &lt;- c(4, 5, 7)
+max(x, y)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDdcbiJ9 -->
+<pre><code>[1] 7</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Parallel maximum returns a vector of length equal to the longest argument that contains in each element, the largest element in that position of any of the vector</p>
+<p>Parallel maximum returns a vector of length equal to the longest argument</p>
+<ul>
+<li><p>In each element of this returned vector, it returns the maximum/largest element in that index no matter which individual input vector it is from</p></li>
+<li><p>length of vector returned = longest input vector in the argument</p></li>
+<li><p>arguments are to be of either the same length, or else an argument will be fractionally recycled (re-used to give a common length across all vectors)</p></li>
+</ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBjKDEsIC0yLCAzLCA1LCAzKVxueSA8LSBjKHgsIDEsIHgpXG54XG5cbmBgYCJ9 -->
-<pre class="r"><code>x &lt;- c(1, -2, 3, 5, 3)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP3BtYXhcbnggPC0gYygxLCAtMiwgMywgNSwgMylcbnkgPC0gYyh4LCAxLCB4KVxueFxuYGBgIn0= -->
+<pre class="r"><code>?pmax
+x &lt;- c(1, -2, 3, 5, 3)
 y &lt;- c(x, 1, x)
-x
-</code></pre>
+x</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdICAxIC0yICAzICA1ICAzXG4ifQ== -->
 <pre><code>[1]  1 -2  3  5  3</code></pre>
@@ -1941,6 +2059,11 @@ x
 <!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgMSAtMiAgMyAgNSAgMyAgMSAgMSAgMyAgNSAgNSAgM1xuIn0= -->
 <pre><code> [1]  1 -2  3  5  3  1  1  3  5  5  3</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyByZXR1cm5zIG1heGltdW0gdmFsdWUgb2YgZWFjaCBpbmRleCBubyBtYXR0ZXIgd2hpY2ggaW5kaXZpZHVhbCB2ZWN0b3IgaXQgaXMgZnJvbVxuIyBsZW5ndGggb2YgdmVjdG9yIHJldHVybmVkIGlzIGVxdWl2YWxlbnQgdG8gdGhlIGxvbmdlc3QgdmVjdG9yIGluIHRoZSBhcmd1bWVudFxuIyBhcmd1bWVudHMgYXJlIHRvIGJlIG9mIGVpdGhlciB0aGUgc2FtZSBsZW5ndGgsIG9yIGVsc2UgYW4gYXJndW1lbnQgd2lsbCBiZSBmcmFjdGlvbmFsbHkgcmVjeWNsZWQgKHJlLXVzZWQgdG8gZ2l2ZSBhIGNvbW1vbiBsZW5ndGggYWNyb3NzIGFsbCB2ZWN0b3JzKVxuYGBgIn0= -->
+<pre class="r"><code># returns maximum value of each index no matter which individual vector it is from
+# length of vector returned is equivalent to the longest vector in the argument
+# arguments are to be of either the same length, or else an argument will be fractionally recycled (re-used to give a common length across all vectors)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Remove all variables from the workspace</p>
@@ -1954,9 +2077,14 @@ x
 <p>Differences in the assignment using &lt;- and ==. Try exp(a=1:5) and exp(a&lt;-1:5)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhwKGEgPSAxOjUpXG5cbmBgYCJ9 -->
-<pre class="r"><code>exp(a = 1:5)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhwKGEgPC0gMTo1KVxuYGBgIn0= -->
+<pre class="r"><code>exp(a &lt;- 1:5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAgMi43MTgyODIgICA3LjM4OTA1NiAgMjAuMDg1NTM3ICA1NC41OTgxNTAgMTQ4LjQxMzE1OVxuIn0= -->
+<pre><code>[1]   2.718282   7.389056  20.085537  54.598150 148.413159</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhwKGEgPSAxOjUpXG5gYGAifQ== -->
+<pre class="r"><code>exp(a = 1:5)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gZXhwKGEgPSAxOjUpIDogc3VwcGxpZWQgYXJndW1lbnQgbmFtZSAnYScgZG9lcyBub3QgbWF0Y2ggJ3gnXG4ifQ== -->
 <pre><code>Error in exp(a = 1:5) : supplied argument name &#39;a&#39; does not match &#39;x&#39;</code></pre>
@@ -1966,43 +2094,88 @@ x
 <p>Generating vectors using a variety of commands</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VxKC0zLCA4LCAyKVxuXG5gYGAifQ== -->
-<pre class="r"><code>seq(-3, 8, 2)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSAtMzo4ICMgc3RhcnQgYW5kIGVuZCB2YWx1ZXMgYXJlIGludmx1c2l2ZVxueFxuYGBgIn0= -->
+<pre class="r"><code>x &lt;- -3:8 # start and end values are invlusive
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAtMyAtMiAtMSAgMCAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOFxuIn0= -->
+<pre><code> [1] -3 -2 -1  0  1  2  3  4  5  6  7  8</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzZXEoZnJvbSwgdG8sIGJ5KVxuIyBmcm9tIGFuZCB0byB2YWx1ZXMgYXJlIGluY2x1c2l2ZVxuc2VxKC0zLCA4LCAyKSAjIGxhc3QgcGFyYW1ldGVyID0gaW50ZXJ2YWxcbmBgYCJ9 -->
+<pre class="r"><code># seq(from, to, by)
+# from and to values are inclusive
+seq(-3, 8, 2) # last parameter = interval</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0zIC0xICAxICAzICA1ICA3XG4ifQ== -->
 <pre><code>[1] -3 -1  1  3  5  7</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVwKHgsIHRpbWVzID0gMykgIyB0aW1lcyBwYXJhbWV0ZXIgPSBudW1iZXIgb2YgdGltZXMgdG8gcmVwZWF0IChvbmUgZnVsbCBjeWNsZSByZXBlYXRlZClcbmBgYCJ9 -->
+<pre class="r"><code>rep(x, times = 3) # times parameter = number of times to repeat (one full cycle repeated)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAtMyAtMiAtMSAgMCAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOCAtMyAtMiAtMSAgMCAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOCAtMyAtMiAtMSAgMCAgMSAgMiAgMyAgNCAgNSAgNiAgNyAgOFxuIn0= -->
+<pre><code> [1] -3 -2 -1  0  1  2  3  4  5  6  7  8 -3 -2 -1  0  1  2  3  4  5  6  7  8 -3 -2 -1  0  1  2  3  4  5  6  7  8</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVwKHgsIGVhY2ggPSAzKSAjIGVhY2ggcGFyYW1ldGVyID0gbnVtYmVyIG9mIHRpbWVzIGVhY2ggZWxlbWVudCB0byBhcHBlYXIgKHRvZ2V0aGVyIGluIHNlcXVlbmNlKVxuYGBgIn0= -->
+<pre class="r"><code>rep(x, each = 3) # each parameter = number of times each element to appear (together in sequence)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAtMyAtMyAtMyAtMiAtMiAtMiAtMSAtMSAtMSAgMCAgMCAgMCAgMSAgMSAgMSAgMiAgMiAgMiAgMyAgMyAgMyAgNCAgNCAgNCAgNSAgNSAgNSAgNiAgNiAgNiAgNyAgNyAgNyAgOCAgOCAgOFxuIn0= -->
+<pre><code> [1] -3 -3 -3 -2 -2 -2 -1 -1 -1  0  0  0  1  1  1  2  2  2  3  3  3  4  4  4  5  5  5  6  6  6  7  7  7  8  8  8</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Returns logical vector based on the check</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA+IDFcblxuYGBgIn0= -->
-<pre class="r"><code>x &gt; 1
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSAtMjozXG54XG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- -2:3
+x</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFIEZBTFNFICBUUlVFICBUUlVFICBUUlVFXG4ifQ== -->
-<pre><code>[1] FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0yIC0xICAwICAxICAyICAzXG4ifQ== -->
+<pre><code>[1] -2 -1  0  1  2  3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA+IDFcbmBgYCJ9 -->
+<pre class="r"><code>x &gt; 1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFICBUUlVFICBUUlVFXG4ifQ== -->
+<pre><code>[1] FALSE FALSE FALSE FALSE  TRUE  TRUE</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Dealing with missing entries</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMubmEoeSlcblxuYGBgIn0= -->
-<pre class="r"><code>is.na(y)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSAtMjozXG54XG5gYGAifQ== -->
+<pre class="r"><code>x &lt;- -2:3
+x</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFICBUUlVFXG4ifQ== -->
-<pre><code>[1] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0yIC0xICAwICAxICAyICAzXG4ifQ== -->
+<pre><code>[1] -2 -1  0  1  2  3</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMubmEoeClcbmBgYCJ9 -->
+<pre class="r"><code>is.na(x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFXG4ifQ== -->
+<pre><code>[1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueSA8LSBjKHgsIE5BKVxueVxuYGBgIn0= -->
+<pre class="r"><code>y &lt;- c(x, NA)
+y</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0yIC0xICAwICAxICAyICAzIE5BXG4ifQ== -->
+<pre><code>[1] -2 -1  0  1  2  3 NA</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMubmEoeSlcbmBgYCJ9 -->
+<pre class="r"><code>is.na(y)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFIEZBTFNFICBUUlVFXG4ifQ== -->
+<pre><code>[1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>END OF LECTURE 1.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAnQmFzaWMgUiBOb3RlYm9vazogTGVjdHVyZSAxJwphdXRob3I6ICdCaWtyYW0nCm91dHB1dDoKICBodG1sX25vdGVib29rOiBkZWZhdWx0CiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0CiAgaHRtbF9kb2N1bWVudDogZGVmYXVsdAotLS0KClByZWxpbWluYXJpZXMKClJldHVybnMgdGhlIGN1cnJlbnQgd29ya2luZyBkaXJlY3RvcnkKYGBge3J9CmdldHdkKCkKYGBgCgpQcm92aWRlcyBoZWxwIG9uIGEgc3BlY2lmaWMgZnVuY3Rpb24KYGBge3J9CmhlbHAoZ2V0d2QpCiMgT1IKP2dldHdkCmBgYAoKU2V0cyB0aGUgY3VycmVudCB3b3JraW5nIGRpcmVjdG9yeQpgYGB7cn0Kc2V0d2QoIi9Vc2Vycy95aW5neHVhbi9Eb2N1bWVudHMvU1VURC9UZXJtIDYvVEFFL1cxIikKYGBgCgpMaXN0cyB0aGUgZmlsZXMgaW4gYSBkaXJlY3RvcnkKYGBge3J9CmRpcigiL1VzZXJzL3lpbmd4dWFuL0RvY3VtZW50cy9TVVREL1Rlcm0gNi9UQUUvVzEiKQpgYGAKCkxpc3RzIG9iamVjdHMgc3RvcmVkIGluIHRoZSBSIHdvcmtzcGFjZQpgYGB7cn0KbHMoKQpgYGAKCkFzc2lnbnMgYSBudW1iZXIgdG8gYSB2YXJpYWJsZQpgYGB7cn0KeCA8LSAxCngKYGBgCgooQWx0ZXJuYXRpdmUgdG8pIGFzc2lnbmluZyBhIG51bWJlciB0byBhIHZhcmlhYmxlLiBNb3N0bHkgJzwtJyBpcyBwcmVmZXJyZWQgZm9yIGFzc2lnbm1lbnQuCmBgYHtyfQp4ID0gMQp4CmBgYAoKQ29tbW9uIGZ1bmN0aW9ucyAtIGV4cG9uZW50aWFsLCBpbnZlcnNlLCBwb3dlciwgYWRkaXRpb24KYGBge3J9CmV4cCh4KQoxL3gKeF4zCnkgPC0geCArIDYKeQpgYGAKClJlbW92ZSBhIHZhcmlhYmxlIGZyb20gdGhlIHdvcmtzcGFjZQpgYGB7cn0Kcm0oeSkKYGBgCgpOdW1iZXJzIGFuZCB2ZWN0b3JzCgoKQ29uY2F0ZW5hdGVzIChjb21iaW5lcykgbnVtYmVycyB0byBmb3JtIGEgdmVjdG9yCmBgYHtyfQp4IDwtIGMoMSwgMiwgMykKYGBgCgpBY2Nlc3Npbmcgc3BlY2lmaWMgZWxlbWVudHMgb2YgdGhlIHZlY3RvcgpgYGB7cn0KeFszXQpgYGAKCkFwcGx5aW5nIG9wZXJhdGlvbnMgdG8gdGhlIHZlY3RvciAtIHRlcm0gYnkgdGVybSBpbnZlcnNlLCBjb25jYXRlbmF0ZSB2ZWN0b3JzLCBleHBvbmVudGlhdGlvbgpgYGB7cn0KeSA8LSBjKHgsIDEsIHgpCmBgYAoKWW91IGNhbiBvdmVybG9hZCB0aGUgc3VtIG9wZXJhdG9yIGJ5IHJlY3ljbGluZyB0aGUgc2hvcnRlciB2ZWN0b3IgLSBtYXRoZW1hdGljYWxseSBhZGRpbmcgdmVjdG9ycyBvZiBkaWZmZXJlbnQgc2l6ZXMgYXJlIG5vdCBwZXJtaXR0ZWQgCmBgYHtyfQp4ICsgeQojIGlmIG9uZSB2YXJpYWJsZSBpcyBvbmx5IG9mIG9uZSB2YWx1ZSwgaXQgaXMgdXNlZCBhcyBhbiBhZGRpdGlvbiB0byBhbGwgZWxlbWVudHMgb2YgdGhlIHZlY3RvciB2YXJpYWJsZQojIGlmIGJvdGggdmFyaWFibGVzIGFyZSB2ZWN0b3JzIG9mIGRpZmZlcmVudCBsZW5ndGgsIGFkZGl0aW9uIGlzIG5vdCBwZXJtaXR0ZWQKIyBpZiBib3RoIHZhcmlhYmxlcyBhcmUgdmVjdG9ycyBvZiB0aGUgc2FtZSBsZW5ndGgsIGFkZGl0aW9uIGlzIGRvbmUgYWNjb3JkaW5nIHRvIHZlY3RvciBlbGVtZW50IHNlcXVlbmNlCmBgYAoKCkZpbmRpbmcgdGhlIG1heGltdW0gYW5kIG1pbmltdW0gZWxlbWVudHMgYW5kIGlkZW50aWZ5aW5nIHRoZSBsb2NhdGlvbiAoaW5kZXgpIG9mIHRoZSBmaXJzdCBtYXggYW5kIGFsbCBtYXgKYGBge3J9Cm1heCh4KSAjIHJldHVybnMgdmFsdWUKd2hpY2gubWF4KHgpICMgcmV0dXJucyBpbmRleAojIE9SCndoaWNoKHggPT0gbWF4KHgpKSAjcmV0dXJucyBpbmRleAoKbWluKHgpCndoaWNoLm1pbih4KQpgYGAKCgpPdGhlciBvcGVyYXRpb25zIC0gc3VtLCBwcm9kdWN0LCBtZWFuLCB2YXJpYW5jZSwgc3RhbmRhcmQgZGV2aWF0aW9uCmBgYHtyfQojIGdpdmVuIHggaXMgYSB2ZWN0b3I6CnN1bSh4KQpwcm9kKHgpCm1lYW4oeCkKc2QoeCkKYGBgCgoKRm9yIGEgdmVjdG9yLCBpdCBwcm92aWRlcyBhIHNpeCBudW1iZXIgc3VtbWFyeSBpbmNsdWRpbmcgbWluLCBtYXgsIG1lYW4sIDFzdCBxdWFydGlsZSwgbWVkaWFuIGFuZCAzcmQgcXVhcnRpbGUuIFRoaXMgY2FuIGJlIHVzZWQgd2l0aCBvdGhlciBvYmplY3RzIHRvby4KYGBge3J9CnN1bW1hcnkoeCkKYGBgCgoKTWF4aW11bSBlbnRyeSBpbiBhIGNvbmNhdGVuYXRlZCB2ZWN0b3IKYGBge3J9Cm1heCh4LCB5KQpgYGAKCgpQYXJhbGxlbCBtYXhpbXVtIHJldHVybnMgYSB2ZWN0b3Igb2YgbGVuZ3RoIGVxdWFsIHRvIHRoZSBsb25nZXN0IGFyZ3VtZW50IHRoYXQgY29udGFpbnMgaW4gZWFjaCBlbGVtZW50LCB0aGUgbGFyZ2VzdCBlbGVtZW50IGluIHRoYXQgcG9zaXRpb24gb2YgYW55IG9mIHRoZSB2ZWN0b3IKYGBge3J9Cj9wbWF4CnggPC0gYygxLCAtMiwgMywgNSwgMykKeSA8LSBjKHgsIDEsIHgpCngKeQpwbWF4KHgsIHkpCgojIHJldHVybnMgbWF4aW11bSB2YWx1ZSBvZiBlYWNoIGluZGV4IG5vIG1hdHRlciB3aGljaCBpbmRpdmlkdWFsIHZlY3RvciBpdCBpcyBmcm9tCiMgbGVuZ3RoIG9mIHZlY3RvciByZXR1cm5lZCBpcyBlcXVpdmFsZW50IHRvIHRoZSBsb25nZXN0IHZlY3RvciBpbiB0aGUgYXJndW1lbnQKIyBhcmd1bWVudHMgYXJlIHRvIGJlIG9mIGVpdGhlciB0aGUgc2FtZSBsZW5ndGgsIG9yIGVsc2UgYW4gYXJndW1lbnQgd2lsbCBiZSBmcmFjdGlvbmFsbHkgcmVjeWNsZWQgKHJlLXVzZWQgdG8gZ2l2ZSBhIGNvbW1vbiBsZW5ndGggYWNyb3NzIGFsbCB2ZWN0b3JzKQpgYGAKCgpSZW1vdmUgYWxsIHZhcmlhYmxlcyBmcm9tIHRoZSB3b3Jrc3BhY2UKYGBge3J9CnJtKGxpc3Q9bHMoKSkKYGBgCgoKCkRpZmZlcmVuY2VzIGluIHRoZSBhc3NpZ25tZW50IHVzaW5nIDwtIGFuZCA9PS4gVHJ5IGV4cChhPTE6NSkgYW5kIGV4cChhPC0xOjUpCmBgYHtyfQpleHAoYSA8LSAxOjUpCiMgZXhwKGEgPSAxOjUpCmBgYAoKCkdlbmVyYXRpbmcgdmVjdG9ycyB1c2luZyBhIHZhcmlldHkgb2YgY29tbWFuZHMKYGBge3J9CnggPC0gLTM6OApzZXEoLTMsIDgsIDIpICMgbGFzdCBwYXJhbWV0ZXIgPSBpbnRlcnZhbApyZXAoeCwgdGltZXMgPSAzKSAjIHRpbWVzIHBhcmFtZXRlciA9IG51bWJlciBvZiB0aW1lcyB0byByZXBlYXQgKG9uZSBmdWxsIGN5Y2xlIHJlcGVhdGVkKQpyZXAoeCwgZWFjaCA9IDMpICMgZWFjaCBwYXJhbWV0ZXIgPSBudW1iZXIgb2YgdGltZXMgZWFjaCBlbGVtZW50IHRvIGFwcGVhciAodG9nZXRoZXIgaW4gc2VxdWVuY2UpCmBgYAoKCgpSZXR1cm5zIGxvZ2ljYWwgdmVjdG9yIGJhc2VkIG9uIHRoZSBjaGVjawpgYGB7cn0KeCA+IDEKYGBgCgoKRGVhbGluZyB3aXRoIG1pc3NpbmcgZW50cmllcyAKYGBge3J9CmlzLm5hKHgpCnkgPC0gYyh4LCBOQSkKaXMubmEoeSkKYGBgCgoKRU5EIE9GIExFQ1RVUkUgMS4=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAnQmFzaWMgUiBOb3RlYm9vazogTGVjdHVyZSAxJwphdXRob3I6ICdZaW5nIFh1YW4nCm91dHB1dDoKICBwZGZfZG9jdW1lbnQ6IGRlZmF1bHQKICBodG1sX25vdGVib29rOiBkZWZhdWx0CiAgaHRtbF9kb2N1bWVudDogZGVmYXVsdAotLS0KClByZWxpbWluYXJpZXMKClJldHVybnMgdGhlIGN1cnJlbnQgd29ya2luZyBkaXJlY3RvcnkKYGBge3J9CmdldHdkKCkKYGBgCgpQcm92aWRlcyBoZWxwIG9uIGEgc3BlY2lmaWMgZnVuY3Rpb24KYGBge3J9CmhlbHAoZ2V0d2QpCiMgT1IKP2dldHdkCmBgYAoKU2V0cyB0aGUgY3VycmVudCB3b3JraW5nIGRpcmVjdG9yeQpgYGB7cn0Kc2V0d2QoIi9Vc2Vycy95aW5neHVhbi9Eb2N1bWVudHMvU1VURC9UZXJtIDYvVEFFL1cxIikKYGBgCgpMaXN0cyB0aGUgZmlsZXMgaW4gYSBkaXJlY3RvcnkKYGBge3J9CmRpcigiL1VzZXJzL3lpbmd4dWFuL0RvY3VtZW50cy9TVVREL1Rlcm0gNi9UQUUvVzEiKQpgYGAKCkxpc3RzIG9iamVjdHMgc3RvcmVkIGluIHRoZSBSIHdvcmtzcGFjZQpgYGB7cn0KbHMoKQpgYGAKCkFzc2lnbnMgYSBudW1iZXIgdG8gYSB2YXJpYWJsZQpgYGB7cn0KeCA8LSAxCngKYGBgCgooQWx0ZXJuYXRpdmUgdG8pIGFzc2lnbmluZyBhIG51bWJlciB0byBhIHZhcmlhYmxlLiBNb3N0bHkgJzwtJyBpcyBwcmVmZXJyZWQgZm9yIGFzc2lnbm1lbnQuCmBgYHtyfQp4ID0gMQp4CmBgYAoKQ29tbW9uIGZ1bmN0aW9ucyAtIGV4cG9uZW50aWFsLCBpbnZlcnNlLCBwb3dlciwgYWRkaXRpb24KYGBge3J9CnggPC0gMQpleHAoeCkKMS94CnheMwp5IDwtIHggKyA2CnkKYGBgCgpSZW1vdmUgYSB2YXJpYWJsZSBmcm9tIHRoZSB3b3Jrc3BhY2UKYGBge3J9CnJtKHkpCmBgYAoKTnVtYmVycyBhbmQgdmVjdG9ycwoKCkNvbmNhdGVuYXRlcyAoY29tYmluZXMpIG51bWJlcnMgdG8gZm9ybSBhIHZlY3RvcgpgYGB7cn0KeCA8LSBjKDEsIDIsIDMpCngKYGBgCgpBY2Nlc3Npbmcgc3BlY2lmaWMgZWxlbWVudHMgb2YgdGhlIHZlY3RvcgpgYGB7cn0KeCA8LSBjKDEsIDIsIDMpCnhbM10KYGBgCgpBcHBseWluZyBvcGVyYXRpb25zIHRvIHRoZSB2ZWN0b3IgLSB0ZXJtIGJ5IHRlcm0gaW52ZXJzZSwgY29uY2F0ZW5hdGUgdmVjdG9ycywgZXhwb25lbnRpYXRpb24KYGBge3J9CnggPC0gYygxLCAyLCAzKQp5IDwtIGMoeCwgMSwgeCkKeSAKYGBgCgpZb3UgY2FuIG92ZXJsb2FkIHRoZSBzdW0gb3BlcmF0b3IgYnkgcmVjeWNsaW5nIHRoZSBzaG9ydGVyIHZlY3RvcgoKKiBtYXRoZW1hdGljYWxseSBhZGRpbmcgdmVjdG9ycyBvZiBkaWZmZXJlbnQgc2l6ZXMgYXJlIG5vdCBwZXJtaXR0ZWQgCgoqIGlmIG9uZSB2YXJpYWJsZSBpcyBvbmx5IG9mIG9uZSB2YWx1ZSwgaXQgaXMgdXNlZCBhcyBhbiBlbGVtZW50IHdpc2UgYWRkaXRpb24gdG8gYWxsIGVsZW1lbnRzIG9mIHRoZSB2ZWN0b3IgdmFyaWFibGUKCiogaWYgYm90aCB2YXJpYWJsZXMgYXJlIHZlY3RvcnMgb2YgZGlmZmVyZW50IGxlbmd0aCwgZWxlbWVudCB3aXNlIGFkZGl0aW9uIHN0aWxsIGhhcHBlbnMsIGFuZCB0aGUgc2hvcnRlciB2ZWN0b3IgaXMgcmVjeWNsZWQgZm9yIGVsZW1lbnQgd2lzZSBhZGRpdGlvbgoKKiBpZiBib3RoIHZhcmlhYmxlcyBhcmUgdmVjdG9ycyBvZiB0aGUgc2FtZSBsZW5ndGgsIGFkZGl0aW9uIGlzIGRvbmUgYWNjb3JkaW5nIHRvIHZlY3RvciBlbGVtZW50IHNlcXVlbmNlCgpgYGB7cn0KeCA8LSBjKDEsIDIsIDMpCnkgPC0gYyh4LCAxLCB4KQp6IDwtIHggKyB5CnoKYGBgCgoKRmluZGluZyB0aGUgbWF4aW11bSBhbmQgbWluaW11bSBlbGVtZW50cyBhbmQgaWRlbnRpZnlpbmcgdGhlIGxvY2F0aW9uIChpbmRleCkgb2YgdGhlIGZpcnN0IG1heCBhbmQgYWxsIG1heApgYGB7cn0KeCA8LSBjKDEsIDIsIDMpCm1heCh4KSAjIHJldHVybnMgdmFsdWUKd2hpY2gubWF4KHgpICMgcmV0dXJucyBpbmRleAojIE9SCndoaWNoKHggPT0gbWF4KHgpKSAjIHJldHVybnMgaW5kZXgKCm1pbih4KQp3aGljaC5taW4oeCkKYGBgCgoKT3RoZXIgb3BlcmF0aW9ucyAtIHN1bSwgcHJvZHVjdCwgbWVhbiwgdmFyaWFuY2UsIHN0YW5kYXJkIGRldmlhdGlvbgpgYGB7cn0KeCA8LSBjKDEsIDIsIDMpCnN1bSh4KQpwcm9kKHgpCm1lYW4oeCkKc2QoeCkKYGBgCgoKRm9yIGEgdmVjdG9yLCBpdCBwcm92aWRlcyBhIHNpeCBudW1iZXIgc3VtbWFyeSBpbmNsdWRpbmcgbWluLCBtYXgsIG1lYW4sIDFzdCBxdWFydGlsZSwgbWVkaWFuIGFuZCAzcmQgcXVhcnRpbGUuIFRoaXMgY2FuIGJlIHVzZWQgd2l0aCBvdGhlciBvYmplY3RzIHRvby4KYGBge3J9CnggPC0gYygxLCAyLCAzKQpzdW1tYXJ5KHgpCmBgYAoKCk1heGltdW0gZW50cnkgaW4gYSBjb25jYXRlbmF0ZWQgdmVjdG9yCmBgYHtyfQp4IDwtIGMoMSwgMiwgMykKeSA8LSBjKDQsIDUsIDcpCm1heCh4LCB5KQpgYGAKCgpQYXJhbGxlbCBtYXhpbXVtIHJldHVybnMgYSB2ZWN0b3Igb2YgbGVuZ3RoIGVxdWFsIHRvIHRoZSBsb25nZXN0IGFyZ3VtZW50CgotIEluIGVhY2ggZWxlbWVudCBvZiB0aGlzIHJldHVybmVkIHZlY3RvciwgaXQgcmV0dXJucyB0aGUgbWF4aW11bS9sYXJnZXN0IGVsZW1lbnQgaW4gdGhhdCBpbmRleCBubyBtYXR0ZXIgd2hpY2ggaW5kaXZpZHVhbCBpbnB1dCB2ZWN0b3IgaXQgaXMgZnJvbQoKLSBsZW5ndGggb2YgdmVjdG9yIHJldHVybmVkID0gbG9uZ2VzdCBpbnB1dCB2ZWN0b3IgaW4gdGhlIGFyZ3VtZW50CgotIGFyZ3VtZW50cyBhcmUgdG8gYmUgb2YgZWl0aGVyIHRoZSBzYW1lIGxlbmd0aCwgb3IgZWxzZSBhbiBhcmd1bWVudCB3aWxsIGJlIGZyYWN0aW9uYWxseSByZWN5Y2xlZCAocmUtdXNlZCB0byBnaXZlIGEgY29tbW9uIGxlbmd0aCBhY3Jvc3MgYWxsIHZlY3RvcnMpCmBgYHtyfQo/cG1heAp4IDwtIGMoMSwgLTIsIDMsIDUsIDMpCnkgPC0gYyh4LCAxLCB4KQp4CnkKcG1heCh4LCB5KQoKIyB2ZWN0b3JzIHVuZGVyIGNvbXBhcmlzb24KIyBsZW5ndGhlbmVkIHggdmVjdG9yIFZTIG9yaWdpbmFsIHkgdmVjdG9yCiMgMSAtMiAzIDUgMyAxIC0yIDMgNSAzIDEKIyAxIC0yIDMgNSAzIDEgMSAtMiAzIDUgMwpgYGAKCgpSZW1vdmUgYWxsIHZhcmlhYmxlcyBmcm9tIHRoZSB3b3Jrc3BhY2UKYGBge3J9CnJtKGxpc3Q9bHMoKSkKYGBgCgoKCkRpZmZlcmVuY2VzIGluIHRoZSBhc3NpZ25tZW50IHVzaW5nIDwtIGFuZCA9PS4gVHJ5IGV4cChhPTE6NSkgYW5kIGV4cChhPC0xOjUpCmBgYHtyfQpleHAoYSA8LSAxOjUpCiMgZXhwKGEgPSAxOjUpCmBgYAoKCkdlbmVyYXRpbmcgdmVjdG9ycyB1c2luZyBhIHZhcmlldHkgb2YgY29tbWFuZHMKYGBge3J9CnggPC0gLTM6OCAjIHN0YXJ0IGFuZCBlbmQgdmFsdWVzIGFyZSBpbnZsdXNpdmUKeAojIHNlcShmcm9tLCB0bywgYnkpCiMgZnJvbSBhbmQgdG8gdmFsdWVzIGFyZSBpbmNsdXNpdmUKc2VxKC0zLCA4LCAyKSAjIGxhc3QgcGFyYW1ldGVyID0gaW50ZXJ2YWwKcmVwKHgsIHRpbWVzID0gMykgIyB0aW1lcyBwYXJhbWV0ZXIgPSBudW1iZXIgb2YgdGltZXMgdG8gcmVwZWF0IChvbmUgZnVsbCBjeWNsZSByZXBlYXRlZCkKcmVwKHgsIGVhY2ggPSAzKSAjIGVhY2ggcGFyYW1ldGVyID0gbnVtYmVyIG9mIHRpbWVzIGVhY2ggZWxlbWVudCB0byBhcHBlYXIgKHRvZ2V0aGVyIGluIHNlcXVlbmNlKQpgYGAKCgoKUmV0dXJucyBsb2dpY2FsIHZlY3RvciBiYXNlZCBvbiB0aGUgY2hlY2sKYGBge3J9CnggPC0gLTI6Mwp4CnggPiAxCmBgYAoKCkRlYWxpbmcgd2l0aCBtaXNzaW5nIGVudHJpZXMgCmBgYHtyfQp4IDwtIC0yOjMKeAppcy5uYSh4KQp5IDwtIGMoeCwgTkEpCnkKaXMubmEoeSkKYGBgCgoKRU5EIE9GIExFQ1RVUkUgMS4=</div>
 
 
 

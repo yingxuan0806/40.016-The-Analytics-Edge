@@ -1,9 +1,9 @@
 ---
 title: "Old Faithful Notebook"
 output:
-  html_notebook: default
-  html_document: default
   pdf_document: default
+  html_document: default
+  html_notebook: default
 ---
 List datasets available in R
 
@@ -13,12 +13,16 @@ data()
 
 Loads the Old Faithful Geyser dataset
 ```{r}
-faithful
+head(faithful)
 rm(list=ls())
 ```
 
 
 Display (compactly) the internal structure of the R object - here it is a dataframe with 272 observations and 2 variables
+
+- eruptions: duration of eruption in minutes
+
+- waiting: duration until the next eruption in minutes
 
 ```{r}
 str(faithful)
@@ -39,18 +43,20 @@ ggplot(data = faithful, aes(x = eruptions, y = waiting)) + geom_point()
 *Histogram*
 ```{r}
 ggplot(data = faithful, aes(x = eruptions)) + geom_histogram()
+```
+```{r}
 ggplot(data = faithful, aes(x = eruptions)) + geom_histogram(binwidth = 0.3, color = "blue", fill = "yellow")
 ```
+
 
 *Time series plot*
 ```{r}
 # index refers to the sequence of eruption
 ggplot(data = faithful) + geom_line(aes(x = 1:length(eruptions), y = eruptions)) + xlab("Index")
 # alternative code
-ggplot(data = faithful, aes(x = 1:length(eruptions), y = eruptions)) + geom_line() + xlab("Index")
+# ggplot(data = faithful, aes(x = 1:length(eruptions), y = eruptions)) + geom_line() + xlab("Index")
 
-
-ggplot(faithful)+geom_line(aes(x=1:length(waiting),y=waiting))+xlab("Index")
+ggplot(faithful) + geom_line(aes(x = 1:length(waiting), y = waiting)) + xlab("Index")
 ```
 
 *Empirical cdf plot for eruptions*
@@ -70,25 +76,40 @@ ggplot(data = subset(faithful, eruptions <= 3), aes(sample = eruptions)) + stat_
 ```
 
 
-**Certain obserations from the plots**
+**Certain observations from the plots**
 
 
 1. Eruption times and the waiting times between successive eruptions exhibit highly oscillatory behavior, low followed by high and high followed by low.
+
+- clarification: not relating the eruption and waiting times. individually, both eruption and waiting times exhibit oscillatory behaviour.
+
 2. Eruption times have a bimodal distribution.
+
+- based on empirical CDF plot, we can see that there are two peaks, hence suggesting bimodal distribution.
+
 3. Lower eruption times are followed by lower waiting times. Higher eruption times are followed by higher waiting times. This can be used to predict when the next geyser eruption will occur. For example, during a short eruption, less water and heat are used and so both are restored in shorter time. During longer eruptions, more time is needed to rebuild.
+
+- based on the scatter plot of waiting vs eruption times
 
 **T-test and finding confidence intervals**
 
 1. Performs a one sample t-test to test the hypothesis that the mean of waiting time mu = mu0 and derives the 95% confidence interval for the mean parameter. Note the goal is more to find the confidence interval here.
+
+ - t test: to determine if there is a significant difference between the means of two groups
+ 
 2. With 95% confidence, if the eruption time < 3, the average waiting time is between 53.3 and 55.67.
 3. With 95% confidence, if the eruption time >= 3, the average waiting time is between 79.1 and 80.89. 
 ```{r}
+# mu0 value
 mean_waiting <- mean(faithful$waiting)
+# 70.89706
+
 df1 <- subset(faithful, faithful$eruptions < 3)
 df2 <- subset(faithful, faithful$eruptions >= 3)
 
 ?t.test
 t.test(df1$waiting, conf.level = 0.95, mu = mean_waiting)
+
 t.test(df2$waiting, conf.level = 0.95, mu = mean_waiting)
 
 ```

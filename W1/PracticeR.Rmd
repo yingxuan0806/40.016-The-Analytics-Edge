@@ -1,7 +1,10 @@
 ---
 title: "Week 1: Practice R"
 date: "9/17/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document: default
 ---
 
 
@@ -9,13 +12,16 @@ output: html_document
 *Hint:* Check the `rep` command in R.
 
 ```{r}
-for (i in 100:1) {
-  print(rep(i, times = i))
-}
+# for (i in 100:1) {
+#   print(rep(i, times = i))
+# }
 
 # alternative
-rep(10:1, c(10:1))
-rep(100:1, c(100:1))
+# rep(value, times)
+rep(x = c(10:1), times = c(10:1))
+# alternative 
+# rep(10:1, c(10:1))
+# rep(100:1, c(100:1))
 ```
 2. Suppose you have a vector `A <- c(1,2,0,4)` and a vector `B <- c(3,6)`, then what is the
 result of `A*B` in R?
@@ -81,6 +87,7 @@ mtcars
 
 # part (a)
 ggplot(data = mtcars, aes(x = wt, y = mpg)) + geom_point()
+# weight and miles per gallon have an inverse relationship
 
 # part (b)
 ggplot(mtcars, aes(x = wt, y = mpg, color = cyl, size = disp)) + geom_point()
