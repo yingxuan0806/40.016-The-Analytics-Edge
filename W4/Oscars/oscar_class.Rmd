@@ -18,8 +18,8 @@ Data Analysis
 ```{r}
 oscars<- read.csv("oscars.csv")
 str(oscars)
-#View(oscars)
-#summary(oscars)
+# View(oscars)
+# summary(oscars)
 ```
 
 Year: Movie year
@@ -36,7 +36,7 @@ FF: Indicator for lead actress (female)
 
 Mode: Alternative (choice) number (1 to 5 here)
 
-Ch: 1 = Winner, 2= No
+Ch: 1 = Winner, 2 = No
 
 Movie: Movie name
 
@@ -100,21 +100,26 @@ For example, information on the number of nominations that a movie gets in the o
 For example, does the winner of the Best Picture have more nomination in Oscar categories as compared to the losing nominees?
 
 ```{r}
+# Best picture nomination, win or not
+# seeing whether the more number of nominations is suggestive of higher chance of winning for best picture category
+# only looking at winners
 tapply(oscars$Nom[oscars$PP == 1], oscars$Ch[oscars$PP == 1], mean)
 ```
 In the data set, the winning movies on average have 9.526 nominations compared to the 6.78 for losing nominees.
 
 ```{r}
-# check the variance is equal or almost equal or not
+# check the variance is equal or almost equal or not so that we can properly conduct t test
+# tt
 tapply(oscars$Nom[oscars$PP == 1], oscars$Ch[oscars$PP == 1], var)
 # both variances are around 5
 ```
 Variance is comparable across observations.
 
 ```{r}
-# conduct one sided t-test
+# conduct one sided t-test (right side)
 # Ho: mean value of movies with more nominations is greater than that of less nominations
-t.test(oscars$Nom[oscars$PP==1 & oscars$Ch==1],oscars$Nom[oscars$PP==1 &oscars$Ch==0], alternative = c("greater"))
+# comparing between Ch == 0 and Ch == 1 groups
+t.test(oscars$Nom[oscars$PP == 1 & oscars$Ch == 1], oscars$Nom[oscars$PP == 1 & oscars$Ch == 0], alternative = c("greater"))
 ```
 P-value is very low. Therefore very significant that we can reject the null hypothesis that the winning picture has equal or lesser nominations than losing nominees.
 
@@ -157,7 +162,7 @@ oscars$Year[oscars$FF == 1 & oscars$Ch == 1]
 We can see that in 1968 there are two awards.
 
 ```{r}
-subset(oscars, Year==1968 & FF==1)
+subset(oscars, Year == 1968 & FF == 1)
 ```
 Katherine Hepburn for Lion in Winter and Barbara Streisand for Funny Girl shared the Best Actress award with 3030 votes each.
 
@@ -172,13 +177,14 @@ In the dataset, the DGA award is used till 1989 and then PGA for coding the Best
 Do the Golden Globe awards help predict the Oscars? Out of the 57 Best Picture Awards given between 1951 and 2006, 39 won the Best Golden Globe picture award.
 
 ```{r}
-table(oscars$Gdr[oscars$PP==1 & oscars$Ch==1] + oscars$Gmc[oscars$PP==1 & oscars$Ch==1])
-table(oscars$PGA[oscars$PP==1 & oscars$Ch==1])
+table(oscars$Gdr[oscars$PP == 1 & oscars$Ch == 1] + oscars$Gmc[oscars$PP == 1 & oscars$Ch == 1])
+
+table(oscars$PGA[oscars$PP == 1 & oscars$Ch == 1])
 ```
 
 Best Picture: 39/57 = 0.684
 
-What about Best director?
+What about Best director? (chance of winning oscars best director, based on whether it won golden globes best director award)
 
 ```{r}
 table(oscars$Gd[oscars$DD==1 & oscars$Ch==1])
@@ -188,8 +194,9 @@ Best Director: 31/57 = 0.543
 
 What about Best Actor?
 ```{r}
-table(oscars$Gm1[oscars$MM==1 & oscars$Ch==1]+oscars$Gm2[oscars$MM==1 & oscars$Ch==1]) 
-table(oscars$SAM[oscars$MM==1 & oscars$Ch==1]) 
+table(oscars$Gm1[oscars$MM == 1 & oscars$Ch == 1] + oscars$Gm2[oscars$MM == 1 & oscars$Ch == 1]) 
+
+table(oscars$SAM[oscars$MM == 1 & oscars$Ch == 1]) 
 ```
 
 Best Actor: 42/57 = 0.736 (Golden Globe)
@@ -198,8 +205,9 @@ Best Actor: 10/57 = 0.175 (Screen Actors Guild)
 
 What about Best Actress?
 ```{r}
-table(oscars$Gf1[oscars$FF==1 & oscars$Ch==1] + oscars$Gf2[oscars$FF==1 & oscars$Ch==1])
-table(oscars$SAF[oscars$FF==1 & oscars$Ch==1]) 
+table(oscars$Gf1[oscars$FF == 1 & oscars$Ch == 1] + oscars$Gf2[oscars$FF == 1 & oscars$Ch == 1])
+
+table(oscars$SAF[oscars$FF == 1 & oscars$Ch == 1]) 
 ```
 
 Best  Actress: 40/58 = 0.689 (Golden Globe)
@@ -207,39 +215,44 @@ Best  Actress: 10/58 = 0.172 (Screen Actors Guild)
 
 
 What is the effect of having nominations in the previous years on winning in the current year?
+
 What is the effect of having won awards in the previous years for Oscars to winning in a current year?
 
 
 Best Actor
 ```{r}
-table(oscars$PrNl[oscars$MM==1], oscars$Ch[oscars$MM==1])
+table(oscars$PrNl[oscars$MM == 1], oscars$Ch[oscars$MM == 1])
 ```
 
 27/(111+27) = 0.195
 
 About 19.5% of Best Actor nominees with no previous lead nomination won.
 
+(14 + 3 + 6 + 3 + 2 + 2) / (43 + 14 + 29 + 3 + 11 + 6 + 14 + 3 + 7 + 2 + 6 + 2 + 5 + 2) = 0.204
 About 20.4% of Best Actor nominees with one or more previous nominations won.
 
 
 
 ```{r}
-table(oscars$PrWl[oscars$MM==1], oscars$Ch[oscars$MM==1])
-table(oscars$PrWl[oscars$FF==1], oscars$Ch[oscars$FF==1])
+table(oscars$PrWl[oscars$MM == 1], oscars$Ch[oscars$MM == 1])
+
+table(oscars$PrWl[oscars$FF == 1], oscars$Ch[oscars$FF == 1])
 ```
 
 Best Actor
-51/(176+51) = 0.224
+51 / (176 + 51) = 0.224
 
-6/(6+41+11) = 0.103
+6 / (6 + 41 + 11) = 0.103
 
 22% of Best Actor Oscar nominees with no previous lead actor wins won the Oscars while it is 10% for actors with a previous win.
 
 Best Actress
-47/(164+47) = 0.223
-11/(56+7) = 0.17
+47 / (164 + 47) = 0.223
 
-22% of Best Actress Oscar nominees with no previous lead actress wins won the Oscars while it is 17% for actresses with a previous win.
+(9 + 1 + 1) / (56 + 9 + 7 + 1 + 1) = 0.149
+
+
+22% of Best Actress Oscar nominees with no previous lead actress wins won the Oscars while it is 15% for actresses with a previous win.
 
 
 __Use Discrete Choice Models to predict Oscar winners__ 
@@ -257,10 +270,10 @@ library(mlogit)
 
 Create dataframes for Best Picture, Best Director, Best Male Actor, Best Female Actor
 ```{r}
-oscarsPP <- subset(oscars, PP==1)
-oscarsDD <- subset(oscars, DD==1)
-oscarsMM <- subset(oscars, MM==1)
-oscarsFF <- subset(oscars, FF==1)
+oscarsPP <- subset(oscars, PP == 1)
+oscarsDD <- subset(oscars, DD == 1)
+oscarsMM <- subset(oscars, MM == 1)
+oscarsFF <- subset(oscars, FF == 1)
 ```
 
 ```{r}
@@ -269,7 +282,7 @@ str(oscarsPP)
 
 Best Picture: 285 observations
 
-Best Picture winner given by Ch=1 (winner), Ch=0 for losing nominee
+Best Picture winner given by `Ch = 1` (winner), `Ch = 0` for losing nominee
 
 Possible Predictors in the data set:
 
@@ -295,19 +308,35 @@ oscarsPP$GG <- oscarsPP$Gmc + oscarsPP$Gdr
 We use this to define a new variable that captures if a movie won a Golden Globe for best picture.
 
 
-Say we use the data frame from 1944 to 2006 to develop the logit model.
+Say we use the data frame from 1944 to 2006 to develop the logit model, then predict for 2007.
 
 ```{r}
-D1 <- mlogit.data(subset(oscarsPP, Year <=2006), choice="Ch", shape="long", alt.var = "Mode")
+# creates a dataset to be used for the mlogit model
+D1 <- mlogit.data(subset(oscarsPP, Year <= 2006), choice = "Ch", shape = "long", alt.var = "Mode")
+# choice = column in the df indicating which choice out of all alternatives is selected (ie. the selected alternative)
+
+# shape = how does my dataset look
+# shape = "long" indicates that each choice appear in different rows
+# shape = "wide" indicates that all the choices appear in one row for each choice
+
+# alt.var = the variable that gives all the k alternatives available
 ```
 
 This creates a data set for applying the mlogit function where choice is a variable indicating the choice mode (here "Ch"). shape is the shape of the data frame (here "long" since each row is an alternative) and alt.var is the name of the variable containing the alternative index (here "Mode"). We use shape="wide" when there is one row for each choice simulation.
 
 ```{r}
-MPP1 <- mlogit(Ch~Nom+Dir+GG+Aml+Afl+PGA+Days+Length-1, data=D1)
+MPP1 <- mlogit(formula = Ch ~ Nom + Dir + GG + Aml + Afl + PGA + Days + Length - 1, data = D1)
 ```
 
 This fits a conditional logit model where Ch is the response. The -1 is used to address the fact that in this fit, we do not want the intercept to be estimated. Note that across the five alternatives in different years, it is not comparable and hence we should not introduce alternate specific estimates here.
+
+- -1 is to remove the beta_0 constant term
+
+- alternatives 1 2 3 4 5 do not remain the same over all categories
+
+- this means that there are no alternate specific choices/estimates, so it is best to remove it
+
+- result will only reflect on the choices made on these categories, not the constant
 
 ```{r}
 summary(MPP1)
@@ -322,19 +351,26 @@ Nom (No, of Oscar nominations), Dir (Director nomination), GG (Golden Globe winn
 Output: Ch
 
 ```{r}
-MPP2 <- mlogit(Ch~Nom+Dir+GG+PGA-1, data=D1)
+MPP2 <- mlogit(formula = Ch ~ Nom + Dir + GG + PGA - 1, data = D1)
 summary(MPP2)
 ```
 
 $P(\text{Movie k wins the best picture}) = \frac{e^{0.21Nom_k + 2.63Dir_k + 0.69GG_k + 1.84PGA_k}}{\sum_{l=1}^K e^{0.21Nom_l + 2.63Dir_l + 0.69GG_l + 1.84PGA_l}}$
 
+-ve of log-likelihood increased, which is not a good thing
+
 ```{r}
-LL0 <- 56*log(1/5)
-LLbeta = as.numeric(MPP2$logLik)
-LLR = 1-LLbeta/LL0
+# total of 285 obs, hence number of choice tasks is 285 / 6 = 57 years
+# we are predicting the final year (2007), hence it is 56 years
+# there are 56 years i used, hence it will be sum over the 56 variables
+# 1/5 because there are 5 alternatives in total
+
+LL0 <- 56 * log(1/5)  
+LLbeta <- as.numeric(MPP2$logLik)
+LLR <- 1 - LLbeta / LL0
 LLR
-p=4
-AIC = -2*LLbeta+2*p
+p = 4
+AIC = -2 * LLbeta + 2 * p
 AIC
 ```
 Likelihood  Ratio index is $\rho = 1 - \frac{LL(\hat{\beta})}{LL(0)}=$ `r LLR`.  
@@ -347,16 +383,20 @@ Note that if we use the expanded model with variables Nom, Dir, GG, Aml, Afl, PG
 
 To predict the out of sample winners for year 2007:
 ```{r}
-D1_new <- mlogit.data(subset(oscarsPP, Year==2007), choice="Ch", shape="long", alt.var="Mode")
-Predict2 <- predict(MPP2, newdata= D1_new)
+# create the new dataset for prediction
+D1_new <- mlogit.data(subset(oscarsPP, Year == 2007), choice = "Ch", shape = "long", alt.var = "Mode")
+Predict2 <- predict(MPP2, newdata = D1_new)
 Predict2
+
+# as observed in the results, the 4th alternative has the highest probability of winning.
 ```
 
 Winner for Oscars 2007 best picture: No country for Old Men.
 
 ```{r results='hide'}
-oscarsPP[oscarsPP$Year==2007 & oscarsPP$Mode==which.max(Predict2),]
-subset(oscarsPP, Year==2007)
+oscarsPP[oscarsPP$Year == 2007 & oscarsPP$Mode == which.max(Predict2),]
+
+subset(oscarsPP, Year == 2007)
 ```
 
 This movie had the highest predicted probability from the model.
@@ -365,12 +405,16 @@ This movie had the highest predicted probability from the model.
 __Surprise Winners__---
 
 ```{r results='hide'}
-D <- mlogit.data(oscarsPP, choice = "Ch", shape="long", alt.var="Mode")
-M <- mlogit(Ch~Nom+Dir+GG+PGA-1, data=D)
-P <- predict(M, newdata=D)
+D <- mlogit.data(oscarsPP, choice = "Ch", shape ="long", alt.var = "Mode")
+M <- mlogit(formula = Ch ~ Nom + Dir + GG + PGA - 1, data = D)
+P <- predict(M, newdata = D)
 Pred <- as.vector(t(P))
 oscarsPP$Pred <- Pred
-oscarsPP$Pred[oscarsPP$Ch==1]
+
+# gives the probabilities of winning that the model predicted for the movie that actually won
+oscarsPP$Pred[oscarsPP$Ch == 1]
+# results in descending order from 2007. 4th value is year 2004, where the movie that won had a 0.03 probability of winning
+
 subset(oscarsPP, oscarsPP$Year == 2004)
 ```
 
@@ -378,12 +422,18 @@ For example, in the year 2004, Million Dollar Baby won the Best Picture with pre
 
 
 We make a list of predicted versus winners below
+
+- create a table of winners and the probabilities of winning based on the model
 ```{r}
-PPwin=apply(P,1,which.max)
-PPyw=cbind(2007:1951,PPwin)
-lists=character(0)
-for (i in 1:57)
-  lists=rbind(lists,c(PPyw[i,1],as.character(oscarsPP[oscarsPP$Year==PPyw[i,1] & oscarsPP$Mode==PPyw[i,2],c("Name")]),round(P[i,PPyw[i,2]],digits=2),as.character(oscarsPP[oscarsPP$Year==PPyw[i,1] & oscarsPP$Ch==1,c("Name")])))
+PPwin <- apply(P, 1, which.max) # select the index with highest probability alternative value
+PPyw <- cbind(2007:1951, PPwin) # year and the alternative k that won
+
+lists <- character(0) # create an empty list
+
+for (i in 1:57) {
+  lists = rbind(lists, c(PPyw[i,1], as.character(oscarsPP[oscarsPP$Year == PPyw[i,1] & oscarsPP$Mode == PPyw[i,2], c("Name")]), round(P[i,PPyw[i,2]], digits = 2), as.character(oscarsPP[oscarsPP$Year == PPyw[i,1] & oscarsPP$Ch == 1, c("Name")])))
+}
+  
 
 colnames(lists)=c("Year","Predicted","Probability","Winner")
 noquote(lists)
@@ -393,18 +443,20 @@ noquote(lists)
 
 Next we look at the male actors
 
+- predicts the best male actor winner for every subsequent year based on all past year(s) available data
+
 ```{r}
 Fail <- 0
 Predict <- NULL
 coefficients <- NULL  # reserved keyword for null object in R (undefined)
-for(i in 1960:2006){
-  D <- mlogit.data(subset(oscarsMM, Year<=i), Choice="Ch", shape="long", "alt.var"="Mode")
-  M <- mlogit(Ch~Pic+Gm1+Gm2+PrNl+PrWl-1, data=D)
+for(i in 1960:2006) {
+  D <- mlogit.data(subset(oscarsMM, Year <= i), Choice = "Ch", shape = "long", alt.var = "Mode")
+  M <- mlogit(formula = Ch ~ Pic + Gm1 + Gm2 + PrNl + PrWl - 1, data = D)
   coefficients <- rbind(coefficients, M$coefficients)
-  D1 <- mlogit.data(subset(oscarsMM, Year == (i+1)), choice="Ch", shape="long", alt.var="Mode")
-  P1 <- predict(M, newdata=D1)
+  D1 <- mlogit.data(subset(oscarsMM, Year == (i+1)), choice = "Ch", shape = "long", alt.var = "Mode")
+  P1 <- predict(M, newdata = D1)
   Predict <- rbind(Predict, P1)
-  Fail <- Fail + as.logical(which.max(P1) - which.max(subset(oscarsMM, Year== (i+1) )$Ch))
+  Fail <- Fail + as.logical(which.max(P1) - which.max(subset(oscarsMM, Year == (i+1))$Ch))
 }
 Predict
 Fail

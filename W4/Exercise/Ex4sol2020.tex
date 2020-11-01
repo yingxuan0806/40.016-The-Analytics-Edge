@@ -1,0 +1,1931 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Week 4 \& 5 Exercise Solutions},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Week 4 \& 5 Exercise Solutions}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{question-1}{%
+\section{Question 1}\label{question-1}}
+
+\hypertarget{onea}{%
+\subsection{(a)}\label{onea}}
+
+Q: Run a logit model with installation cost and operating cost as the
+only explanatory variables, without intercepts.
+
+A: We need to prepare the data for \texttt{mlogit()} using
+\texttt{mlogit.data()} first. The most important column is the column of
+choices, which we will use to get all of the other columns. We note that
+we assume that the data has been prepared and that the columns have the
+alternative names within them.
+
+We just read in the data first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rm}\NormalTok{(}\DataTypeTok{list=}\KeywordTok{ls}\NormalTok{())}
+\CommentTok{#install.packages(mlogit)}
+\KeywordTok{library}\NormalTok{(mlogit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: dfidx
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dfidx'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:stats':
+## 
+##     filter
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heating <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Heating.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(heating)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   idcase depvar  ic.gc  ic.gr  ic.ec  ic.er   ic.hp  oc.gc  oc.gr  oc.ec  oc.er
+## 1      1     gc 866.00 962.64 859.90 995.76 1135.50 199.69 151.72 553.34 505.60
+## 2      2     gc 727.93 758.89 796.82 894.69  968.90 168.66 168.66 520.24 486.49
+## 3      3     gc 599.48 783.05 719.86 900.11 1048.30 165.58 137.80 439.06 404.74
+## 4      4     er 835.17 793.06 761.25 831.04 1048.70 180.88 147.14 483.00 425.22
+## 5      5     er 755.59 846.29 858.86 985.64  883.05 174.91 138.90 404.41 389.52
+## 6      6     gc 666.11 841.71 693.74 862.56  859.18 135.67 140.97 398.22 371.04
+##    oc.hp income agehed rooms region
+## 1 237.88      7     25     6 ncostl
+## 2 199.19      5     60     5 scostl
+## 3 171.47      4     65     2 ncostl
+## 4 222.95      2     50     4 scostl
+## 5 178.49      2     25     6 valley
+## 6 209.27      6     65     7 scostl
+\end{verbatim}
+
+For creating the required data we use the function mlogit.data, the
+different arguments are explained on the side. We need to choose columns
+3 to 12 for the explanatory variables. This is also a wide data set.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataheat <-}\StringTok{ }\KeywordTok{mlogit.data}\NormalTok{(heating,  }\CommentTok{# data.frame of data}
+                    \DataTypeTok{choice =} \StringTok{"depvar"}\NormalTok{,  }\CommentTok{# column name of choice}
+                    \DataTypeTok{shape =} \StringTok{"wide"}\NormalTok{,  }\CommentTok{# wide means each row is an observation}
+                                     \CommentTok{# long if each row is an alternative}
+                    \DataTypeTok{varying =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{12}\NormalTok{), }\CommentTok{# indices of varying columns for each alternative,}
+                    \DataTypeTok{sep =} \StringTok{"."}  \CommentTok{# not necessary but still good to be clear}
+\NormalTok{                    )}
+\end{Highlighting}
+\end{Shaded}
+
+Then, we can run \texttt{mlogit()} on the data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ1_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{oc }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, dataheat)  }\CommentTok{# -1 means no intercept}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{10\baselineskip}
+
+\hypertarget{i.}{%
+\subsubsection{i.}\label{i.}}
+
+Q: Do the estimated coefficients have the expected signs?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(modelQ1_}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           ic           oc 
+## -0.006231869 -0.004580083
+\end{verbatim}
+
+The coefficients of both \texttt{ic} and \texttt{oc} are negative which
+makes sense since as the installation cost and operating cost for a
+system increases, the probability of choosing that system goes down.
+
+\hypertarget{ii.}{%
+\subsubsection{ii.}\label{ii.}}
+
+Q: Are both coefficients significantly different from zero?
+
+A: Since both p-values are below 2.2e-16 and we see three stars, we can
+claim that the coefficients are significantly different than zero.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(modelQ1_}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = depvar ~ ic + oc - 1, data = dataheat, method = "nr")
+## 
+## Frequencies of alternatives:choice
+##       ec       er       gc       gr       hp 
+## 0.071111 0.093333 0.636667 0.143333 0.055556 
+## 
+## nr method
+## 4 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 1.56E-07 
+## gradient close to zero 
+## 
+## Coefficients :
+##       Estimate  Std. Error z-value  Pr(>|z|)    
+## ic -0.00623187  0.00035277 -17.665 < 2.2e-16 ***
+## oc -0.00458008  0.00032216 -14.217 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -1095.2
+\end{verbatim}
+
+\hypertarget{iii.}{%
+\subsubsection{iii.}\label{iii.}}
+
+Q: Use the average of the probabilities to compute the predicted share.
+Compute the actual shares of houses with each system. How closely do the
+predicted shares match the actual shares of houses with each heating
+system?
+
+A: We can get the actual shares in the data with the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(heating}\OperatorTok{$}\NormalTok{depvar)}\OperatorTok{/}\KeywordTok{nrow}\NormalTok{(heating)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##         ec         er         gc         gr         hp 
+## 0.07111111 0.09333333 0.63666667 0.14333333 0.05555556
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predQ1_}\DecValTok{1}\NormalTok{<-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelQ1_}\DecValTok{1}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ dataheat)}
+\KeywordTok{apply}\NormalTok{(predQ1_}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         ec         er         gc         gr         hp 
+## 0.10413057 0.05141477 0.51695653 0.24030898 0.08718915
+\end{verbatim}
+
+While the model captures the essence of the data reasonably, there are a
+few differences in the predicted shares. For example in \texttt{gc} and
+\texttt{gr} there seems to be quite a gap.
+
+\hypertarget{iv.}{%
+\subsubsection{iv.}\label{iv.}}
+
+Q: The ratio of coefficients usually provides economically meaningful
+information in discrete choice models. The willingness to pay
+(\emph{wtp}) through higher installation cost for a one-dollar reduction
+in operating costs is the ratio of the operating cost coefficient to the
+installation cost coefficients. What is the estimated \emph{wtp} from
+this model? Note that the annual operating cost recurs every year while
+the installation cost is a one-time payment. Does the result make sense?
+
+A: \begin{equation*}
+\frac{\beta_{oc}}{\beta_{ic}}=0.7349453
+\end{equation*}
+
+According to this model, the decision-makers are willing to pay \$ 0.739
+higher in installation cost for a \$1 reduction in operating cost. It
+seems unreasonable for the decision-maker to pay only 74 cents higher
+for a one-time payment for a \$1 reduction in annual costs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wtp1 <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{coef}\NormalTok{(modelQ1_}\DecValTok{1}\NormalTok{)[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{/}\KeywordTok{coef}\NormalTok{(modelQ1_}\DecValTok{1}\NormalTok{)[}\StringTok{"ic"}\NormalTok{])}
+\NormalTok{wtp1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7349453
+\end{verbatim}
+
+\hypertarget{oneb}{%
+\subsection{(b)}\label{oneb}}
+
+Q: The present value (\(PV\)) of the future operating costs is the
+discounted sum of operating costs over the life of the system:
+\(PV=\sum_{t=1}^{L}[OC/(1+r)^{t}]\) where \emph{r} is the discount rate
+and \emph{L} is the life of the system. As \emph{L} rises, the PV
+approaches \emph{OC/r}. Therefore, for a system with a sufficiently long
+life (which we will assume these systems have), a one-dollar reduction
+in \emph{OC} reduces the present value of future operating costs by
+\emph{(1/r)}. This means that if the person choosing the system were
+incurring the installation costs and the operating costs over the life
+of the system, and rationally traded-off the two at a discount rate of
+\emph{r}, the decision-maker's \emph{wtp} for operating cost reductions
+would be \emph{(1/r)}. Define a new variable \texttt{lcc} (lifecycle
+cost) that is defined as the sum of the installation cost and the
+(operating cost)/\emph{r}. Run a logit model with the lifecycle cost as
+the only explanatory variable. Estimate the model for r = 0.12. Comment
+on the value of log-likelihood of the models obtained in
+\protect\hyperlink{onea}{(a)} as compared to
+\protect\hyperlink{oneb}{(b)}.
+
+A: We first make a column called \texttt{lcc} with our \texttt{dataheat}
+object
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataheat}\OperatorTok{$}\NormalTok{lcc <-}\StringTok{ }\NormalTok{dataheat}\OperatorTok{$}\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{dataheat}\OperatorTok{$}\NormalTok{oc}\OperatorTok{/}\FloatTok{0.12}
+\end{Highlighting}
+\end{Shaded}
+
+We then estimate with the \texttt{mlogit()} function, and call
+\texttt{logLik()} to get the log likelihood for this model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ1_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{lcc }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, dataheat)}
+\KeywordTok{logLik}\NormalTok{(modelQ1_}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -1248.702 (df=1)
+\end{verbatim}
+
+The log likelihood of the model is -1248.7018908.
+
+For comparison, we retrieve the log likelihood of the model in part (a):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{logLik}\NormalTok{(modelQ1_}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -1095.237 (df=2)
+\end{verbatim}
+
+The log likelihood of the model from (a) is -1095.2371253.
+
+Notice that the log likelihood of the model in (a) is higher (better,
+more likely) than that of the model in this part.
+
+\hypertarget{onec}{%
+\subsection{(c)}\label{onec}}
+
+Q: Add alternative-specific constants to the model in (a). With \emph{K}
+alternatives, at most \emph{K-1} alternative specific constants can be
+estimated. The coefficient of \emph{K-1} constants are interpreted as
+relative to \emph{K}th alternative. Normalize the constant for the
+alternative \texttt{hp} to 0.
+
+\needspace{8\baselineskip}
+
+A: Running \texttt{mlogit()} with a reference level. We observe that the
+share obtained here is the average share. This is guaranteed by the
+presence of alternative specific constants.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ1_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{oc, }\DataTypeTok{data =}\NormalTok{ dataheat, }\DataTypeTok{reflevel =} \StringTok{"hp"}\NormalTok{)}
+\CommentTok{# This forces hp to be the reference level and the other alternative specific constants are relative to this}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{i.-1}{%
+\subsubsection{i.}\label{i.-1}}
+
+Q: How well do the estimated probabilities match the shares of customers
+choosing each alternative in this case?
+
+A: We can get the predicted shares:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predQ1_}\DecValTok{3}\NormalTok{<-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelQ1_}\DecValTok{3}\NormalTok{, }\DataTypeTok{newdata=}\NormalTok{dataheat)}
+\NormalTok{shareQ1_}\DecValTok{3}\NormalTok{<-}\StringTok{ }\KeywordTok{apply}\NormalTok{(predQ1_}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,mean)}
+\NormalTok{shareQ1_}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         hp         ec         er         gc         gr 
+## 0.05555556 0.07111111 0.09333333 0.63666666 0.14333334
+\end{verbatim}
+
+We notice that the predicted shares match the actual shares exactly.
+This is guaranteed with the use of the alternative specific constants.
+
+\hypertarget{ii.-1}{%
+\subsubsection{ii.}\label{ii.-1}}
+
+Q: Calculate the \emph{wtp} that is implied by the estimate. Is this
+reasonable?
+
+A: We calculate the willingness to pay:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unname}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{/}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.563385
+\end{verbatim}
+
+Hence: \begin{equation*}
+\frac{\beta_{oc}}{\beta_{ic}}=4.563385
+\end{equation*} which suggests an extra down-payment of \$ 4.56 for a
+\$1 saving in annual operating costs. This seems more reasonable.
+
+\hypertarget{iii.-1}{%
+\subsubsection{iii.}\label{iii.-1}}
+
+Q: Suppose you had included constants for alternatives \texttt{ec},
+\texttt{er}, \texttt{gc}, \texttt{hp} with the constant for alternative
+\texttt{gr} normalized to zero. What would be the estimated coefficient
+of the constant for alternative \texttt{gc}? Can you figure this out
+logically rather than actually estimating the model?
+
+\needspace{10\baselineskip}
+
+A: Note that in modelQ1\_3, the intercept for \texttt{gr} is 0.308. Here
+\texttt{gr} is the reference level. So in teh new model all the
+alternative specific constants are reduced by 0.308. Nothing else chages
+and the quality of fit remains unchanged.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(modelQ1_}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = depvar ~ ic + oc, data = dataheat, reflevel = "hp", 
+##     method = "nr")
+## 
+## Frequencies of alternatives:choice
+##       hp       ec       er       gc       gr 
+## 0.055556 0.071111 0.093333 0.636667 0.143333 
+## 
+## nr method
+## 6 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 9.58E-06 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                   Estimate  Std. Error z-value  Pr(>|z|)    
+## (Intercept):ec  1.65884594  0.44841936  3.6993 0.0002162 ***
+## (Intercept):er  1.85343697  0.36195509  5.1206 3.045e-07 ***
+## (Intercept):gc  1.71097930  0.22674214  7.5459 4.485e-14 ***
+## (Intercept):gr  0.30826328  0.20659222  1.4921 0.1356640    
+## ic             -0.00153315  0.00062086 -2.4694 0.0135333 *  
+## oc             -0.00699637  0.00155408 -4.5019 6.734e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -1008.2
+## McFadden R^2:  0.013691 
+## Likelihood ratio test : chisq = 27.99 (p.value = 8.3572e-07)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{### Check that you are right.}
+\NormalTok{modelQ1_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{oc, }\DataTypeTok{data =}\NormalTok{ dataheat, }\DataTypeTok{reflevel =} \StringTok{"gr"}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(modelQ1_}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = depvar ~ ic + oc, data = dataheat, reflevel = "gr", 
+##     method = "nr")
+## 
+## Frequencies of alternatives:choice
+##       gr       ec       er       gc       hp 
+## 0.143333 0.071111 0.093333 0.636667 0.055556 
+## 
+## nr method
+## 6 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 9.58E-06 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                   Estimate  Std. Error z-value  Pr(>|z|)    
+## (Intercept):ec  1.35058266  0.50715442  2.6631 0.0077434 ** 
+## (Intercept):er  1.54517369  0.43298757  3.5686 0.0003588 ***
+## (Intercept):gc  1.40271602  0.13398657 10.4691 < 2.2e-16 ***
+## (Intercept):hp -0.30826328  0.20659222 -1.4921 0.1356640    
+## ic             -0.00153315  0.00062086 -2.4694 0.0135333 *  
+## oc             -0.00699637  0.00155408 -4.5019 6.734e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -1008.2
+## McFadden R^2:  0.013691 
+## Likelihood ratio test : chisq = 27.99 (p.value = 8.3572e-07)
+\end{verbatim}
+
+\needspace{12\baselineskip}
+
+\hypertarget{d}{%
+\subsection{(d)}\label{d}}
+
+Now try some models with sociodemographic variables entering.
+
+\hypertarget{i.-2}{%
+\subsubsection{i.}\label{i.-2}}
+
+Q: Enter installation cost divided by income, instead of installation
+cost. With this specification, the magnitude of the installation cost
+coefficient is inversely related to income, such that high-income
+households are less concerned with installation costs than lower-income
+households. Does dividing installation cost by income seem to make the
+model better or worse than the model in \protect\hyperlink{onec}{(c)}?
+
+\needspace{6\baselineskip}
+
+A: Fitting the model first
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataheat}\OperatorTok{$}\NormalTok{iic <-}\StringTok{ }\NormalTok{dataheat}\OperatorTok{$}\NormalTok{ic}\OperatorTok{/}\NormalTok{dataheat}\OperatorTok{$}\NormalTok{income}
+\NormalTok{modelQ1_}\DecValTok{5}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{oc }\OperatorTok{+}\StringTok{ }\NormalTok{iic, dataheat)}
+\KeywordTok{summary}\NormalTok{(modelQ1_}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = depvar ~ oc + iic, data = dataheat, method = "nr")
+## 
+## Frequencies of alternatives:choice
+##       ec       er       gc       gr       hp 
+## 0.071111 0.093333 0.636667 0.143333 0.055556 
+## 
+## nr method
+## 6 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 1.03E-05 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                  Estimate Std. Error z-value  Pr(>|z|)    
+## (Intercept):er  0.0639934  0.1944893  0.3290  0.742131    
+## (Intercept):gc  0.0563481  0.4650251  0.1212  0.903555    
+## (Intercept):gr -1.4653063  0.5033845 -2.9109  0.003604 ** 
+## (Intercept):hp -1.8700773  0.4364248 -4.2850 1.827e-05 ***
+## oc             -0.0071066  0.0015518 -4.5797 4.657e-06 ***
+## iic            -0.0027658  0.0018944 -1.4600  0.144298    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -1010.2
+## McFadden R^2:  0.011765 
+## Likelihood ratio test : chisq = 24.052 (p.value = 5.9854e-06)
+\end{verbatim}
+
+The log-likelihood here is -1010.2 which is lower than -1008.2 for
+model4 and hence is worse. Moreover installation cost was significant in
+the earlier model and here the installation cost divided by income is
+not significant any more.
+
+\hypertarget{ii.-2}{%
+\subsubsection{ii.}\label{ii.-2}}
+
+Q: Instead of dividing installation cost by income, enter
+alternative-specific income effects. You can do this by using the
+\texttt{\textbar{}} argument in the mlogit formula. What do the
+estimates imply about the impact of income on the choice of central
+systems versus room system? Do these income terms enter significantly?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ1_}\DecValTok{6}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{oc }\OperatorTok{+}\StringTok{ }\NormalTok{ic }\OperatorTok{|}\StringTok{ }\NormalTok{income, dataheat)  }
+\KeywordTok{summary}\NormalTok{(modelQ1_}\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = depvar ~ oc + ic | income, data = dataheat, 
+##     method = "nr")
+## 
+## Frequencies of alternatives:choice
+##       ec       er       gc       gr       hp 
+## 0.071111 0.093333 0.636667 0.143333 0.055556 
+## 
+## nr method
+## 6 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 6.27E-06 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                   Estimate  Std. Error z-value  Pr(>|z|)    
+## (Intercept):er  0.35115055  0.50956720  0.6891  0.490751    
+## (Intercept):gc  0.10071221  0.59717905  0.1686  0.866075    
+## (Intercept):gr -0.81287658  0.66070081 -1.2303  0.218576    
+## (Intercept):hp -1.95445797  0.70353833 -2.7780  0.005469 ** 
+## oc             -0.00696000  0.00155383 -4.4792 7.491e-06 ***
+## ic             -0.00153534  0.00062251 -2.4664  0.013649 *  
+## income:er      -0.03322870  0.09928424 -0.3347  0.737865    
+## income:gc      -0.00815999  0.07887085 -0.1035  0.917598    
+## income:gr      -0.11618242  0.09138295 -1.2714  0.203594    
+## income:hp       0.06362917  0.11329865  0.5616  0.574385    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -1005.9
+## McFadden R^2:  0.01598 
+## Likelihood ratio test : chisq = 32.67 (p.value = 1.2134e-05)
+\end{verbatim}
+
+All of the coefficients are negative which tells us that income rises,
+probability of choosing a heat pump increases relative to others, The
+magnitude of the income coefficient for \texttt{gr} is the greatest so
+we can infer that as income rises, probability of choosing gas rooms
+drops relative to others. None of the income terms are significant at
+the 5\% significance level.
+
+\hypertarget{e}{%
+\subsection{(e)}\label{e}}
+
+Q: We now are going to consider the use of the logit model for
+prediction. Estimate a model with installation costs, operating costs,
+and alternative specific constants. Calculate the probabilities for each
+house explicitly.
+
+\hypertarget{i.-3}{%
+\subsubsection{i.}\label{i.-3}}
+
+Q: The California Energy Commission (CEC) is considering whether to
+offer rebates on heat pumps. The CEC wants to predict the effect of the
+rebates on the heating system choices of customers in California. The
+rebates will be set at 10\% of the installation cost. Using the
+estimated coeffiients from the model, calculate predicted shares under
+this new installation cost instead of original value. How much do the
+rebates raise the share of houses with heat pumps?
+
+A: We create a new dataframe via copying and then changing a column, and
+then create a new \texttt{mlogit.data} object:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heating1 <-}\StringTok{ }\NormalTok{heating}
+\NormalTok{heating1}\OperatorTok{$}\NormalTok{ic.hp <-}\StringTok{ }\FloatTok{0.9}\OperatorTok{*}\NormalTok{heating1}\OperatorTok{$}\NormalTok{ic.hp}
+\NormalTok{dataheat1 <-}\StringTok{ }\KeywordTok{mlogit.data}\NormalTok{(heating1, }\DataTypeTok{choice =} \StringTok{"depvar"}\NormalTok{, }\DataTypeTok{shape =} \StringTok{"wide"}\NormalTok{, }\DataTypeTok{varying =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{12}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{8\baselineskip}
+
+We can then use the old model as-is with the newly created data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predQ1_3a <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelQ1_}\DecValTok{3}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ dataheat1)}
+\NormalTok{shareQ1_3a <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(predQ1_3a, }\DecValTok{2}\NormalTok{, mean)}
+\NormalTok{shareQ1_3a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         hp         ec         er         gc         gr 
+## 0.06446230 0.07045486 0.09247026 0.63064443 0.14196814
+\end{verbatim}
+
+The share of houses with heat pumps rises from 0.055 to 0.0645.
+
+\hypertarget{ii.-3}{%
+\subsubsection{ii.}\label{ii.-3}}
+
+Q: Suppose a new technology is developed that provides more efficient
+central heating. The new technology costs 200 more than the electric
+central heating system. However it saves 25\% of the electricity such
+that its operating costs are 75\% of the operating costs of \texttt{ec}.
+We want to predict the original market penetration of this technology.
+Note that there are now 6 alternatives instead of 5. Calculate the
+probability and predict the market share (average probability) for all 6
+alternatives using the model that is estimated on the 5 alternatives.
+Use the original installation costs for the heat pumps rather than the
+reduced costs from the previous question. What is the predicted market
+share for the new technology? From which of the original five systems
+does the new technology draw the most customers?
+
+\needspace{8\baselineskip}
+
+A: We want to compute the choice probabilities using closed form
+formula: \begin{equation*}
+\mathbb{P}\left(\text{Choice $k$=$j$}\right)=\frac{\exp\left(\sum_{i\in \mathcal{I}}\beta_{ij}x_{ij}\right)}{\sum_{l\in\mathcal{J}}\exp\left(\sum_{i\in \mathcal{I}}\beta_{il}x_{il}\right)}
+\end{equation*} where \(i\) refers to each predictor, including the
+intercept. The intercept always has corresponding \(x_{0j}\) value of 1,
+and coefficient of the intercept \(\beta_{0j}\) for the reference level
+is 0. The indices \(j\) refers to each choice or alternative while \(k\)
+can be treated as the choice random variable and takes the values the
+choices are encoded as.
+
+Unfortunately, first we will need to introduce columns that the new
+choice represents, and then we can calculate this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df<-}\StringTok{ }\KeywordTok{subset}\NormalTok{(heating, }\DataTypeTok{select =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{12}\NormalTok{))}
+
+\CommentTok{# New columns}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ic.eci <-}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{ic.ec }\OperatorTok{+}\StringTok{ }\DecValTok{200}
+\NormalTok{df}\OperatorTok{$}\NormalTok{oc.eci <-}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{oc.ec }\OperatorTok{*}\StringTok{ }\FloatTok{0.75}
+\end{Highlighting}
+\end{Shaded}
+
+We will use modelQ1\_3 to compute the new choice probabilities
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\OperatorTok{$}\NormalTok{hpexp<-}\KeywordTok{exp}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{oc.hp}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{ic.hp)}
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{ecexp<-}\KeywordTok{exp}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{oc.ec}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{ic.ec}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"(Intercept):ec"}\NormalTok{])}
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{erexp<-}\KeywordTok{exp}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{oc.er}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{ic.er}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"(Intercept):er"}\NormalTok{])}
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{gcexp<-}\KeywordTok{exp}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{oc.gc}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{ic.gc}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"(Intercept):gc"}\NormalTok{])}
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{grexp<-}\KeywordTok{exp}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{oc.gr}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{ic.gr}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"(Intercept):gr"}\NormalTok{])}
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{eciexp<-}\KeywordTok{exp}\NormalTok{(modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{oc.eci}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"ic"}\NormalTok{]}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{ic.eci}\OperatorTok{+}\NormalTok{modelQ1_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"(Intercept):ec"}\NormalTok{])}
+               
+               
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{sumexp <-}\KeywordTok{apply}\NormalTok{(}\KeywordTok{subset}\NormalTok{(df,}\DataTypeTok{select=}\KeywordTok{c}\NormalTok{(}\DecValTok{13}\OperatorTok{:}\DecValTok{17}\NormalTok{)),}\DecValTok{1}\NormalTok{,sum)}
+\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew <-}\KeywordTok{apply}\NormalTok{(}\KeywordTok{subset}\NormalTok{(df,}\DataTypeTok{select=}\KeywordTok{c}\NormalTok{(}\DecValTok{13}\OperatorTok{:}\DecValTok{18}\NormalTok{)),}\DecValTok{1}\NormalTok{,sum)}
+
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{hp <-df}\OperatorTok{$}\NormalTok{hpexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexp}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ec <-df}\OperatorTok{$}\NormalTok{ecexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexp}
+\NormalTok{df}\OperatorTok{$}\NormalTok{er <-df}\OperatorTok{$}\NormalTok{erexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexp}
+\NormalTok{df}\OperatorTok{$}\NormalTok{gc <-df}\OperatorTok{$}\NormalTok{gcexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexp}
+\NormalTok{df}\OperatorTok{$}\NormalTok{gr <-df}\OperatorTok{$}\NormalTok{grexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexp}
+
+\NormalTok{df}\OperatorTok{$}\NormalTok{hpnew <-df}\OperatorTok{$}\NormalTok{hpexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ecnew <-df}\OperatorTok{$}\NormalTok{ecexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ernew <-df}\OperatorTok{$}\NormalTok{erexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew}
+\NormalTok{df}\OperatorTok{$}\NormalTok{gcnew <-df}\OperatorTok{$}\NormalTok{gcexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew}
+\NormalTok{df}\OperatorTok{$}\NormalTok{grnew <-df}\OperatorTok{$}\NormalTok{grexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew}
+\NormalTok{df}\OperatorTok{$}\NormalTok{ecinew <-df}\OperatorTok{$}\NormalTok{eciexp}\OperatorTok{/}\NormalTok{df}\OperatorTok{$}\NormalTok{sumexpnew}
+
+
+
+
+\NormalTok{oldprob<-}\KeywordTok{subset}\NormalTok{(df,}\DataTypeTok{select=}\KeywordTok{c}\NormalTok{(}\DecValTok{21}\OperatorTok{:}\DecValTok{25}\NormalTok{))}
+\NormalTok{newprob<-}\KeywordTok{subset}\NormalTok{(df,}\DataTypeTok{select=}\KeywordTok{c}\NormalTok{(}\DecValTok{26}\OperatorTok{:}\DecValTok{31}\NormalTok{))}
+
+
+\NormalTok{marketshareold<-}\KeywordTok{apply}\NormalTok{(oldprob,}\DecValTok{2}\NormalTok{,mean)}
+
+
+\NormalTok{marketsharenew<-}\KeywordTok{apply}\NormalTok{(newprob,}\DecValTok{2}\NormalTok{,mean)}
+
+
+\NormalTok{marketshareold}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         hp         ec         er         gc         gr 
+## 0.05555556 0.07111111 0.09333333 0.63666666 0.14333334
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{marketsharenew}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      hpnew      ecnew      ernew      gcnew      grnew     ecinew 
+## 0.04977350 0.06311578 0.08347713 0.57145108 0.12855080 0.10363170
+\end{verbatim}
+
+\pagebreak
+
+The new technology is predicted to have a marketshare of about 10.3\%
+
+The most market share is drawn from gas central whose marketshare falls
+from 63.67\% to 57.15\%. Note that from the independence of irrelevent
+alternatives (IIA) property, the ratio of market shares remains the same
+irrespective of other alternatives in the set. The drop in percentage is
+roughly 10\% from each system due to IIA. It might have been expected
+that the new electric central heating system would possibly draw more
+from the old electric central heating system rather than gas central
+(which just happens to have the greatest market share) but the
+multinomial logit with the IIA property is unable to account for this.
+
+\pagebreak
+
+\hypertarget{question-2}{%
+\section{Question 2}\label{question-2}}
+
+\hypertarget{twoa}{%
+\subsection{(a)}\label{twoa}}
+
+Q: Run a mixed logit model without intercepts and a normal distribution
+for the 6 parameters of the model and taking into account the panel data
+structure.
+
+A: In this question the choices are located in column named
+\texttt{choice}, and we prepare for \texttt{mlogit()} with useful
+aliases:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(mlogit)}
+\NormalTok{electricity <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Electricity.csv"}\NormalTok{)}
+\NormalTok{electricity_data<-}\KeywordTok{mlogit.data}\NormalTok{(electricity, }\DataTypeTok{id.var =} \StringTok{"id"}\NormalTok{, }\DataTypeTok{choice =} \StringTok{"choice"}\NormalTok{,}
+                      \DataTypeTok{varying =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{26}\NormalTok{), }\DataTypeTok{shape =} \StringTok{"wide"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{modelQ2_}\DecValTok{1}\NormalTok{<-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(choice}\OperatorTok{~}\NormalTok{pf}\OperatorTok{+}\NormalTok{cl}\OperatorTok{+}\NormalTok{loc}\OperatorTok{+}\NormalTok{wk}\OperatorTok{+}\NormalTok{tod}\OperatorTok{+}\NormalTok{seas}\DecValTok{-1}\NormalTok{,electricity_data, }\DataTypeTok{rpar=}\KeywordTok{c}\NormalTok{(}\DataTypeTok{pf=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{cl=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{loc=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{wk=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{tod=}\StringTok{'n'}\NormalTok{, }\DataTypeTok{seas=}\StringTok{'n'}\NormalTok{),}\DataTypeTok{panel=}\NormalTok{T,}\DataTypeTok{print.level=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Initial value of the function : 4569.89038273904 
+## iteration 1, step = 1, lnL = 4126.11598147, chi2 = 675.99603781
+## iteration 2, step = 1, lnL = 4110.31611444, chi2 = 103.0957355
+## iteration 3, step = 1, lnL = 4096.09983766, chi2 = 23.42334445
+## iteration 4, step = 1, lnL = 4093.17472793, chi2 = 4.86405982
+## iteration 5, step = 1, lnL = 4091.26137304, chi2 = 2.88881925
+## iteration 6, step = 1, lnL = 4090.12912208, chi2 = 1.81630251
+## iteration 7, step = 1, lnL = 4089.76614791, chi2 = 0.59638184
+## iteration 8, step = 1, lnL = 4089.68396183, chi2 = 0.11719241
+## iteration 9, step = 1, lnL = 4089.62898383, chi2 = 0.08122176
+## iteration 10, step = 1, lnL = 4089.60885185, chi2 = 0.033532
+## iteration 11, step = 1, lnL = 4089.60638772, chi2 = 0.00415238
+## iteration 12, step = 1, lnL = 4089.60603197, chi2 = 0.00055013
+## iteration 13, step = 1, lnL = 4089.60591167, chi2 = 0.00018858
+## iteration 14, step = 1, lnL = 4089.60588081, chi2 = 5.086e-05
+## iteration 15, step = 1, lnL = 4089.60587464, chi2 = 9.18e-06
+## iteration 16, step = 1, lnL = 4089.60587135, chi2 = 4.64e-06
+## iteration 17, step = 1, lnL = 4089.60586934, chi2 = 3.09e-06
+## iteration 18, step = 1, lnL = 4089.60586875, chi2 = 9.3e-07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(modelQ2_}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = choice ~ pf + cl + loc + wk + tod + seas - 1, 
+##     data = electricity_data, rpar = c(pf = "n", cl = "n", loc = "n", 
+##         wk = "n", tod = "n", seas = "n"), panel = T, print.level = T)
+## 
+## Frequencies of alternatives:choice
+##       1       2       3       4 
+## 0.22702 0.26393 0.23816 0.27089 
+## 
+## bfgs method
+## 18 iterations, 0h:0m:13s 
+## g'(-H)^-1g = 9.3E-07 
+## gradient close to zero 
+## 
+## Coefficients :
+##           Estimate Std. Error  z-value  Pr(>|z|)    
+## pf      -0.8486024  0.0310904 -27.2947 < 2.2e-16 ***
+## cl      -0.1800805  0.0118515 -15.1948 < 2.2e-16 ***
+## loc      1.9510287  0.0721430  27.0439 < 2.2e-16 ***
+## wk       1.3941656  0.0586974  23.7517 < 2.2e-16 ***
+## tod     -8.1899414  0.2627907 -31.1653 < 2.2e-16 ***
+## seas    -8.3523617  0.2634401 -31.7050 < 2.2e-16 ***
+## sd.pf    0.1668789  0.0090082  18.5253 < 2.2e-16 ***
+## sd.cl    0.3092478  0.0149194  20.7279 < 2.2e-16 ***
+## sd.loc   1.1343809  0.0711787  15.9371 < 2.2e-16 ***
+## sd.wk    0.4388592  0.0694876   6.3156  2.69e-10 ***
+## sd.tod   2.1251956  0.1009321  21.0557 < 2.2e-16 ***
+## sd.seas  1.2218426  0.0838662  14.5689 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -4089.6
+## 
+## random coefficients
+##      Min.    1st Qu.     Median       Mean     3rd Qu. Max.
+## pf   -Inf -0.9611605 -0.8486024 -0.8486024 -0.73604435  Inf
+## cl   -Inf -0.3886650 -0.1800805 -0.1800805  0.02850392  Inf
+## loc  -Inf  1.1859005  1.9510287  1.9510287  2.71615703  Inf
+## wk   -Inf  1.0981595  1.3941656  1.3941656  1.69017164  Inf
+## tod  -Inf -9.6233640 -8.1899414 -8.1899414 -6.75651868  Inf
+## seas -Inf -9.1764820 -8.3523617 -8.3523617 -7.52824142  Inf
+\end{verbatim}
+
+\hypertarget{i.-4}{%
+\subsubsection{i.}\label{i.-4}}
+
+Q: Using the estimated mean coefficients, determine the amount that a
+customer with average coefficients for price and length is willing to
+pay for an extra year of contract length.
+
+\needspace{8\baselineskip}
+
+A: We find the mean contract length coefficients, mean price coefficient
+and determine what they are willing to pay for an extra year of contract
+length.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"cl"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         cl 
+## -0.1800805
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         pf 
+## -0.8486024
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"cl"}\NormalTok{]}\OperatorTok{/}\NormalTok{modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2122084
+\end{verbatim}
+
+The mean coefficient of contract length is around -0.18 indicating
+consumers prefer shorter contracts. Since the mean price coefficient is
+-0.84, a customer will pay around \((0.18/0.84)*100 \sim 21\) cents per
+kWh to reduce contract length by 1 year.
+
+\hypertarget{ii.-4}{%
+\subsubsection{ii.}\label{ii.-4}}
+
+Q: Determine the share of the population who are estimated to dislike
+long term contracts (i.e.~have a negative coefficient for the length.)
+
+A: We can get the coefficients that determine the distribution we are
+looking at with the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\KeywordTok{c}\NormalTok{(}\StringTok{"cl"}\NormalTok{, }\StringTok{"sd.cl"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         cl      sd.cl 
+## -0.1800805  0.3092478
+\end{verbatim}
+
+We have assumed that the population has a contract coefficient which is
+normally distributed, so we simply need to get the CDF of this
+distribution up to 0. (That is, the probability that a random variate
+that is sampled from this distribution is negative. We have that the
+contract length coefficient follows a normal distribution with mean
+-0.18 and standard deviation 0.31. Now we can calculate the probability
+using \texttt{pnorm}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"cl"}\NormalTok{]),}\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"sd.cl"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7198237
+\end{verbatim}
+
+Hence, around 72\% of the population dislike long contracts.
+
+\hypertarget{b}{%
+\subsection{(b)}\label{b}}
+
+Q: The price coefficient is assumed to be normally distributed in these
+runs. This assumption means that some people are assumed to have
+positive price coefficients, since the normal distribution has support
+on both sides of zero. Using your estimates from before, determine the
+share of customers with positive price coefficients (Hint: Use the
+\texttt{pnorm} function to calculate this share). As you can see, this
+is pretty small share and can probably be ignored. However, in some
+situations, a normal distribution for the price coefficient will give a
+fairly large share with the wrong sign. Revise the model to make the
+price coefficient fixed rather than random. A fixed price coefficient
+also makes it easier to calculate the distribution of willingness to pay
+(\emph{wtp}) for each non-price attribute. If the price coefficients
+fixed, the distribution of wtp for an attribute has the same
+distribution as the attribute's coefficient, simply scaled by the price
+coefficient. However, when the price coefficient is random, the
+distribution of \emph{wtp} is the ratio of two distributions, which is
+harder to work with. What is the estimated value of the price
+coefficient? Compare the log likelihood of the new model with the old
+model.
+
+\needspace{8\baselineskip}
+
+A: We can repeat the calculation we did for \texttt{cl}, this time with
+\texttt{pf} instead. The share of customers with negative price
+coefficients is given as 0.9999998 (very close to 1) as should be
+expected.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]),}\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"sd.pf"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9999998
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]),}\KeywordTok{as.numeric}\NormalTok{(modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"sd.pf"}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.836774e-07
+\end{verbatim}
+
+\needspace{8\baselineskip}
+
+In the new model the price coefficient is fixed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{2}\NormalTok{<-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(choice}\OperatorTok{~}\NormalTok{pf}\OperatorTok{+}\NormalTok{cl}\OperatorTok{+}\NormalTok{loc}\OperatorTok{+}\NormalTok{wk}\OperatorTok{+}\NormalTok{tod}\OperatorTok{+}\NormalTok{seas}\DecValTok{-1}\NormalTok{,electricity_data, }\DataTypeTok{rpar=}\KeywordTok{c}\NormalTok{(}\DataTypeTok{cl=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{loc=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{wk=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{tod=}\StringTok{'n'}\NormalTok{, }\DataTypeTok{seas=}\StringTok{'n'}\NormalTok{),}\DataTypeTok{panel=}\NormalTok{T,}\DataTypeTok{print.level=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Initial value of the function : 4844.0424202413 
+## iteration 1, step = 1, lnL = 4122.19940158, chi2 = 900.19819485
+## iteration 2, step = 1, lnL = 4117.61873205, chi2 = 16.37981806
+## iteration 3, step = 1, lnL = 4114.74568724, chi2 = 6.72966648
+## iteration 4, step = 1, lnL = 4112.47958664, chi2 = 4.68888597
+## iteration 5, step = 1, lnL = 4111.19137234, chi2 = 1.7235575
+## iteration 6, step = 1, lnL = 4110.35907838, chi2 = 1.5787864
+## iteration 7, step = 1, lnL = 4110.26165058, chi2 = 0.18151832
+## iteration 8, step = 1, lnL = 4110.23377041, chi2 = 0.0478362
+## iteration 9, step = 1, lnL = 4110.2292355, chi2 = 0.00673468
+## iteration 10, step = 1, lnL = 4110.22736435, chi2 = 0.00292903
+## iteration 11, step = 1, lnL = 4110.22692952, chi2 = 0.00072186
+## iteration 12, step = 1, lnL = 4110.22687993, chi2 = 8.448e-05
+## iteration 13, step = 1, lnL = 4110.22687369, chi2 = 9.22e-06
+## iteration 14, step = 1, lnL = 4110.22687116, chi2 = 3.96e-06
+## iteration 15, step = 1, lnL = 4110.22687057, chi2 = 9.6e-07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(modelQ2_}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = choice ~ pf + cl + loc + wk + tod + seas - 1, 
+##     data = electricity_data, rpar = c(cl = "n", loc = "n", wk = "n", 
+##         tod = "n", seas = "n"), panel = T, print.level = T)
+## 
+## Frequencies of alternatives:choice
+##       1       2       3       4 
+## 0.22702 0.26393 0.23816 0.27089 
+## 
+## bfgs method
+## 15 iterations, 0h:0m:11s 
+## g'(-H)^-1g = 9.59E-07 
+## gradient close to zero 
+## 
+## Coefficients :
+##          Estimate Std. Error z-value  Pr(>|z|)    
+## pf      -0.810620   0.030282 -26.769 < 2.2e-16 ***
+## cl      -0.189633   0.012103 -15.668 < 2.2e-16 ***
+## loc      1.925156   0.071148  27.058 < 2.2e-16 ***
+## wk       1.350738   0.059260  22.794 < 2.2e-16 ***
+## tod     -7.857962   0.256376 -30.650 < 2.2e-16 ***
+## seas    -7.762911   0.254108 -30.550 < 2.2e-16 ***
+## sd.cl    0.309565   0.015371  20.140 < 2.2e-16 ***
+## sd.loc   1.101270   0.073389  15.006 < 2.2e-16 ***
+## sd.wk    0.760579   0.064427  11.805 < 2.2e-16 ***
+## sd.tod   2.299435   0.097326  23.626 < 2.2e-16 ***
+## sd.seas  1.791816   0.098986  18.102 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -4110.2
+## 
+## random coefficients
+##      Min.    1st Qu.     Median       Mean     3rd Qu. Max.
+## cl   -Inf -0.3984313 -0.1896326 -0.1896326  0.01916609  Inf
+## loc  -Inf  1.1823613  1.9251564  1.9251564  2.66795158  Inf
+## wk   -Inf  0.8377355  1.3507383  1.3507383  1.86374104  Inf
+## tod  -Inf -9.4089080 -7.8579624 -7.8579624 -6.30701684  Inf
+## seas -Inf -8.9714728 -7.7629111 -7.7629111 -6.55434946  Inf
+\end{verbatim}
+
+We can get the estimated price coefficient in the new model directly,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{2}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         pf 
+## -0.8106196
+\end{verbatim}
+
+The estimated price coefficient in the new model is -0.8106196.
+
+The loglikelihood of the old and new models are
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{1}\OperatorTok{$}\NormalTok{logLik}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -4089.606 (df=12)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{2}\OperatorTok{$}\NormalTok{logLik}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -4110.227 (df=11)
+\end{verbatim}
+
+This tells us that the model in part (a) is better as it has greater log
+likelihood of -4089.6058688 as compared to the log likelihood of the
+model in this part (b) which is -4110.2268706.
+
+\hypertarget{c}{%
+\subsection{(c)}\label{c}}
+
+Q: You think that everyone must like using a known company rather than
+an unknown one, and yet the normal distribution implies that some people
+dislike using a known company. Revise the model to give the coefficient
+of \texttt{wk} a uniform distribution (do this with the price
+coefficient fixed). What is the estimated distribution for the
+coefficient of \texttt{wk} and the estimated price coefficient?
+
+\needspace{12\baselineskip}
+
+A: Here we specify that the \texttt{wk} parameter follows uniform and
+\texttt{pf} is still fixed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{3}\NormalTok{<-}\KeywordTok{mlogit}\NormalTok{(choice}\OperatorTok{~}\NormalTok{pf}\OperatorTok{+}\NormalTok{cl}\OperatorTok{+}\NormalTok{loc}\OperatorTok{+}\NormalTok{wk}\OperatorTok{+}\NormalTok{tod}\OperatorTok{+}\NormalTok{seas}\DecValTok{-1}\NormalTok{,electricity_data, }\DataTypeTok{rpar=}\KeywordTok{c}\NormalTok{(}\DataTypeTok{cl=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{loc=}\StringTok{'n'}\NormalTok{,}\DataTypeTok{wk=}\StringTok{'u'}\NormalTok{,}\DataTypeTok{tod=}\StringTok{'n'}\NormalTok{, }\DataTypeTok{seas=}\StringTok{'n'}\NormalTok{),}\DataTypeTok{panel=}\NormalTok{T,}\DataTypeTok{print.level=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Initial value of the function : 4846.19313742837 
+## iteration 1, step = 1, lnL = 4123.43348279, chi2 = 894.08590234
+## iteration 2, step = 1, lnL = 4119.75594582, chi2 = 20.33416508
+## iteration 3, step = 1, lnL = 4116.11178057, chi2 = 10.47201466
+## iteration 4, step = 1, lnL = 4113.70792177, chi2 = 7.9155544
+## iteration 5, step = 1, lnL = 4111.97948096, chi2 = 2.4785899
+## iteration 6, step = 1, lnL = 4110.94620908, chi2 = 1.59917785
+## iteration 7, step = 1, lnL = 4110.5805338, chi2 = 0.58121205
+## iteration 8, step = 1, lnL = 4110.50506757, chi2 = 0.14685675
+## iteration 9, step = 1, lnL = 4110.49003561, chi2 = 0.03522903
+## iteration 10, step = 1, lnL = 4110.48429793, chi2 = 0.0081692
+## iteration 11, step = 1, lnL = 4110.48210991, chi2 = 0.00369182
+## iteration 12, step = 1, lnL = 4110.481758, chi2 = 0.00052868
+## iteration 13, step = 1, lnL = 4110.48167407, chi2 = 0.00014921
+## iteration 14, step = 1, lnL = 4110.48166737, chi2 = 9.73e-06
+## iteration 15, step = 1, lnL = 4110.48166447, chi2 = 4.6e-06
+## iteration 16, step = 1, lnL = 4110.48166382, chi2 = 1.04e-06
+## iteration 17, step = 1, lnL = 4110.48166373, chi2 = 1.5e-07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(modelQ2_}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = choice ~ pf + cl + loc + wk + tod + seas - 1, 
+##     data = electricity_data, rpar = c(cl = "n", loc = "n", wk = "u", 
+##         tod = "n", seas = "n"), panel = T, print.level = T)
+## 
+## Frequencies of alternatives:choice
+##       1       2       3       4 
+## 0.22702 0.26393 0.23816 0.27089 
+## 
+## bfgs method
+## 17 iterations, 0h:0m:12s 
+## g'(-H)^-1g = 1.53E-07 
+## gradient close to zero 
+## 
+## Coefficients :
+##          Estimate Std. Error z-value  Pr(>|z|)    
+## pf      -0.811314   0.030298 -26.778 < 2.2e-16 ***
+## cl      -0.188318   0.012061 -15.614 < 2.2e-16 ***
+## loc      1.928686   0.071206  27.086 < 2.2e-16 ***
+## wk       1.360809   0.059256  22.965 < 2.2e-16 ***
+## tod     -7.862986   0.256746 -30.625 < 2.2e-16 ***
+## seas    -7.779961   0.254544 -30.564 < 2.2e-16 ***
+## sd.cl    0.309688   0.015392  20.120 < 2.2e-16 ***
+## sd.loc   1.127218   0.074139  15.204 < 2.2e-16 ***
+## sd.wk    1.227168   0.106643  11.507 < 2.2e-16 ***
+## sd.tod   2.316823   0.098231  23.586 < 2.2e-16 ***
+## sd.seas  1.791521   0.099100  18.078 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -4110.5
+## 
+## random coefficients
+##           Min.    1st Qu.     Median       Mean     3rd Qu.     Max.
+## cl        -Inf -0.3971992 -0.1883179 -0.1883179  0.02056344      Inf
+## loc       -Inf  1.1683890  1.9286860  1.9286860  2.68898300      Inf
+## wk   0.1336413  0.7472252  1.3608091  1.3608091  1.97439299 2.587977
+## tod       -Inf -9.4256597 -7.8629861 -7.8629861 -6.30031245      Inf
+## seas      -Inf -8.9883233 -7.7799606 -7.7799606 -6.57159785      Inf
+\end{verbatim}
+
+\needspace{6\baselineskip}
+
+A uniform distribution can be determined by its minimum and maximum.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(modelQ2_}\DecValTok{3}\NormalTok{)}\OperatorTok{$}\NormalTok{summary.rpar[}\StringTok{"wk"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"Mean"}\NormalTok{, }\StringTok{"Min."}\NormalTok{, }\StringTok{"Max."}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Mean      Min.      Max. 
+## 1.3608091 0.1336413 2.5879769
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ2_}\DecValTok{3}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        pf 
+## -0.811314
+\end{verbatim}
+
+Hence we can conclude that \texttt{wk} follows a Uniform distribution
+between \((0.133, 2.588)\) with mean 1.36.
+
+The coefficient of price in this new model is -0.811.
+
+\hypertarget{question-3}{%
+\section{Question 3}\label{question-3}}
+
+Suppose we perform best subset, forward stepwise, and backward stepwise
+selection on a single set. For each approach, we obtain \emph{p}+1
+models, containing 0, 1, 2, \ldots, \emph{p} predictors. Provide your
+answers for the following questions:
+
+\hypertarget{a}{%
+\subsection{(a)}\label{a}}
+
+Q: Which of the three models with \emph{k} predictors has the smallest
+training sum of squared errors?
+
+A: By definition, the best subset selection would select a subset of the
+predictors that would minimize training sum of squared errors, for any
+\emph{k}.
+
+\hypertarget{b-1}{%
+\subsection{(b)}\label{b-1}}
+
+Q: Which of the three models with \emph{k} predictors has the smallest
+test sum of squared errors?
+
+A: This is impossible to say as information of the test set is not
+considered in any of the three methods named. Fitting well on the
+training set does not necessarily generalize to fitting well on the test
+set.
+
+\hypertarget{c-1}{%
+\subsection{(c)}\label{c-1}}
+
+Q: Are the following statements \textbf{True} or \textbf{False}:
+
+\hypertarget{i.-5}{%
+\subsubsection{i.}\label{i.-5}}
+
+Q: The predictors in the \emph{k}-variable model identified by forward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by forward stepwise selection.
+
+A: True. Each step in the forward stepwise selection method corresponds
+to adding only 1 variable to the previous set, typically in greedy-like
+manner, and removals are never done.
+
+\hypertarget{ii.-5}{%
+\subsubsection{ii.}\label{ii.-5}}
+
+Q: The predictors in the \emph{k}-variable model identified by backward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by backward stepwise selection.
+
+A: True. In backward stepwise selection, we drop 1 variable at each
+step.
+
+\hypertarget{threeciii}{%
+\subsubsection{iii.}\label{threeciii}}
+
+Q: The predictors in the \emph{k}-variable model identified by backward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by forward stepwise selection.
+
+A: False.
+
+\hypertarget{threeciv}{%
+\subsubsection{iv.}\label{threeciv}}
+
+Q: The predictors in the \emph{k}-variable model identified by forward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by backward stepwise selection.
+
+A: False.
+
+\hypertarget{v.}{%
+\subsubsection{v.}\label{v.}}
+
+Q: The predictors in the \emph{k}-variable model identified by best
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by best stepwise selection.
+
+A: False.
+
+\hypertarget{question-4}{%
+\section{Question 4}\label{question-4}}
+
+\hypertarget{a-1}{%
+\subsection{(a)}\label{a-1}}
+
+Q: Split the data set into a training set and a test set using the seed
+1 and the \texttt{sample()} function with 80\% in the training set and
+20\% in the test set. How many observations are there in the training
+and test sets?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{college <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"College.csv"}\NormalTok{)}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{trainid <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(college), }\FloatTok{0.8}\OperatorTok{*}\KeywordTok{nrow}\NormalTok{(college))}
+\NormalTok{testid <-}\StringTok{ }\OperatorTok{-}\NormalTok{trainid}
+\NormalTok{train <-}\StringTok{ }\NormalTok{college[trainid,]}
+\NormalTok{test <-}\StringTok{ }\NormalTok{college[testid,]}
+\KeywordTok{nrow}\NormalTok{(train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 621
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{nrow}\NormalTok{(test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 156
+\end{verbatim}
+
+There are 621 observations in the training set, and 156 observations in
+the test set.
+
+\hypertarget{fourb}{%
+\subsection{(b)}\label{fourb}}
+
+Q: Fit a linear model using least squares on the training set. What is
+the average sum of squared error of the model on the training set?
+Report on the average sum of squared error on the test set obtained from
+the model.
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ4_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Apps }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train)}
+
+\CommentTok{#summary(modelQ4_1)}
+
+\NormalTok{SSE_tr<-}\StringTok{ }\KeywordTok{mean}\NormalTok{(modelQ4_}\DecValTok{1}\OperatorTok{$}\NormalTok{residuals}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{predQ4_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelQ4_}\DecValTok{1}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ test)}
+
+\NormalTok{SSE_te<-}\KeywordTok{mean}\NormalTok{((test}\OperatorTok{$}\NormalTok{Apps }\OperatorTok{-}\StringTok{ }\NormalTok{predQ4_}\DecValTok{1}\NormalTok{)}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{SSE_te}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1567324
+\end{verbatim}
+
+The average sum of squared error on the training set is
+\ensuremath{9.5895034\times 10^{5}} while the average sum of squared
+error on the test set is \ensuremath{1.5673239\times 10^{6}}.
+
+\hypertarget{c-2}{%
+\subsection{(c)}\label{c-2}}
+
+Q: Use the backward stepwise selection method to select the variables
+for the regression model on the training set. Which is the first
+variable dropped from the set?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(leaps)}
+\NormalTok{modelQ4_2sub <-}\StringTok{ }\KeywordTok{regsubsets}\NormalTok{(Apps}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train,}
+                           \DataTypeTok{nvmax =} \OtherTok{NULL}\NormalTok{,  }\CommentTok{# alternatively, 17}
+                           \DataTypeTok{method =} \StringTok{"backward"}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(modelQ4_2sub)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(Apps ~ ., data = train, nvmax = NULL, method = "backward")
+## 17 Variables  (and intercept)
+##             Forced in Forced out
+## PrivateYes      FALSE      FALSE
+## Accept          FALSE      FALSE
+## Enroll          FALSE      FALSE
+## Top10perc       FALSE      FALSE
+## Top25perc       FALSE      FALSE
+## F.Undergrad     FALSE      FALSE
+## P.Undergrad     FALSE      FALSE
+## Outstate        FALSE      FALSE
+## Room.Board      FALSE      FALSE
+## Books           FALSE      FALSE
+## Personal        FALSE      FALSE
+## PhD             FALSE      FALSE
+## Terminal        FALSE      FALSE
+## S.F.Ratio       FALSE      FALSE
+## perc.alumni     FALSE      FALSE
+## Expend          FALSE      FALSE
+## Grad.Rate       FALSE      FALSE
+## 1 subsets of each size up to 17
+## Selection Algorithm: backward
+##           PrivateYes Accept Enroll Top10perc Top25perc F.Undergrad P.Undergrad
+## 1  ( 1 )  " "        "*"    " "    " "       " "       " "         " "        
+## 2  ( 1 )  " "        "*"    " "    "*"       " "       " "         " "        
+## 3  ( 1 )  " "        "*"    "*"    "*"       " "       " "         " "        
+## 4  ( 1 )  " "        "*"    "*"    "*"       " "       " "         " "        
+## 5  ( 1 )  " "        "*"    "*"    "*"       " "       " "         " "        
+## 6  ( 1 )  " "        "*"    "*"    "*"       " "       " "         " "        
+## 7  ( 1 )  " "        "*"    "*"    "*"       "*"       " "         " "        
+## 8  ( 1 )  "*"        "*"    "*"    "*"       "*"       " "         " "        
+## 9  ( 1 )  "*"        "*"    "*"    "*"       "*"       " "         " "        
+## 10  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         " "        
+## 11  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+## 12  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+## 13  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+## 14  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+## 15  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+## 16  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+## 17  ( 1 ) "*"        "*"    "*"    "*"       "*"       "*"         "*"        
+##           Outstate Room.Board Books Personal PhD Terminal S.F.Ratio perc.alumni
+## 1  ( 1 )  " "      " "        " "   " "      " " " "      " "       " "        
+## 2  ( 1 )  " "      " "        " "   " "      " " " "      " "       " "        
+## 3  ( 1 )  " "      " "        " "   " "      " " " "      " "       " "        
+## 4  ( 1 )  "*"      " "        " "   " "      " " " "      " "       " "        
+## 5  ( 1 )  "*"      " "        " "   " "      " " " "      " "       " "        
+## 6  ( 1 )  "*"      "*"        " "   " "      " " " "      " "       " "        
+## 7  ( 1 )  "*"      "*"        " "   " "      " " " "      " "       " "        
+## 8  ( 1 )  "*"      "*"        " "   " "      " " " "      " "       " "        
+## 9  ( 1 )  "*"      "*"        " "   " "      "*" " "      " "       " "        
+## 10  ( 1 ) "*"      "*"        " "   " "      "*" " "      " "       " "        
+## 11  ( 1 ) "*"      "*"        " "   " "      "*" " "      " "       " "        
+## 12  ( 1 ) "*"      "*"        " "   " "      "*" " "      " "       " "        
+## 13  ( 1 ) "*"      "*"        " "   " "      "*" " "      "*"       " "        
+## 14  ( 1 ) "*"      "*"        "*"   " "      "*" " "      "*"       " "        
+## 15  ( 1 ) "*"      "*"        "*"   " "      "*" " "      "*"       "*"        
+## 16  ( 1 ) "*"      "*"        "*"   "*"      "*" " "      "*"       "*"        
+## 17  ( 1 ) "*"      "*"        "*"   "*"      "*" "*"      "*"       "*"        
+##           Expend Grad.Rate
+## 1  ( 1 )  " "    " "      
+## 2  ( 1 )  " "    " "      
+## 3  ( 1 )  " "    " "      
+## 4  ( 1 )  " "    " "      
+## 5  ( 1 )  "*"    " "      
+## 6  ( 1 )  "*"    " "      
+## 7  ( 1 )  "*"    " "      
+## 8  ( 1 )  "*"    " "      
+## 9  ( 1 )  "*"    " "      
+## 10  ( 1 ) "*"    " "      
+## 11  ( 1 ) "*"    " "      
+## 12  ( 1 ) "*"    "*"      
+## 13  ( 1 ) "*"    "*"      
+## 14  ( 1 ) "*"    "*"      
+## 15  ( 1 ) "*"    "*"      
+## 16  ( 1 ) "*"    "*"      
+## 17  ( 1 ) "*"    "*"
+\end{verbatim}
+
+From the results we can see that the first variable to be dropped from
+the set is \texttt{P.Undergrad}.
+
+\hypertarget{d-1}{%
+\subsection{(d)}\label{d-1}}
+
+Q: Plot the adjusted-\(R^{2}\) for all these models. If we choose the
+model based on the best adjusted-\(R^{2}\) value, which variables should
+be included in the model?
+
+A: The plot are done as follows
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{summary}\NormalTok{(modelQ4_2sub)}\OperatorTok{$}\NormalTok{adjr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Ex4sol2020_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{which.max}\NormalTok{(}\KeywordTok{summary}\NormalTok{(modelQ4_2sub)}\OperatorTok{$}\NormalTok{adjr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(modelQ4_2sub,}\DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   (Intercept)    PrivateYes        Accept        Enroll     Top10perc 
+## -148.07333139 -413.90121424    1.68951502   -1.20249462   50.70718564 
+##     Top25perc   F.Undergrad   P.Undergrad      Outstate    Room.Board 
+##  -13.61569737    0.08378833    0.06740520   -0.07763388    0.14378222 
+##           PhD        Expend     Grad.Rate 
+##  -10.21762976    0.05231358    5.98446377
+\end{verbatim}
+
+The model with the best adjusted-\(R^{2}\) is the model with 12
+variables which are
+\texttt{PrivateYes,\ Accept,\ Enroll,\ Top10perc,\ Top25perc,\ F.Undergrad,\ Outstate,\ Room.Board,\ PhD,\ S.F.Ratio,\ Expend,\ Grad.Rate}
+along with the \texttt{Intercept} term. The variables
+\texttt{P.Undergrad,\ Books,\ Terminal,\ perc.alumni,\ Personal} are
+dropped from the model.
+
+\needspace{12\baselineskip}
+
+\hypertarget{e-1}{%
+\subsection{(e)}\label{e-1}}
+
+Q: Use the model identified in part (d) to estimate the average sum of
+squared test error. Does this improve on the model in part (b) in the
+prediction accuracy?
+
+A: The test MSE is 1070293 which is less than 1075064, so the new model
+seems to improve prediction accuracy.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelQ4_}\DecValTok{3}\NormalTok{<-}\KeywordTok{lm}\NormalTok{(Apps}\OperatorTok{~}\StringTok{ }\NormalTok{Private}\OperatorTok{+}\NormalTok{Accept}\OperatorTok{+}\NormalTok{Enroll}\OperatorTok{+}\NormalTok{Top10perc}\OperatorTok{+}\NormalTok{Top25perc}\OperatorTok{+}\StringTok{ }\NormalTok{F.Undergrad}\OperatorTok{+}\StringTok{ }\NormalTok{Outstate}\OperatorTok{+}\StringTok{ }\NormalTok{Room.Board}\OperatorTok{+}\StringTok{ }\NormalTok{PhD}\OperatorTok{+}\StringTok{ }\NormalTok{S.F.Ratio}\OperatorTok{+}\StringTok{ }\NormalTok{Expend}\OperatorTok{+}\StringTok{ }\NormalTok{Grad.Rate, }\DataTypeTok{data=}\NormalTok{train)}
+
+\KeywordTok{summary}\NormalTok{(modelQ4_}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Apps ~ Private + Accept + Enroll + Top10perc + Top25perc + 
+##     F.Undergrad + Outstate + Room.Board + PhD + S.F.Ratio + Expend + 
+##     Grad.Rate, data = train)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5575.1  -401.5    12.1   296.9  7609.9 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -468.37913  384.49617  -1.218  0.22363    
+## PrivateYes  -391.05503  147.59986  -2.649  0.00827 ** 
+## Accept         1.68100    0.04374  38.433  < 2e-16 ***
+## Enroll        -1.21522    0.20773  -5.850 8.03e-09 ***
+## Top10perc     49.53009    5.78402   8.563  < 2e-16 ***
+## Top25perc    -13.34867    4.61111  -2.895  0.00393 ** 
+## F.Undergrad    0.10012    0.03497   2.863  0.00434 ** 
+## Outstate      -0.07731    0.01904  -4.060 5.54e-05 ***
+## Room.Board     0.15790    0.04923   3.207  0.00141 ** 
+## PhD           -9.73421    3.32900  -2.924  0.00358 ** 
+## S.F.Ratio     17.78746   13.74360   1.294  0.19608    
+## Expend         0.05981    0.01247   4.798 2.02e-06 ***
+## Grad.Rate      4.84717    2.97264   1.631  0.10349    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 993.8 on 608 degrees of freedom
+## Multiple R-squared:  0.9341, Adjusted R-squared:  0.9328 
+## F-statistic: 718.5 on 12 and 608 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predQ4_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(modelQ4_}\DecValTok{3}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ test)}
+\KeywordTok{mean}\NormalTok{((test}\OperatorTok{$}\NormalTok{Apps }\OperatorTok{-}\StringTok{ }\NormalTok{predQ4_}\DecValTok{3}\NormalTok{)}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1542717
+\end{verbatim}
+
+\hypertarget{f}{%
+\subsection{(f)}\label{f}}
+
+Q: Fit a LASSO model on the training set. Use the command to define the
+grid for \(\lambda\):
+
+\texttt{grid\ \textless{}-\ 10\^{}seq(10,\ -2,\ length\ =\ 100)}
+
+Plot the behavior of the coefficients as \(\lambda\) changes.
+
+A: First we can initialise the \texttt{grid} then run \texttt{glmnet} to
+fit the LASSO model with differing \(\lambda\) values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(glmnet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: Matrix
+\end{verbatim}
+
+\begin{verbatim}
+## Loaded glmnet 4.0-2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grid <-}\StringTok{ }\DecValTok{10}\OperatorTok{^}\KeywordTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{-2}\NormalTok{, }\DataTypeTok{length =} \DecValTok{100}\NormalTok{)}
+\NormalTok{Xglm<-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(Apps}\OperatorTok{~}\NormalTok{., college)}
+\NormalTok{yglm<-}\StringTok{ }\NormalTok{college}\OperatorTok{$}\NormalTok{Apps}
+\NormalTok{modelQ4_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(Xglm[trainid,], yglm[trainid], }\DataTypeTok{lambda =}\NormalTok{ grid)}
+\end{Highlighting}
+\end{Shaded}
+
+Then we plot,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(modelQ4_}\DecValTok{4}\NormalTok{, }\DataTypeTok{xvar =} \StringTok{"lambda"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Ex4sol2020_files/figure-latex/unnamed-chunk-30-1.pdf}
+
+\hypertarget{g}{%
+\subsection{(g)}\label{g}}
+
+Q: Set the seed to 1 before running the cross-validation with LASSO to
+choose the best \(\lambda\). Use 10-fold cross validation. Report the
+test error obtained, along with the number of non-zero coefficient
+estimates.
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{cvmodelQ4_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(Xglm[trainid,], yglm[trainid],}
+                  \DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ grid)  }\CommentTok{# 10-fold cross-validation}
+\NormalTok{cvmodelQ4_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(modelQ4_}\DecValTok{4}\NormalTok{,}\DataTypeTok{s=}\NormalTok{cvmodelQ4_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 19 x 1 sparse Matrix of class "dgCMatrix"
+##                         1
+## (Intercept) -632.95602448
+## (Intercept)    .         
+## PrivateYes  -388.88540852
+## Accept         1.68973478
+## Enroll        -1.20585828
+## Top10perc     50.38010502
+## Top25perc    -13.57568416
+## F.Undergrad    0.08163106
+## P.Undergrad    0.06550365
+## Outstate      -0.07553507
+## Room.Board     0.14188193
+## Books          0.21093272
+## Personal       0.01873856
+## PhD           -9.74128656
+## Terminal      -0.46973434
+## S.F.Ratio     18.25011259
+## perc.alumni    1.36217567
+## Expend         0.05765739
+## Grad.Rate      5.89241221
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cvmodelQ4_}\DecValTok{4}\OperatorTok{$}\NormalTok{glmnet.fit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:  glmnet(x = Xglm[trainid, ], y = yglm[trainid], lambda = grid) 
+## 
+##     Df  %Dev    Lambda
+## 1    0  0.00 1.000e+10
+## 2    0  0.00 7.565e+09
+## 3    0  0.00 5.722e+09
+## 4    0  0.00 4.329e+09
+## 5    0  0.00 3.275e+09
+## 6    0  0.00 2.477e+09
+## 7    0  0.00 1.874e+09
+## 8    0  0.00 1.417e+09
+## 9    0  0.00 1.072e+09
+## 10   0  0.00 8.111e+08
+## 11   0  0.00 6.136e+08
+## 12   0  0.00 4.642e+08
+## 13   0  0.00 3.511e+08
+## 14   0  0.00 2.656e+08
+## 15   0  0.00 2.009e+08
+## 16   0  0.00 1.520e+08
+## 17   0  0.00 1.150e+08
+## 18   0  0.00 8.697e+07
+## 19   0  0.00 6.579e+07
+## 20   0  0.00 4.977e+07
+## 21   0  0.00 3.765e+07
+## 22   0  0.00 2.848e+07
+## 23   0  0.00 2.154e+07
+## 24   0  0.00 1.630e+07
+## 25   0  0.00 1.233e+07
+## 26   0  0.00 9.326e+06
+## 27   0  0.00 7.055e+06
+## 28   0  0.00 5.337e+06
+## 29   0  0.00 4.037e+06
+## 30   0  0.00 3.054e+06
+## 31   0  0.00 2.310e+06
+## 32   0  0.00 1.748e+06
+## 33   0  0.00 1.322e+06
+## 34   0  0.00 1.000e+06
+## 35   0  0.00 7.565e+05
+## 36   0  0.00 5.722e+05
+## 37   0  0.00 4.329e+05
+## 38   0  0.00 3.275e+05
+## 39   0  0.00 2.477e+05
+## 40   0  0.00 1.874e+05
+## 41   0  0.00 1.417e+05
+## 42   0  0.00 1.072e+05
+## 43   0  0.00 8.111e+04
+## 44   0  0.00 6.136e+04
+## 45   0  0.00 4.642e+04
+## 46   0  0.00 3.511e+04
+## 47   0  0.00 2.656e+04
+## 48   0  0.00 2.009e+04
+## 49   0  0.00 1.520e+04
+## 50   0  0.00 1.150e+04
+## 51   0  0.00 8.697e+03
+## 52   0  0.00 6.579e+03
+## 53   0  0.00 4.977e+03
+## 54   0  0.00 3.765e+03
+## 55   1 34.50 2.848e+03
+## 56   1 58.14 2.154e+03
+## 57   1 71.66 1.630e+03
+## 58   1 79.41 1.233e+03
+## 59   1 83.83 9.330e+02
+## 60   2 86.40 7.060e+02
+## 61   2 88.86 5.340e+02
+## 62   2 90.27 4.040e+02
+## 63   3 91.13 3.050e+02
+## 64   3 91.64 2.310e+02
+## 65   3 91.93 1.750e+02
+## 66   3 92.10 1.320e+02
+## 67   5 92.22 1.000e+02
+## 68   5 92.33 7.600e+01
+## 69   9 92.47 5.700e+01
+## 70   9 92.63 4.300e+01
+## 71  12 92.88 3.300e+01
+## 72  14 93.09 2.500e+01
+## 73  13 93.22 1.900e+01
+## 74  14 93.30 1.400e+01
+## 75  15 93.36 1.100e+01
+## 76  16 93.41 8.000e+00
+## 77  16 93.43 6.000e+00
+## 78  16 93.45 5.000e+00
+## 79  17 93.45 4.000e+00
+## 80  17 93.46 3.000e+00
+## 81  17 93.46 2.000e+00
+## 82  17 93.46 2.000e+00
+## 83  17 93.47 1.000e+00
+## 84  17 93.47 1.000e+00
+## 85  17 93.47 1.000e+00
+## 86  17 93.47 0.000e+00
+## 87  17 93.47 0.000e+00
+## 88  17 93.47 0.000e+00
+## 89  17 93.47 0.000e+00
+## 90  17 93.47 0.000e+00
+## 91  17 93.47 0.000e+00
+## 92  17 93.47 0.000e+00
+## 93  17 93.47 0.000e+00
+## 94  17 93.47 0.000e+00
+## 95  17 93.47 0.000e+00
+## 96  17 93.47 0.000e+00
+## 97  17 93.47 0.000e+00
+## 98  17 93.47 0.000e+00
+## 99  17 93.47 0.000e+00
+## 100 17 93.47 0.000e+00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{predQ4_}\DecValTok{4}\NormalTok{<-}\KeywordTok{predict}\NormalTok{(modelQ4_}\DecValTok{4}\NormalTok{,}\DataTypeTok{s=}\NormalTok{cvmodelQ4_}\DecValTok{4}\OperatorTok{$}\NormalTok{lambda.min,}\DataTypeTok{newx=}\NormalTok{Xglm[testid,])}
+
+\KeywordTok{mean}\NormalTok{((predQ4_}\DecValTok{4} \OperatorTok{-}\StringTok{ }\NormalTok{yglm[testid])}\OperatorTok{^}\DecValTok{2}\NormalTok{)  }\CommentTok{# test error of best model}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1565789
+\end{verbatim}
+
+The number of non-zero coefficients is 17. This means that the model is
+essentially the same as the model in part (b) which is the full model.
+The test error of 1075261 is approximately the same.
+
+\end{document}

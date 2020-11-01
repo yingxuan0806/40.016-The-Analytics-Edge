@@ -1,0 +1,87 @@
+---
+title: "Hitters Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document: default
+---
+
+The hitters dataset consists of 322 observations of 21 variables with the following information - X (name), AtBat, Hits, HmRun (home runs), Runs, RBI, Walks, Years, CAtBat, CHits, CHmRun, CRuns, CRBI, CWalks, League, Division, PutOuts, Assists, Errors, Salary, New League. Here League, Division and NewLeagues are factor variabes with 2 categories. We drop rows with missing entries and are left with 263 observations.
+```{r}
+rm(list=ls())
+hitter <- read.csv("hitters.csv")
+# str(hitter)
+# summary(hitter)
+hitter <- na.omit(hitter)
+# str(hitter)
+# summary(hitter)
+```
+The leaps package in R does subset selection with the `regsubsets` function. By default, the maximum number of subsets, this function uses is 8 (ie. number of variables in the model, till M8). We extend this to do a complete subset selection by changing the default value of `nvmax` argument in this function. Note that CRBI is in the model with 1 to 6 variables but not in the model with 7 and 8 variables.
+```{r}
+#install.packages("leaps")
+library(leaps)
+?regsubsets
+# select the columns comprising of the variables
+hitters <- hitter[, 2:21]
+# predict salary with all the variables
+# default: best subset selection algorithm 
+# method = "exhaustive"
+model1 <- regsubsets(Salary ~ ., hitters)
+summary(model1)
+# FORCED IN & FORCED OUT: to specify which variable i must include/exclude in the model
+# by default, none is specified so all values return FALSE
+# 1. choosing among all of the 19 variables available, and select the one variable with the minimal MSE value
+# CRBI got kicked out in the 7th selection
+
+model2 <- regsubsets(Salary ~ ., hitters, nvmax = 19)
+summary(model2)
+
+```
+
+```{r}
+plot(model1, scale = "adjr2")
+plot(model2, scale = "adjr2")
+# gives what is the influence on the model at different levels of r2
+```
+
+```{r}
+# values that i can get from running summary(model2)
+names(summary(model2))
+
+# returns values of the best rsquare based on the variable size of subset selection, in ascending order of model size
+summary(model2)$rsq
+plot(summary(model2)$rsq)
+# value of r2 increases as the number of predictors increases
+# hence we tend to not use r2 value to choose model
+
+# rss: residual sum of squares
+plot(summary(model2)$rss)
+# value decreases as number of predictors increases as well
+
+# adjr2: adjusted e2
+plot(summary(model2)$adjr2)
+which.max(summary(model2)$adjr2)
+
+# obtain the coefficients based of the best model (ie. lowest MSE)
+coef(model2, 11)
+```
+The figures indicate that R-squared increase as the number of variables in the subset increases and likewise the residual sum of squared (sum of squared errors) decreases as the size of the subsets increases. On the other hand the adjusted R-squared increases first and then decreases.
+
+Forward stepwise selection: In this example, the best model identified by the forward stepwise selection is the same as that obtained by the best subset selection. It is also possible to run this algorithm using a backward method where you drop variables one a time rather add. In general, the solutions from these two methods can be different.
+```{r}
+# forward selection
+model3 <- regsubsets(Salary ~ ., data = hitters, nvmax = 19, method = "forward")
+which.max(summary(model3)$adjr2)
+coef(model3, 11)
+# compare between best subsett and forward selection based on r^2 values
+summary(model2)$adjr2 - summary(model3)$adjr2
+plot(summary(model3)$adjr2)
+
+# backward selection
+model4 <- regsubsets(Salary ~ ., data = hitters, nvmax = 19, method = "backward")
+which.max(summary(model4)$adjr2)
+coef(model4, 11)
+summary(model4)
+```
+
+

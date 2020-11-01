@@ -1,0 +1,1876 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Week 4 \& 5 Exercise Solutions},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Week 4 \& 5 Exercise Solutions}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{question-1}{%
+\section{Question 1}\label{question-1}}
+
+\hypertarget{onea}{%
+\subsection{(a)}\label{onea}}
+
+Q: Run a logit model with installation cost and operating cost as the
+only explanatory variables, without intercepts.
+
+A: We need to prepare the data for \texttt{mlogit()} using
+\texttt{mlogit.data()} first. The most important column is the column of
+choices, which we will use to get all of the other columns. We note that
+we assume that the data has been prepared and that the columns have the
+alternative names within them.
+
+We just read in the data first:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{suppressMessages}\NormalTok{(}\KeywordTok{library}\NormalTok{(mlogit))  }\CommentTok{# suppress dependency loads}
+\NormalTok{df_}\DecValTok{1}\NormalTok{_a <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Heating.csv"}\NormalTok{)}
+\CommentTok{# head(df_1_a)}
+\end{Highlighting}
+\end{Shaded}
+
+The following code is basically used to retrieve important column names
+and indices from possible \texttt{mlogit()} inputs. We do this to try to
+avoid hardcoding in column indices. These commands will minimally work
+for this exercise.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{get_choices <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(input_dataframe, choice_colname) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{is}\NormalTok{(input_dataframe[,choice_colname], }\StringTok{"factor"}\NormalTok{)) \{}
+\NormalTok{    choices <-}\StringTok{ }\KeywordTok{levels}\NormalTok{(input_dataframe[,choice_colname])}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    choices <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(input_dataframe[,choice_colname])}
+\NormalTok{  \}}
+  \KeywordTok{return}\NormalTok{(choices)}
+\NormalTok{\}}
+
+\NormalTok{get_all_pred_cols <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(input_dataframe, choices) \{}
+\NormalTok{  pred_cols <-}\StringTok{ }\KeywordTok{c}\NormalTok{()}
+  \ControlFlowTok{for}\NormalTok{ (colname }\ControlFlowTok{in} \KeywordTok{colnames}\NormalTok{(input_dataframe)) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{any}\NormalTok{(}\KeywordTok{endsWith}\NormalTok{(colname, }\KeywordTok{as.character}\NormalTok{(choices)))) \{}
+\NormalTok{      pred_cols <-}\StringTok{ }\KeywordTok{c}\NormalTok{(pred_cols, colname)}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \KeywordTok{return}\NormalTok{(pred_cols)}
+\NormalTok{\}}
+
+\NormalTok{get_pred_vars <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(input_pred_cols, choices) \{}
+\NormalTok{  single_choice_pred <-}\StringTok{ }\NormalTok{input_pred_cols[}\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}
+                                            \KeywordTok{length}\NormalTok{(input_pred_cols),}
+                                            \KeywordTok{length}\NormalTok{(choices))]}
+  \ControlFlowTok{for}\NormalTok{ (choice }\ControlFlowTok{in}\NormalTok{ choices) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{all}\NormalTok{(}\KeywordTok{endsWith}\NormalTok{(single_choice_pred, }\KeywordTok{as.character}\NormalTok{(choice)))) \{}
+\NormalTok{      pred_vars_choice_rem <-}\StringTok{ }\KeywordTok{gsub}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{".\{"}\NormalTok{, }\KeywordTok{nchar}\NormalTok{(choice), }\StringTok{"\}$"}\NormalTok{), }\StringTok{''}\NormalTok{,}
+\NormalTok{                                   single_choice_pred)}
+      \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{any}\NormalTok{(}\KeywordTok{endsWith}\NormalTok{(pred_vars_choice_rem, }\StringTok{"."}\NormalTok{))) \{}
+        \KeywordTok{return}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{".\{1\}$"}\NormalTok{, }\StringTok{''}\NormalTok{, pred_vars_choice_rem))}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+        \KeywordTok{return}\NormalTok{(pred_vars_choice_rem)}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+We can then just use the functions as defined:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# note that we get different column order from dataset}
+\CommentTok{# c("ec", "er", ...) vs c("gc", "gr", ...)}
+\NormalTok{choices_}\DecValTok{1}\NormalTok{_a <-}\StringTok{ }\KeywordTok{get_choices}\NormalTok{(df_}\DecValTok{1}\NormalTok{_a, }\StringTok{"depvar"}\NormalTok{)}
+\NormalTok{pred_cols_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{get_all_pred_cols}\NormalTok{(df_}\DecValTok{1}\NormalTok{_a, choices_}\DecValTok{1}\NormalTok{_a)}
+\NormalTok{vary_ind_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{which}\NormalTok{(}\KeywordTok{names}\NormalTok{(df_}\DecValTok{1}\NormalTok{_a) }\OperatorTok{%in%}\StringTok{ }\NormalTok{pred_cols_}\DecValTok{1}\NormalTok{)}
+\NormalTok{pred_vars_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{get_pred_vars}\NormalTok{(pred_cols_}\DecValTok{1}\NormalTok{, choices_}\DecValTok{1}\NormalTok{_a)}
+
+\CommentTok{# running mlogit.data on what we have to transform it}
+\NormalTok{data_}\DecValTok{1}\NormalTok{_a <-}\StringTok{ }\KeywordTok{mlogit.data}\NormalTok{(df_}\DecValTok{1}\NormalTok{_a,  }\CommentTok{# data.frame of data}
+                    \DataTypeTok{choice =} \StringTok{"depvar"}\NormalTok{,  }\CommentTok{# column name of choice}
+                    \DataTypeTok{shape =} \StringTok{"wide"}\NormalTok{,  }\CommentTok{# wide means each row is an observation}
+                                     \CommentTok{# long if each row is an alternative}
+                    \DataTypeTok{varying =}\NormalTok{ vary_ind_}\DecValTok{1}\NormalTok{,}
+                    \CommentTok{# indices of varying columns for each alternative,}
+                    \DataTypeTok{sep =} \StringTok{"."}  \CommentTok{# not necessary but still good to be clear}
+\NormalTok{                    )}
+\end{Highlighting}
+\end{Shaded}
+
+Then, we can run \texttt{mlogit()} on the data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{1}\NormalTok{_a <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{oc }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, data_}\DecValTok{1}\NormalTok{_a)  }\CommentTok{# -1 means no intercept}
+\CommentTok{# summary(model_1_a)}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{10\baselineskip}
+
+\hypertarget{i.}{%
+\subsubsection{i.}\label{i.}}
+
+Q: Do the estimated coefficients have the expected signs?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{coef}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           ic           oc 
+## -0.006231869 -0.004580083
+\end{verbatim}
+
+The coefficients of both \texttt{ic} and \texttt{oc} are negative which
+makes sense since as the installation cost and operating cost for a
+system increases, the probability of choosing that system goes down.
+
+\hypertarget{ii.}{%
+\subsubsection{ii.}\label{ii.}}
+
+Q: Are both coefficients significantly different from zero?
+
+A: We first try with what we expect should work:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coef_table_}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a)}\OperatorTok{$}\NormalTok{CoefTable  }\CommentTok{# for later}
+\CommentTok{# note the naming difference from glm}
+\NormalTok{coef_table_}\DecValTok{1}\NormalTok{[,}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ic oc 
+##  0  0
+\end{verbatim}
+
+A bunch of zeroes indicate that the p-value is fairly low, but otherwise
+are difficult to interpret. We can recover what the p-values are by
+replicating how they are typically calculated in terms of the summary
+table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pnorm}\NormalTok{(}\OperatorTok{-}\KeywordTok{abs}\NormalTok{(coef_table_}\DecValTok{1}\NormalTok{[,}\DecValTok{3}\NormalTok{]))}
+\CommentTok{# note the assumption of two-sided test}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           ic           oc 
+## 7.755535e-70 7.225101e-46
+\end{verbatim}
+
+These values are typically far below machine epsilons\footnote{See
+  \url{https://stat.ethz.ch/R-manual/R-devel/library/base/html/zMachine.html}}
+used in floating point arithmetic, and should not be interpreted as-is
+without verifying that all calculations have been done with adequate
+precision. However, we are fairly certain in saying that the p-values
+are lower than \(\ensuremath{2.220446\times 10^{-16}}\), corresponding
+to a Z-score of around -8.1258907. Calling the \texttt{summary()} on the
+\texttt{model} object reveals that it has somehow been programmed to
+compare against this value. These p-values indicate we should reject the
+null hypotheses that the coefficients are zero, with a significance
+level of less than 0.1\%
+
+\hypertarget{iii.}{%
+\subsubsection{iii.}\label{iii.}}
+
+Q: Use the average of the probabilities to compute the predicted share.
+Compute the actual shares of houses with each system. How closely do the
+predicted shares match the actual shares of houses with each heating
+system?
+
+A: We can get the actual shares in the data with the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred_}\DecValTok{1}\NormalTok{_a <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a, }\DataTypeTok{newdata =}\NormalTok{ data_}\DecValTok{1}\NormalTok{_a)}
+\KeywordTok{table}\NormalTok{(df_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{depvar)}\OperatorTok{/}\KeywordTok{nrow}\NormalTok{(df_}\DecValTok{1}\NormalTok{_a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##         ec         er         gc         gr         hp 
+## 0.07111111 0.09333333 0.63666667 0.14333333 0.05555556
+\end{verbatim}
+
+For the prediction, we use the fact that mean of an indicator variable
+represents the probability:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(pred_}\DecValTok{1}\NormalTok{_a, }\DecValTok{2}\NormalTok{, mean)  }\CommentTok{# 2 refers to doing the function over columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         ec         er         gc         gr         hp 
+## 0.10413057 0.05141477 0.51695653 0.24030898 0.08718915
+\end{verbatim}
+
+It is arguable how close the model is. In terms of each choice, there is
+a maximum difference against the actual data of approximately 11\% (in
+absolute percentage points) for \texttt{gc}. For \texttt{gr}, it is also
+similar with a difference of less than 10\%. The rest of the choices
+have differences amounting to less than 5\%. This would indicate that
+the model predicts well for the \texttt{ec}, \texttt{er} and \texttt{hp}
+choices, but not \texttt{gc} and \texttt{gr}.
+
+\hypertarget{iv.}{%
+\subsubsection{iv.}\label{iv.}}
+
+Q: The ratio of coefficients usually provides economically meaningful
+information in discrete choice models. The willingness to pay
+(\emph{wtp}) through higher installation cost for a one-dollar reduction
+in operating costs is the ratio of the operating cost coefficient to the
+installation cost coefficients. What is the estimated \emph{wtp} from
+this model? Note that the annual operating cost recurs every year while
+the installation cost is a one-time payment. Does the result make sense?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unname}\NormalTok{(}\KeywordTok{coef}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a)[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{/}\KeywordTok{coef}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a)[}\StringTok{"ic"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7349453
+\end{verbatim}
+
+\begin{equation*}
+\frac{\beta_{oc}}{\beta_{ic}}=0.7349453
+\end{equation*}
+
+This implies that, according to this model, the decision-makers are
+willing to pay \$0.73 higher in installation cost for a \$1 reduction in
+operating cost. It seems unreasonable for the decision-maker to pay only
+73 cents higher for a one-time payment for a \$1 reduction in annual
+costs.
+
+\hypertarget{oneb}{%
+\subsection{(b)}\label{oneb}}
+
+Q: The present value (\(PV\)) of the future operating costs is the
+discounted sum of operating costs over the life of the system:
+\(PV=\sum_{t=1}^{L}[OC/(1+r)^{t}]\) where \emph{r} is the discount rate
+and \emph{L} is the life of the system. As \emph{L} rises, the PV
+approaches \emph{OC/r}. Therefore, for a system with a sufficiently long
+life (which we will assume these systems have), a one-dollar reduction
+in \emph{OC} reduces the present value of future operating costs by
+\emph{(1/r)}. This means that if the person choosing the system were
+incurring the installation costs and the operating costs over the life
+of the system, and rationally traded-off the two at a discount rate of
+\emph{r}, the decision-maker's \emph{wtp} for operating cost reductions
+would be \emph{(1/r)}. Define a new variable \texttt{lcc} (lifecycle
+cost) that is defined as the sum of the installation cost and the
+(operating cost)/\emph{r}. Run a logit model with the lifecycle cost as
+the only explanatory variable. Estimate the model for r = 0.12. Comment
+on the value of log-likelihood of the models obtained in
+\protect\hyperlink{onea}{(a)} as compared to
+\protect\hyperlink{oneb}{(b)}.
+
+A: We first make a column called \texttt{lcc} with our \texttt{data}
+object
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{lcc <-}\StringTok{ }\NormalTok{data_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{data_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{oc}\OperatorTok{/}\FloatTok{0.12}
+\end{Highlighting}
+\end{Shaded}
+
+We then estimate with the \texttt{mlogit()} function, and call
+\texttt{logLik()} to get the log likelihood for this model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{1}\NormalTok{_b <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{lcc }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, data_}\DecValTok{1}\NormalTok{_a)}
+\KeywordTok{logLik}\NormalTok{(model_}\DecValTok{1}\NormalTok{_b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -1248.702 (df=1)
+\end{verbatim}
+
+The log likelihood of the model is -1248.7018908.
+
+For comparison, we retrieve the log likelihood of the model in
+\protect\hyperlink{onea}{(a)}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{logLik}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -1095.237 (df=2)
+\end{verbatim}
+
+The log likelihood of the model from \protect\hyperlink{onea}{(a)} is
+-1095.2371253.
+
+Notice that the log likelihood of the model in
+\protect\hyperlink{onea}{(a)} is higher (better, more likely) than that
+of the model in this part. What this means is that we can perform a
+likelihood ratio test:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(lmtest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: zoo
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'zoo'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{lrtest}\NormalTok{(model_}\DecValTok{1}\NormalTok{_a, model_}\DecValTok{1}\NormalTok{_b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Likelihood ratio test
+## 
+## Model 1: depvar ~ ic + oc - 1
+## Model 2: depvar ~ lcc - 1
+##   #Df  LogLik Df  Chisq Pr(>Chisq)    
+## 1   2 -1095.2                         
+## 2   1 -1248.7 -1 306.93  < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+The test statistic indicates that the constrained model is far too
+unlikely to happen with a significance level of less than 0.1\%. We have
+to reject the hypothesis that, within this model, \(r=0.12\).
+
+The model in \protect\hyperlink{onea}{(a)} is actually a model which
+maximises log likelihood without imposing any constraints on parameters
+in estimation, and hence it is \emph{expected} that it would have higher
+log likelihood. We then built a different model, specifying a certain
+parameter (i.e.~\(r=0.12\)). What we are testing for is if the model we
+are specifying in this part (i.e.~a model that assumes a 12\% inflation
+rate) is considered likely enough. When we compute the differences in
+log likelihood (equivalently, likelihood ratios), we are comparing if
+the model with a constraint is `not too unlikely' to happen.
+
+In general, the result that is seen here is undesirable, as the model in
+\protect\hyperlink{onea}{(a)} implicitly suggests weird levels of
+inflation/discount factors while a model with sensible inflation rates
+is unlikely. This suggests that the model in
+\protect\hyperlink{onea}{(a)} is flawed.
+
+\hypertarget{onec}{%
+\subsection{(c)}\label{onec}}
+
+Q: Add alternative-specific constants to the model in
+\protect\hyperlink{onea}{(a)}. With \emph{K} alternatives, at most
+\emph{K-1} alternative specific constants can be estimated. The
+coefficient of \emph{K-1} constants are interpreted as relative to
+\emph{K}th alternative. Normalize the constant for the alternative
+\texttt{hp} to 0.
+
+\needspace{8\baselineskip}
+
+A: Running \texttt{mlogit()} with a reference level:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ref_level_}\DecValTok{1}\NormalTok{_c <-}\StringTok{ "hp"}  \CommentTok{# because we use this later}
+\NormalTok{model_}\DecValTok{1}\NormalTok{_c <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{ic }\OperatorTok{+}\StringTok{ }\NormalTok{oc, }\DataTypeTok{data =}\NormalTok{ data_}\DecValTok{1}\NormalTok{_a,}
+                    \DataTypeTok{reflevel =}\NormalTok{ ref_level_}\DecValTok{1}\NormalTok{_c)}
+\CommentTok{# odd technical reasons make it such that we need }
+\CommentTok{# the string "hp" for the reflevel argument}
+\NormalTok{coef_}\DecValTok{1}\NormalTok{_c <-}\StringTok{ }\NormalTok{model_}\DecValTok{1}\NormalTok{_c}\OperatorTok{$}\NormalTok{coefficients  }\CommentTok{# for later}
+ \KeywordTok{summary}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## mlogit(formula = depvar ~ ic + oc, data = data_1_a, reflevel = ref_level_1_c, 
+##     method = "nr")
+## 
+## Frequencies of alternatives:choice
+##       hp       ec       er       gc       gr 
+## 0.055556 0.071111 0.093333 0.636667 0.143333 
+## 
+## nr method
+## 6 iterations, 0h:0m:0s 
+## g'(-H)^-1g = 9.58E-06 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                   Estimate  Std. Error z-value  Pr(>|z|)    
+## (Intercept):ec  1.65884594  0.44841936  3.6993 0.0002162 ***
+## (Intercept):er  1.85343697  0.36195509  5.1206 3.045e-07 ***
+## (Intercept):gc  1.71097930  0.22674214  7.5459 4.485e-14 ***
+## (Intercept):gr  0.30826328  0.20659222  1.4921 0.1356640    
+## ic             -0.00153315  0.00062086 -2.4694 0.0135333 *  
+## oc             -0.00699637  0.00155408 -4.5019 6.734e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Log-Likelihood: -1008.2
+## McFadden R^2:  0.013691 
+## Likelihood ratio test : chisq = 27.99 (p.value = 8.3572e-07)
+\end{verbatim}
+
+\hypertarget{i.-1}{%
+\subsubsection{i.}\label{i.-1}}
+
+Q: How well do the estimated probabilities match the shares of customers
+choosing each alternative in this case?
+
+A: We can get the predicted shares:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{share_}\DecValTok{1}\NormalTok{_c <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(}\KeywordTok{predict}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c, }\DataTypeTok{newdata =}\NormalTok{ data_}\DecValTok{1}\NormalTok{_a), }\DecValTok{2}\NormalTok{, mean)}
+\NormalTok{share_}\DecValTok{1}\NormalTok{_c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         hp         ec         er         gc         gr 
+## 0.05555556 0.07111111 0.09333333 0.63666666 0.14333334
+\end{verbatim}
+
+We notice that the predicted shares match the actual shares exactly with
+the use of the alternative specific constants.
+
+\hypertarget{ii.-1}{%
+\subsubsection{ii.}\label{ii.-1}}
+
+Q: Calculate the \emph{wtp} that is implied by the estimate. Is this
+reasonable?
+
+A: We calculate the willingness to pay:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unname}\NormalTok{(coef_}\DecValTok{1}\NormalTok{_c[}\StringTok{"oc"}\NormalTok{]}\OperatorTok{/}\NormalTok{coef_}\DecValTok{1}\NormalTok{_c[}\StringTok{"ic"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.563385
+\end{verbatim}
+
+Hence: \begin{equation*}
+\frac{\beta_{oc}}{\beta_{ic}}=4.563385
+\end{equation*} which suggests an extra down-payment of \$4.56 for a \$1
+saving in annual operating costs. This seems more reasonable.
+
+\hypertarget{iii.-1}{%
+\subsubsection{iii.}\label{iii.-1}}
+
+Q: Suppose you had included constants for alternatives \texttt{ec},
+\texttt{er}, \texttt{gc}, \texttt{hp} with the constant for alternative
+\texttt{gr} normalized to zero. What would be the estimated coefficient
+of the constant for alternative \texttt{gc}? Can you figure this out
+logically rather than actually estimating the model?
+
+\needspace{10\baselineskip}
+
+A: We can retrieve the coefficients of \texttt{gr} and \texttt{gc} with
+the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#coef(model_1_c)[paste0(c("gr", "gc"), ":(intercept)")]}
+\KeywordTok{summary}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c)}\OperatorTok{$}\NormalTok{CoefTable[}\KeywordTok{c}\NormalTok{(}\KeywordTok{grep}\NormalTok{(}\StringTok{"(Intercept):gr"}\NormalTok{, }\KeywordTok{names}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c}\OperatorTok{$}\NormalTok{coefficients), }\DataTypeTok{fixed=}\OtherTok{TRUE}\NormalTok{),}\KeywordTok{grep}\NormalTok{(}\StringTok{"(Intercept):gc"}\NormalTok{, }\KeywordTok{names}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c}\OperatorTok{$}\NormalTok{coefficients), }\DataTypeTok{fixed=}\OtherTok{TRUE}\NormalTok{)),}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept):gr (Intercept):gc 
+##      0.3082633      1.7109793
+\end{verbatim}
+
+When the reference level is changed to \texttt{gr}, all of the other
+coefficients would have their coefficients reduced by the intercept that
+\texttt{gr} has when \texttt{hp} is the reference level. \texttt{hp}
+itself has the coefficient of 0, and would be reduced accordingly.
+Hence, the estimated coefficient of the constant for alternative
+\texttt{gc} when the reference is changed from \texttt{hp} to
+\texttt{gr} is NA-NA=NA.
+
+We can verify this by first showing the coefficients with the previous
+reference level,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(coef_}\DecValTok{1}\NormalTok{_c)}
+\CommentTok{# c() used because no need for other attributes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept):ec (Intercept):er (Intercept):gc (Intercept):gr             ic 
+##    1.658845944    1.853436967    1.710979303    0.308263280   -0.001533153 
+##             oc 
+##   -0.006996368
+\end{verbatim}
+
+and then call \texttt{update()} on our old \texttt{model} object:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\KeywordTok{update}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c, }\DataTypeTok{reflevel =} \StringTok{"gr"}\NormalTok{)}\OperatorTok{$}\NormalTok{coefficients)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept):ec (Intercept):er (Intercept):gc (Intercept):hp             ic 
+##    1.350582664    1.545173687    1.402716023   -0.308263280   -0.001533153 
+##             oc 
+##   -0.006996368
+\end{verbatim}
+
+\needspace{12\baselineskip}
+
+\hypertarget{d}{%
+\subsection{(d)}\label{d}}
+
+Now try some models with sociodemographic variables entering.
+
+\hypertarget{i.-2}{%
+\subsubsection{i.}\label{i.-2}}
+
+Q: Enter installation cost divided by income, instead of installation
+cost. With this specification, the magnitude of the installation cost
+coefficient is inversely related to income, such that high-income
+households are less concerned with installation costs than lower-income
+households. Does dividing installation cost by income seem to make the
+model better or worse than the model in \protect\hyperlink{onec}{(c)}?
+
+\needspace{6\baselineskip}
+
+A: Fitting the model first
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{iic <-}\StringTok{ }\NormalTok{data_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{ic}\OperatorTok{/}\NormalTok{data_}\DecValTok{1}\NormalTok{_a}\OperatorTok{$}\NormalTok{income}
+\NormalTok{model_}\DecValTok{1}\NormalTok{_d_i <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{oc }\OperatorTok{+}\StringTok{ }\NormalTok{iic, data_}\DecValTok{1}\NormalTok{_a)}
+\CommentTok{# summary(model_1_d_i)}
+\end{Highlighting}
+\end{Shaded}
+
+We can compare the log likelihood of this model against the older model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{1}\NormalTok{_c}\OperatorTok{$}\NormalTok{logLik}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -1008.229 (df=6)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{1}\NormalTok{_d_i}\OperatorTok{$}\NormalTok{logLik}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -1010.198 (df=6)
+\end{verbatim}
+
+Looking deeper into the new model, we can look at the p-values in the
+newer model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(model_}\DecValTok{1}\NormalTok{_d_i)}\OperatorTok{$}\NormalTok{CoefTable[,}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept):er (Intercept):gc (Intercept):gr (Intercept):hp             oc 
+##   7.421308e-01   9.035548e-01   3.603796e-03   1.827445e-05   4.657468e-06 
+##            iic 
+##   1.442979e-01
+\end{verbatim}
+
+Note that the new log likelihood value is -1010.1975065 which is worse
+than -1008.228722 previously. Also, in the new model, installation cost
+divided by income is not significant in this model.
+
+\hypertarget{ii.-2}{%
+\subsubsection{ii.}\label{ii.-2}}
+
+Q: Instead of dividing installation cost by income, enter
+alternative-specific income effects. You can do this by using the
+\texttt{\textbar{}} argument in the mlogit formula. What do the
+estimates imply about the impact of income on the choice of central
+systems versus room system? Do these income terms enter significantly?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{1}\NormalTok{_d_ii <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(depvar }\OperatorTok{~}\StringTok{ }\NormalTok{oc }\OperatorTok{+}\StringTok{ }\NormalTok{ic }\OperatorTok{|}\StringTok{ }\NormalTok{income, data_}\DecValTok{1}\NormalTok{_a,}
+                       \DataTypeTok{reflevel =}\NormalTok{ ref_level_}\DecValTok{1}\NormalTok{_c)  }\CommentTok{# as opposed to above }
+\CommentTok{# we will not be calling predict on this model_1_d_ii object}
+\CommentTok{# summary(model_1_d_ii)}
+\NormalTok{coef_}\DecValTok{1}\NormalTok{_d <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(model_}\DecValTok{1}\NormalTok{_d_ii)}\OperatorTok{$}\NormalTok{CoefTable[}
+  \KeywordTok{grep}\NormalTok{(}\StringTok{"income"}\NormalTok{, }\KeywordTok{names}\NormalTok{(model_}\DecValTok{1}\NormalTok{_d_ii}\OperatorTok{$}\NormalTok{coefficients), }\DataTypeTok{fixed =} \OtherTok{TRUE}\NormalTok{),]}
+\NormalTok{coef_}\DecValTok{1}\NormalTok{_d[,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   income:ec   income:er   income:gc   income:gr 
+## -0.06362917 -0.09685787 -0.07178917 -0.17981159
+\end{verbatim}
+
+All of the coefficients are negative which tells us that income rises,
+probability of choosing a heat pump increases relative to others, The
+magnitude of the income coefficient for \texttt{gr} is the greatest so
+we can infer that as income rises, probability of choosing gas rooms
+drops relative to others.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{coef_}\DecValTok{1}\NormalTok{_d[,}\DecValTok{4}\NormalTok{] }\OperatorTok{<}\StringTok{ }\FloatTok{0.05}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## income:ec income:er income:gc income:gr 
+##     FALSE     FALSE     FALSE     FALSE
+\end{verbatim}
+
+None of the income terms are significant at the 5\% significance level.
+
+\hypertarget{e}{%
+\subsection{(e)}\label{e}}
+
+Q: We now are going to consider the use of the logit model for
+prediction. Estimate a model with installation costs, operating costs,
+and alternative specific constants. Calculate the probabilities for each
+house explicitly.
+
+\hypertarget{i.-3}{%
+\subsubsection{i.}\label{i.-3}}
+
+Q: The California Energy Commission (CEC) is considering whether to
+offer rebates on heat pumps. The CEC wants to predict the effect of the
+rebates on the heating system choices of customers in California. The
+rebates will be set at 10\% of the installation cost. Using the
+estimated coeffiients from the model, calculate predicted shares under
+this new installation cost instead of original value. How much do the
+rebates raise the share of houses with heat pumps?
+
+A: We create a new dataframe via copying and then changing a column, and
+then create a new \texttt{mlogit.data} object:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_}\DecValTok{1}\NormalTok{_e_i <-}\StringTok{ }\NormalTok{df_}\DecValTok{1}\NormalTok{_a}
+\NormalTok{df_}\DecValTok{1}\NormalTok{_e_i}\OperatorTok{$}\NormalTok{ic.hp <-}\StringTok{ }\NormalTok{(}\DecValTok{1} \OperatorTok{-}\StringTok{ }\FloatTok{0.1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{df_}\DecValTok{1}\NormalTok{_e_i}\OperatorTok{$}\NormalTok{ic.hp}
+\NormalTok{data_}\DecValTok{1}\NormalTok{_e <-}\StringTok{ }\KeywordTok{mlogit.data}\NormalTok{(df_}\DecValTok{1}\NormalTok{_e_i, }\DataTypeTok{choice =} \StringTok{"depvar"}\NormalTok{,}
+                        \DataTypeTok{shape =} \StringTok{"wide"}\NormalTok{, }\DataTypeTok{varying =}\NormalTok{ vary_ind_}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{8\baselineskip}
+
+We can then use the old model as-is with the newly created data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred_}\DecValTok{1}\NormalTok{_e <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model_}\DecValTok{1}\NormalTok{_c, }\DataTypeTok{newdata =}\NormalTok{ data_}\DecValTok{1}\NormalTok{_e)}
+\NormalTok{share_}\DecValTok{1}\NormalTok{_e <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(pred_}\DecValTok{1}\NormalTok{_e, }\DecValTok{2}\NormalTok{, mean)}
+\NormalTok{share_}\DecValTok{1}\NormalTok{_e}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         hp         ec         er         gc         gr 
+## 0.06446230 0.07045486 0.09247026 0.63064443 0.14196814
+\end{verbatim}
+
+The share of houses with heat pumps rises from 0.0555556 to 0.0644623.
+
+\hypertarget{ii.-3}{%
+\subsubsection{ii.}\label{ii.-3}}
+
+This part is omitted.
+
+\pagebreak
+
+\hypertarget{question-2}{%
+\section{Question 2}\label{question-2}}
+
+\hypertarget{twoa}{%
+\subsection{(a)}\label{twoa}}
+
+Q: Run a mixed logit model without intercepts and a normal distribution
+for the 6 parameters of the model and taking into account the panel data
+structure.
+
+A: In this question the choices are located in column named
+\texttt{choice}, and we prepare for \texttt{mlogit()} with useful
+aliases:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"Electricity.csv"}\NormalTok{)}
+
+\NormalTok{choices_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{get_choices}\NormalTok{(df_}\DecValTok{2}\NormalTok{, }\StringTok{"choice"}\NormalTok{)}
+\NormalTok{pred_cols_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{get_all_pred_cols}\NormalTok{(df_}\DecValTok{2}\NormalTok{, choices_}\DecValTok{2}\NormalTok{)}
+\NormalTok{vary_ind_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{which}\NormalTok{(}\KeywordTok{names}\NormalTok{(df_}\DecValTok{2}\NormalTok{) }\OperatorTok{%in%}\StringTok{ }\NormalTok{pred_cols_}\DecValTok{2}\NormalTok{)}
+\NormalTok{pred_vars_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{get_pred_vars}\NormalTok{(pred_cols_}\DecValTok{2}\NormalTok{, choices_}\DecValTok{2}\NormalTok{)}
+\NormalTok{rpar_vec_}\DecValTok{2}\NormalTok{_a <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\StringTok{"n"}\NormalTok{, }\KeywordTok{length}\NormalTok{(pred_vars_}\DecValTok{2}\NormalTok{))  }\CommentTok{# all gaussian}
+\KeywordTok{names}\NormalTok{(rpar_vec_}\DecValTok{2}\NormalTok{_a) <-}\StringTok{ }\NormalTok{pred_vars_}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+We can then run the mixed logit model with the following\footnote{Note
+  that the code is not actually run. The object is serialized and saved
+  after the first time in code not shown here using \texttt{saveRDS()}
+  and \texttt{readRDS()}. We will do this for the entirety of this
+  question as mixed logit models take some time to estimate.}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{mlogit.data}\NormalTok{(df_}\DecValTok{2}\NormalTok{, }\DataTypeTok{id.var =} \StringTok{"id"}\NormalTok{, }\DataTypeTok{choice =} \StringTok{"choice"}\NormalTok{,}
+                      \DataTypeTok{varying =}\NormalTok{ vary_ind_}\DecValTok{2}\NormalTok{, }\DataTypeTok{shape =} \StringTok{"wide"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{)}
+\NormalTok{model_}\DecValTok{2}\NormalTok{_a <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"choice ~ "}\NormalTok{,}
+                                      \KeywordTok{paste0}\NormalTok{(pred_vars_}\DecValTok{2}\NormalTok{,}
+                                             \DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),  }\CommentTok{# use all}
+                                      \StringTok{" - 1"}\NormalTok{)),  }\CommentTok{# no intercept}
+                    \DataTypeTok{data =}\NormalTok{ data_}\DecValTok{2}\NormalTok{, }\DataTypeTok{rpar =}\NormalTok{ rpar_vec_}\DecValTok{2}\NormalTok{_a, }\DataTypeTok{panel =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{# summary(model_2_a)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{i.-4}{%
+\subsubsection{i.}\label{i.-4}}
+
+Q: Using the estimated mean coefficients, determine the amount that a
+customer with average coefficients for price and length is willing to
+pay for an extra year of contract length.
+
+\needspace{8\baselineskip}
+
+A: We just need the mean contract length coefficient,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"cl"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         cl 
+## -0.1800805
+\end{verbatim}
+
+and the mean coefficient of the price coefficient,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         pf 
+## -0.8486024
+\end{verbatim}
+
+The mean coefficient of contract length is around -0.18 indicating
+consumers prefer shorter contracts. Since the mean price coefficient is
+-0.85, a customer will pay \linebreak \(\frac{-0.85}{-0.18}\) = 0.21
+cents per kWh to reduce contract length by 1 year.
+
+\hypertarget{ii.-4}{%
+\subsubsection{ii.}\label{ii.-4}}
+
+Q: Determine the share of the population who are estimated to dislike
+long term contracts (i.e.~have a negative coefficient for the length.)
+
+A: We can get the coefficients that determine the distribution we are
+looking at with the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coefficients[}\KeywordTok{c}\NormalTok{(}\StringTok{"cl"}\NormalTok{, }\StringTok{"sd.cl"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         cl      sd.cl 
+## -0.1800805  0.3092478
+\end{verbatim}
+
+We assume that the population has a contract coefficient which is
+normally distributed, so we simply need to get the CDF of this
+distribution up to 0. (That is, the probability that a random variate
+that is sampled from this distribution is negative.)
+
+\begin{equation*}
+X_{cl}\sim N\left(-0.1800805, \left(0.3092478\right)^{2}\right)
+\end{equation*} where the first number is the mean and the second number
+is the variance.
+
+\needspace{8\baselineskip}
+
+Helpfully, R can calculate the probability using \texttt{pnorm}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{, model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"cl"}\NormalTok{], model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"sd.cl"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.7198237
+\end{verbatim}
+
+Hence, \begin{equation*}
+\mathbb{P}\left(X_{cl}\leq 0\right)=0.7198237
+\end{equation*} which indicates that 72\% of the population dislike long
+contracts.
+
+\hypertarget{b}{%
+\subsection{(b)}\label{b}}
+
+Q: The price coefficient is assumed to be normally distributed in these
+runs. This assumption means that some people are assumed to have
+positive price coefficients, since the normal distribution has support
+on both sides of zero. Using your estimates from before, determine the
+share of customers with positive price coefficients (Hint: Use the
+\texttt{pnorm} function to calculate this share). As you can see, this
+is pretty small share and can probably be ignored. However, in some
+situations, a normal distribution for the price coefficient will give a
+fairly large share with the wrong sign. Revise the model to make the
+price coefficient fixed rather than random. A fixed price coefficient
+also makes it easier to calculate the distribution of willingness to pay
+(\emph{wtp}) for each non-price attribute. If the price coefficients
+fixed, the distribution of wtp for an attribute has the same
+distribution as the attribute's coefficient, simply scaled by the price
+coefficient. However, when the price coefficient is random, the
+distribution of \emph{wtp} is the ratio of two distributions, which is
+harder to work with. What is the estimated value of the price
+coefficient? Compare the log likelihood of the new model with the old
+model.
+
+\needspace{8\baselineskip}
+
+A:
+
+We can repeat the calculation we did for \texttt{cl}, this time with
+\texttt{pf} instead:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\OperatorTok{-}\NormalTok{model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coef[}\StringTok{"pf"}\NormalTok{]}\OperatorTok{/}\NormalTok{model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{coef[}\StringTok{"sd.pf"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        pf 
+## 0.9999998
+\end{verbatim}
+
+The share of customers with negative price coefficients is given as
+0.9999998 (very close to 1) as should be expected.
+
+\needspace{8\baselineskip}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{### NOT RUN}
+\NormalTok{rpar_vec_}\DecValTok{2}\NormalTok{_b <-}\StringTok{ }\NormalTok{rpar_vec_}\DecValTok{2}\NormalTok{_a[}\KeywordTok{names}\NormalTok{(rpar_vec_}\DecValTok{2}\NormalTok{_a) }\OperatorTok{!=}\StringTok{ "pf"}\NormalTok{]}
+\NormalTok{model_}\DecValTok{2}\NormalTok{_b <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"choice ~ "}\NormalTok{,}
+                                      \KeywordTok{paste0}\NormalTok{(pred_vars_}\DecValTok{2}\NormalTok{,}
+                                             \DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),  }\CommentTok{# use all}
+                                      \StringTok{" - 1"}\NormalTok{)),  }\CommentTok{# no intercept}
+                    \DataTypeTok{data =}\NormalTok{ data_}\DecValTok{2}\NormalTok{, }\DataTypeTok{rpar =}\NormalTok{ rpar_vec_}\DecValTok{2}\NormalTok{_b, }\DataTypeTok{panel =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{# summary(model_2_b)}
+\end{Highlighting}
+\end{Shaded}
+
+We can get the estimated price coefficient in the new model directly,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_b}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         pf 
+## -0.8106196
+\end{verbatim}
+
+The estimated price coefficient in the new model is -0.8106196.
+
+The loglikelihood of the old and new models are
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_a}\OperatorTok{$}\NormalTok{logLik}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -4089.606 (df=12)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_b}\OperatorTok{$}\NormalTok{logLik}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'log Lik.' -4110.227 (df=11)
+\end{verbatim}
+
+which tells us that the model in \protect\hyperlink{twoa}{(a)} is better
+as it has greater log likelihood of \linebreak -4089.6058688 as compared
+to the log likelihood of the model in this part which is -4110.2268706.
+
+\hypertarget{c}{%
+\subsection{(c)}\label{c}}
+
+Q: You think that everyone must like using a known company rather than
+an unknown one, and yet the normal distribution implies that some people
+dislike using a known company. Revise the model to give the coefficient
+of \texttt{wk} a uniform distribution (do this with the price
+coefficient fixed). What is the estimated distribution for the
+coefficient of \texttt{wk} and the estimated price coefficient?
+
+\needspace{12\baselineskip}
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{### NOT RUN}
+\NormalTok{rpar_vec_}\DecValTok{2}\NormalTok{_c <-}\StringTok{ }\NormalTok{rpar_vec_}\DecValTok{2}\NormalTok{_b}
+\NormalTok{rpar_vec_}\DecValTok{2}\NormalTok{_c[}\StringTok{"wk"}\NormalTok{] <-}\StringTok{ "u"}
+\NormalTok{model_}\DecValTok{2}\NormalTok{_c <-}\StringTok{ }\KeywordTok{mlogit}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"choice ~ "}\NormalTok{,}
+                                      \KeywordTok{paste0}\NormalTok{(pred_vars_}\DecValTok{2}\NormalTok{,}
+                                             \DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{),  }\CommentTok{# use all}
+                                      \StringTok{" - 1"}\NormalTok{)),  }\CommentTok{# no intercept}
+                    \DataTypeTok{data =}\NormalTok{ data_}\DecValTok{2}\NormalTok{, }\DataTypeTok{rpar =}\NormalTok{ rpar_vec_}\DecValTok{2}\NormalTok{_c, }\DataTypeTok{panel =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{# summary(model_2_c)}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{6\baselineskip}
+
+A uniform distribution can be determined by its maximum and minimum,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(model_}\DecValTok{2}\NormalTok{_c)}\OperatorTok{$}\NormalTok{summary.rpar[}\StringTok{"wk"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"Min."}\NormalTok{, }\StringTok{"Max."}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Min.      Max. 
+## 0.1336413 2.5879769
+\end{verbatim}
+
+\needspace{8\baselineskip}
+
+The coefficient of price in this new model is given as,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{2}\NormalTok{_c}\OperatorTok{$}\NormalTok{coefficients[}\StringTok{"pf"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        pf 
+## -0.811314
+\end{verbatim}
+
+Hence, the \texttt{wk} coefficient follows the distribution
+\(\operatorname{Unif}\left(0.1336413,2.5879769\right)\) while the price
+coefficient in this new model is -0.811314.
+
+\pagebreak
+
+\hypertarget{question-3}{%
+\section{Question 3}\label{question-3}}
+
+Suppose we perform best subset, forward stepwise, and backward stepwise
+selection on a single set. For each approach, we obtain \emph{p}+1
+models, containing 0, 1, 2, \ldots, \emph{p} predictors. Provide your
+answers for the following questions:
+
+\hypertarget{a}{%
+\subsection{(a)}\label{a}}
+
+Q: Which of the three models with \emph{k} predictors has the smallest
+training sum of squared errors?
+
+A: By definition, the best subset selection would select a subset of the
+predictors that would minimize training sum of squared errors, for any
+\emph{k}.
+
+\hypertarget{b-1}{%
+\subsection{(b)}\label{b-1}}
+
+Q: Which of the three models with \emph{k} predictors has the smallest
+test sum of squared errors?
+
+A: This is impossible to say as information of the test set is not
+considered in any of the three methods named. Fitting well on the
+training set does not necessarily generalise to fitting well on the test
+set.
+
+\hypertarget{c-1}{%
+\subsection{(c)}\label{c-1}}
+
+Q: Are the following statements \textbf{True} or \textbf{False}:
+
+\hypertarget{i.-5}{%
+\subsubsection{i.}\label{i.-5}}
+
+Q: The predictors in the \emph{k}-variable model identified by forward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by forward stepwise selection.
+
+A: True. Each step in the forward stepwise selection method corresponds
+to adding only 1 variable to the previous set, typically in greedy-like
+manner, and removals are never done.
+
+\hypertarget{ii.-5}{%
+\subsubsection{ii.}\label{ii.-5}}
+
+Q: The predictors in the \emph{k}-variable model identified by backward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by backward stepwise selection.
+
+A: True. In backward stepwise selection, we drop 1 variable at each
+step.
+
+\hypertarget{threeciii}{%
+\subsubsection{iii.}\label{threeciii}}
+
+Q: The predictors in the \emph{k}-variable model identified by backward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by forward stepwise selection.
+
+A: False.
+
+\hypertarget{threeciv}{%
+\subsubsection{iv.}\label{threeciv}}
+
+Q: The predictors in the \emph{k}-variable model identified by forward
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by backward stepwise selection.
+
+A: False.
+
+\hypertarget{v.}{%
+\subsubsection{v.}\label{v.}}
+
+Q: The predictors in the \emph{k}-variable model identified by best
+stepwise selection are a subset of the predictors in the
+(\emph{k}+1)-variable model identified by best stepwise selection.
+
+A: False.
+
+Now we proceed to show what we mean by false in
+\protect\hyperlink{threeciii}{iii.}, \protect\hyperlink{threeciv}{iv.}
+and in this part. Because it is not exactly known what the stepwise
+model selection methods do in the packages, we will build everything
+from the ground up (relatively).
+
+First of all, we perform some data generation. Our actual model is of
+the form \begin{equation*}
+y_{i} = \sum_{j=1}^{4}x_{ij} + \epsilon_{i} + \frac{1}{10}y_{i-1}
+\end{equation*} Where
+
+\begin{itemize}
+\tightlist
+\item
+  \(x_{i1}\sim \mathcal{N}\left(0,1\right)\)
+\item
+  \(x_{i2,i3,i4}\sim \mathcal{N}\left(\begin{pmatrix}0\\0\\0\end{pmatrix}, \begin{pmatrix}2& 0.5& 1.5\\0.5& 2& 0.8\\1.5& 0.8& 2\end{pmatrix}\right)\)
+\item
+  \(\epsilon_{i}\sim \operatorname{Laplace}\left(0, 0.2\right)\)
+\item
+  \(y_{-1}:=0\)
+\end{itemize}
+
+Additionally, in terms of `data,' we will be including other random
+variables which are not relevant to \(y\), while also providing a small
+dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)  }\CommentTok{# for multivariate normal}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'MASS'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dfidx':
+## 
+##     select
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{suppressMessages}\NormalTok{(}\KeywordTok{library}\NormalTok{(rmutil))  }\CommentTok{# for laplace distribution}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{N_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\DecValTok{20}
+\NormalTok{num_pred_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\DecValTok{10}
+\NormalTok{mat_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{nrow =}\NormalTok{ N_}\DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =}\NormalTok{ num_pred_}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\KeywordTok{colnames}\NormalTok{(mat_}\DecValTok{3}\NormalTok{) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"y"}\NormalTok{, }\KeywordTok{paste0}\NormalTok{(}\StringTok{"x_"}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_}\DecValTok{3}\NormalTok{))}
+\NormalTok{cov_mat_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{0.8}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{0.8}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{list}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{N_}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  x_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{  x_N_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{mvrnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{1}\NormalTok{, }\DataTypeTok{mu =} \KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DataTypeTok{Sigma =}\NormalTok{ cov_mat_}\DecValTok{3}\NormalTok{)}
+\NormalTok{  y[[i]] <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(x_N_}\DecValTok{3}\NormalTok{) }\OperatorTok{+}
+\StringTok{            }\NormalTok{x_}\DecValTok{2} \OperatorTok{+}
+\StringTok{            }\KeywordTok{rlaplace}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{s =} \FloatTok{0.2}\NormalTok{) }\CommentTok{# mean 0 non gaussian error not in dataset}
+  \ControlFlowTok{if}\NormalTok{ (i }\OperatorTok{>}\StringTok{ }\DecValTok{2}\NormalTok{) \{}
+\NormalTok{    y[[i]] <-}\StringTok{ }\NormalTok{y[[i]] }\OperatorTok{+}\StringTok{ }\NormalTok{y[[i }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{]]}\OperatorTok{/}\DecValTok{10}
+\NormalTok{  \}}
+\NormalTok{  mat_}\DecValTok{3}\NormalTok{[i,] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(y[[i]],}
+\NormalTok{                 x_}\DecValTok{2}\NormalTok{,}
+                 \KeywordTok{runif}\NormalTok{(}\DecValTok{2}\NormalTok{),}
+                 \KeywordTok{rnorm}\NormalTok{(}\DecValTok{4}\NormalTok{),}
+\NormalTok{                 x_N_}\DecValTok{3}\OperatorTok{**}\DecValTok{2}
+\NormalTok{                 )}
+\NormalTok{\}}
+\KeywordTok{head}\NormalTok{(mat_}\DecValTok{3}\NormalTok{, }\DataTypeTok{n =} \DecValTok{5}\NormalTok{)  }\CommentTok{# to see a small part of the data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               y         x_1        x_2       x_3         x_4         x_5
+## [1,]  0.4553220 -0.62645381 0.06178627 0.2059746 -0.92856703 -0.29472045
+## [2,] -1.6070853  0.76359346 0.86969085 0.3403490 -0.04493361 -0.01619026
+## [3,]  2.6595028  0.59390132 0.47723007 0.7323137  0.50360797  1.08576936
+## [4,] -0.4530988  0.04672617 0.47854525 0.7663107 -1.37705956 -0.41499456
+## [5,]  3.8257763  1.10002537 0.20269226 0.7111212 -1.16657055 -1.06559058
+##               x_6        x_7       x_8         x_9       x_10
+## [1,] -0.005767173  2.4046534 0.2458347 1.623874002 0.55964952
+## [2,]  0.943836211  0.8212212 2.9841402 0.325969894 1.34679647
+## [3,] -0.690953840 -1.2845994 2.5031406 0.006883214 1.79588619
+## [4,] -0.394289954 -0.0593134 0.6018717 0.128241211 0.04655346
+## [5,] -1.563782051  1.1565370 0.5408918 0.652881673 1.17335560
+\end{verbatim}
+
+Next we need to look at all the possible models we can fit. We can
+encode each model with \(\left\{0, 1\right\}^{11}\) as we can include or
+not include 10 predictors, with an additional boolean indicating if the
+intercept is used.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tf_list_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{list}\NormalTok{()}
+\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\NormalTok{num_pred_}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{1}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  tf_list_}\DecValTok{3}\NormalTok{[[i]] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{all_model_possibilities_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{expand.grid}\NormalTok{(tf_list_}\DecValTok{3}\NormalTok{)}
+\NormalTok{results_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{nrow =} \DecValTok{2}\OperatorTok{**}\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\OperatorTok{**}\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  formula_i <-}\StringTok{ "y ~ "}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{) \{}
+    \ControlFlowTok{if}\NormalTok{ (j }\OperatorTok{==}\StringTok{ }\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{) \{}
+      \ControlFlowTok{if}\NormalTok{ (all_model_possibilities_}\DecValTok{3}\NormalTok{[i, j]) \{}
+        \CommentTok{# intercept}
+\NormalTok{        formula_i <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(formula_i, }\StringTok{" + 1"}\NormalTok{)}
+\NormalTok{      \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{        formula_i <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(formula_i, }\StringTok{" - 1"}\NormalTok{)}
+\NormalTok{      \}}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+      \ControlFlowTok{if}\NormalTok{ (all_model_possibilities_}\DecValTok{3}\NormalTok{[i, j]) \{}
+        \CommentTok{# the rest of the predictors}
+\NormalTok{        formula_i <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(formula_i, }\StringTok{" + x_"}\NormalTok{,j)}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{  mod_i <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(formula_i, }\DataTypeTok{data =} \KeywordTok{as.data.frame}\NormalTok{(mat_}\DecValTok{3}\NormalTok{))}
+\NormalTok{  adjr_i <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(mod_i)}\OperatorTok{$}\NormalTok{adj.r.squared}
+\NormalTok{  AIC_i <-}\StringTok{ }\KeywordTok{AIC}\NormalTok{(mod_i)}
+\NormalTok{  results_}\DecValTok{3}\NormalTok{[i,] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(adjr_i, AIC_i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{16\baselineskip}
+
+Now that we have all the models, we can look into how step-wise
+selection processes will do, but before that we need to subset all
+models by the number of predictors:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{results_list_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{vector}\NormalTok{(}\StringTok{"list"}\NormalTok{, num_pred_incl_int_}\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\OperatorTok{**}\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  num_pred_in_model_i <-}\StringTok{ }\DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_incl_int_}\DecValTok{3}\NormalTok{) \{}
+    \ControlFlowTok{if}\NormalTok{ (all_model_possibilities_}\DecValTok{3}\NormalTok{[i, j]) \{}
+\NormalTok{      num_pred_in_model_i <-}\StringTok{ }\NormalTok{num_pred_in_model_i }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{  results_list_}\DecValTok{3}\NormalTok{[[num_pred_in_model_i }\OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{]] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
+\NormalTok{    results_list_}\DecValTok{3}\NormalTok{[[num_pred_in_model_i }\OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{]], i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, model selection. We note that it is not exactly clear what is
+referred to in terms of `best' model, but we will try to maximise
+adjusted-\(R^{2}\). We will also calculate the AIC, although this is not
+done for linear models in this course.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{models_and_results_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(all_model_possibilities_}\DecValTok{3}\NormalTok{, results_}\DecValTok{3}\NormalTok{)}
+\NormalTok{ajr_selectors_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{as.list}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_}\DecValTok{3}\NormalTok{))}
+\NormalTok{ajr_selectors_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(ajr_selectors_}\DecValTok{3}\NormalTok{,}
+                        \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_}\DecValTok{3}\NormalTok{),}
+                        \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_}\DecValTok{3}\NormalTok{))}
+\KeywordTok{row.names}\NormalTok{(ajr_selectors_}\DecValTok{3}\NormalTok{) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"forward"}\NormalTok{, }\StringTok{"backward"}\NormalTok{, }\StringTok{"best"}\NormalTok{)}
+\NormalTok{ajr_selectors_}\DecValTok{3}\NormalTok{[] <-}\StringTok{ ""}
+\NormalTok{aic_selectors_}\DecValTok{3}\NormalTok{ <-}\StringTok{ }\NormalTok{ajr_selectors_}\DecValTok{3}  \CommentTok{# just make a simple copy}
+
+\CommentTok{# We now make the stepwise selection functions, which will be iterated over}
+\CommentTok{# Not really a proper stepwise selector since it assumes we already have the }
+\CommentTok{# results for all models}
+\NormalTok{get_next_step_subset_vars <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(direction, current_subset,}
+\NormalTok{                                      current_results, result_idx,}
+\NormalTok{                                      previous_vars, }\DataTypeTok{higher_better =} \OtherTok{TRUE}\NormalTok{) \{}
+
+
+
+
+  \ControlFlowTok{if}\NormalTok{ (direction }\OperatorTok{==}\StringTok{ 'forward'}\NormalTok{) \{}
+    \CommentTok{# Eval Parse Construction not advisable}
+\NormalTok{    next_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(current_subset,}
+                          \DataTypeTok{subset =} \KeywordTok{eval}\NormalTok{(}
+                            \KeywordTok{parse}\NormalTok{(}\DataTypeTok{text =} \KeywordTok{paste0}\NormalTok{(previous_vars,}
+                                                \DataTypeTok{collapse =} \StringTok{"&"}\NormalTok{))))}
+
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{# if direction not forward, assumption is backward}
+\NormalTok{    next_subset <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(current_subset,}
+                          \DataTypeTok{subset =} \KeywordTok{eval}\NormalTok{(}
+                            \KeywordTok{parse}\NormalTok{(}\DataTypeTok{text =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"!"}\NormalTok{,  }\CommentTok{# force false}
+\NormalTok{                                                previous_vars,}
+                                                \DataTypeTok{collapse =} \StringTok{"&"}\NormalTok{))))}
+\NormalTok{  \}}
+  \CommentTok{# is criterion 'better' while higher or lower?}
+  \ControlFlowTok{if}\NormalTok{ (higher_better) \{}
+\NormalTok{    stepwise_best_model <-}\StringTok{ }\KeywordTok{which.max}\NormalTok{(}
+\NormalTok{      current_results[}\KeywordTok{row.names}\NormalTok{(next_subset),][,result_idx]}
+\NormalTok{      )}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    stepwise_best_model <-}\StringTok{ }\KeywordTok{which.min}\NormalTok{(}
+\NormalTok{      current_results[}\KeywordTok{row.names}\NormalTok{(next_subset),][,result_idx]}
+\NormalTok{      )}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{ (direction }\OperatorTok{==}\StringTok{ 'forward'}\NormalTok{) \{}
+    \CommentTok{# give fixed variables in forward stepwise selection}
+\NormalTok{    forward_crit_vars <-}\StringTok{ }\KeywordTok{c}\NormalTok{(previous_vars,}
+                           \KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(next_subset[stepwise_best_model,]))))}
+\NormalTok{    forward_crit_vars <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(forward_crit_vars)}
+    \KeywordTok{return}\NormalTok{(forward_crit_vars)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{# give removed variables to never be added back in for}
+    \CommentTok{# backward stepwise selection}
+\NormalTok{    back_remaining_vars <-}\StringTok{ }\KeywordTok{names}\NormalTok{(}
+      \KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(next_subset[stepwise_best_model,]))}
+\NormalTok{      )}
+\NormalTok{    back_removed_vars <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{names}\NormalTok{(all_model_possibilities_}\DecValTok{3}\NormalTok{),}
+\NormalTok{                                 back_remaining_vars)}
+    \KeywordTok{return}\NormalTok{(back_removed_vars)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\CommentTok{# cosmetic wrapper}
+\NormalTok{proc_vars <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(input_vars) \{}
+  \KeywordTok{paste0}\NormalTok{(}\StringTok{"\{"}\NormalTok{, }\KeywordTok{toString}\NormalTok{(}\KeywordTok{substring}\NormalTok{(input_vars, }\DecValTok{4}\NormalTok{)), }\StringTok{"\}"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\needspace{10\baselineskip}
+
+Then we finally get to iterating:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# 1 and last one ignored, since no model selection required}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{num_pred_}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  result_size_i <-}\StringTok{ }\NormalTok{results_}\DecValTok{3}\NormalTok{[results_list_}\DecValTok{3}\NormalTok{[[i }\OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{]],]}
+\NormalTok{  subset_i <-}\StringTok{ }\NormalTok{all_model_possibilities_}\DecValTok{3}\NormalTok{[results_list_}\DecValTok{3}\NormalTok{[[i }\OperatorTok{+}\StringTok{ }\DecValTok{1}\NormalTok{]],]}
+  \KeywordTok{row.names}\NormalTok{(result_size_i) <-}\StringTok{ }\KeywordTok{row.names}\NormalTok{(subset_i)}
+
+  \CommentTok{# Best Selectors}
+  \CommentTok{# ajr_max <- which(result_size_i[,1] == max(result_size_i[,1]))}
+\NormalTok{  ajr_max <-}\StringTok{ }\KeywordTok{which.max}\NormalTok{(result_size_i[,}\DecValTok{1}\NormalTok{])}
+\NormalTok{  ajr_selectors_}\DecValTok{3}\NormalTok{[}\StringTok{"best"}\NormalTok{, i] <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"\{"}\NormalTok{,}
+                                      \KeywordTok{toString}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(}
+\NormalTok{                                        subset_i[ajr_max,]))),}
+                                      \StringTok{"\}"}\NormalTok{)}
+  \CommentTok{# aic_min <- which(result_size_i[,2] == min(result_size_i[,2]))}
+\NormalTok{  aic_min <-}\StringTok{ }\KeywordTok{which.min}\NormalTok{(result_size_i[,}\DecValTok{2}\NormalTok{])}
+\NormalTok{  aic_selectors_}\DecValTok{3}\NormalTok{[}\StringTok{"best"}\NormalTok{, i] <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"\{"}\NormalTok{,}
+                                     \KeywordTok{toString}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(}
+\NormalTok{                                       subset_i[aic_min,]))),}
+                                     \StringTok{"\}"}\NormalTok{)}
+  \CommentTok{# Multiple maxes not used because the toString line}
+  \CommentTok{# does not work well with multiple possibilities}
+  \CommentTok{# note that AIC minimizers are not unique}
+  
+  \CommentTok{# Forward Stepwise Selection}
+  \ControlFlowTok{if}\NormalTok{ (i }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{) \{}
+    \CommentTok{# first time}
+\NormalTok{    forw_ajr_vars <-}\StringTok{ }\KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(subset_i[ajr_max,])))}
+\NormalTok{    forw_aic_vars <-}\StringTok{ }\KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(subset_i[aic_min,])))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{# all other times}
+\NormalTok{    forw_ajr_vars <-}\StringTok{ }\KeywordTok{get_next_step_subset_vars}\NormalTok{(}
+      \StringTok{'forward'}\NormalTok{, subset_i, result_size_i, }\DecValTok{1}\NormalTok{,}
+\NormalTok{      forw_ajr_vars, }\DataTypeTok{higher_better =} \OtherTok{TRUE}
+\NormalTok{      )}
+\NormalTok{    forw_aic_vars <-}\StringTok{ }\KeywordTok{get_next_step_subset_vars}\NormalTok{(}
+      \StringTok{'forward'}\NormalTok{, subset_i, result_size_i, }\DecValTok{2}\NormalTok{,}
+\NormalTok{      forw_aic_vars, }\DataTypeTok{higher_better =} \OtherTok{FALSE}
+\NormalTok{      )}
+\NormalTok{  \}}
+\NormalTok{  ajr_selectors_}\DecValTok{3}\NormalTok{[}\StringTok{"forward"}\NormalTok{, i] <-}\StringTok{ }\KeywordTok{proc_vars}\NormalTok{(forw_ajr_vars)}
+\NormalTok{  aic_selectors_}\DecValTok{3}\NormalTok{[}\StringTok{"forward"}\NormalTok{, i] <-}\StringTok{ }\KeywordTok{proc_vars}\NormalTok{(forw_aic_vars)}
+
+
+  \CommentTok{# Backward Stepwise Selection}
+\NormalTok{  k <-}\StringTok{ }\NormalTok{num_pred_}\DecValTok{3} \OperatorTok{-}\StringTok{ }\NormalTok{i }\OperatorTok{+}\StringTok{ }\DecValTok{2}
+\NormalTok{  result_size_k <-}\StringTok{ }\NormalTok{results_}\DecValTok{3}\NormalTok{[results_list_}\DecValTok{3}\NormalTok{[[k]],]}
+\NormalTok{  subset_k <-}\StringTok{ }\NormalTok{all_model_possibilities_}\DecValTok{3}\NormalTok{[results_list_}\DecValTok{3}\NormalTok{[[k]],]}
+  \KeywordTok{row.names}\NormalTok{(result_size_k) <-}\StringTok{ }\KeywordTok{row.names}\NormalTok{(subset_k)}
+  \ControlFlowTok{if}\NormalTok{ (i }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{) \{}
+    \CommentTok{# unlike forward selection, we want to remove variables}
+\NormalTok{    back_ajr_surviving_vars <-}\StringTok{ }\KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(subset_k[ajr_max,])))}
+\NormalTok{    back_ajr_rm_vars <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{names}\NormalTok{(subset_k), back_ajr_surviving_vars)}
+\NormalTok{    back_aic_surviving_vars <-}\StringTok{ }\KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(}\KeywordTok{unlist}\NormalTok{(subset_k[aic_min,])))}
+\NormalTok{    back_aic_rm_vars <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{names}\NormalTok{(subset_k), back_aic_surviving_vars)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    back_ajr_rm_vars <-}\StringTok{ }\KeywordTok{get_next_step_subset_vars}\NormalTok{(}
+      \StringTok{'backward'}\NormalTok{, subset_k,result_size_k, }\DecValTok{1}\NormalTok{,}
+\NormalTok{      back_ajr_rm_vars, }\DataTypeTok{higher_better =} \OtherTok{TRUE}
+\NormalTok{      )}
+\NormalTok{    back_ajr_surviving_vars <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{names}\NormalTok{(all_model_possibilities_}\DecValTok{3}\NormalTok{),}
+\NormalTok{                                       back_ajr_rm_vars)}
+\NormalTok{    back_aic_rm_vars <-}\StringTok{ }\KeywordTok{get_next_step_subset_vars}\NormalTok{(}
+      \StringTok{'backward'}\NormalTok{, subset_k,result_size_k, }\DecValTok{2}\NormalTok{,}
+\NormalTok{      back_aic_rm_vars, }\DataTypeTok{higher_better =} \OtherTok{FALSE}
+\NormalTok{      )}
+\NormalTok{    back_aic_surviving_vars <-}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{names}\NormalTok{(all_model_possibilities_}\DecValTok{3}\NormalTok{),}
+\NormalTok{                                       back_aic_rm_vars)}
+\NormalTok{  \}}
+\NormalTok{  ajr_selectors_}\DecValTok{3}\NormalTok{[}\StringTok{"backward"}\NormalTok{, k }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{] <-}\StringTok{ }\KeywordTok{proc_vars}\NormalTok{(back_ajr_surviving_vars)}
+\NormalTok{  aic_selectors_}\DecValTok{3}\NormalTok{[}\StringTok{"backward"}\NormalTok{, k }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{] <-}\StringTok{ }\KeywordTok{proc_vars}\NormalTok{(back_aic_surviving_vars)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Note that we have not exactly exactly reproduced the algorithm for
+producing the models that are chosen in the forward and backward
+stepwise selection, as we have already calculated the results for all
+models, which would be done in order to find the `best' model. Note that
+both criteria disagree on the best model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all_model_possibilities_}\DecValTok{3}\NormalTok{[}\KeywordTok{c}\NormalTok{(}\KeywordTok{which.max}\NormalTok{(results_}\DecValTok{3}\NormalTok{[,}\DecValTok{1}\NormalTok{]),}
+                            \KeywordTok{which.min}\NormalTok{(results_}\DecValTok{3}\NormalTok{[,}\DecValTok{2}\NormalTok{])),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Var1 Var2 Var3  Var4 Var5  Var6  Var7  Var8  Var9 Var10 Var11
+## 105  TRUE TRUE TRUE FALSE TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+## 1513 TRUE TRUE TRUE FALSE TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+\end{verbatim}
+
+The first row shows the best model according to adjusted-\(R^{2}\),
+while the second row shows the best model according to AIC. In this
+case, it seems that adjusted-\(R^{2}\) is the better selector as it
+correctly picks more of the last few variables, although it should be
+noted that the data generation process and data given were wildly
+different.
+
+We can show a simple counterexample to
+\protect\hyperlink{threeciii}{iii.}, \protect\hyperlink{threeciv}{iv.}
+and this part with the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ajr_selectors_}\DecValTok{3}\NormalTok{[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          X1L     X2L
+## forward  {7}  {7, 6}
+## backward {2} {2, 11}
+## best     {7} {2, 10}
+\end{verbatim}
+
+\protect\hyperlink{threeciii}{iii.}: The 1-variable model identified by
+backward stepwise selection with variable \texttt{2} is not a subset of
+the 2-variable model as identified by forward stepwise selection, which
+chose variables \texttt{7} and \texttt{6}.
+
+\protect\hyperlink{threeciv}{iv.}: The 1-variable model identified by
+forward stepwise selection with the variable \texttt{7} is not a subset
+of the 2-variable model as identified by the backward stepwise selection
+which are variables \texttt{2} and \texttt{11}. Note that the 1-variable
+forward stepwise selection should be identical to the 1-variable best
+model.
+
+This part: The 1-variable model identified by the best size-1 subset
+selection chose \texttt{7}, which is not a subset of the 2-variable
+model identified by the best size-2 subset selection, which chose
+\texttt{2} and \texttt{10}.
+
+We display the results of the model selection process. Note that the
+backward stepwise selection row should be read backwards.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ajr_selectors_}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          X1L     X2L        X3L            X4L               X5L
+## forward  {7}  {7, 6}  {7, 6, 5}  {7, 6, 5, 10}  {7, 6, 5, 10, 2}
+## backward {2} {2, 11} {1, 2, 11} {1, 2, 10, 11} {1, 2, 9, 10, 11}
+## best     {7} {2, 10} {1, 2, 11} {1, 2, 10, 11}  {1, 2, 3, 5, 10}
+##                           X6L                     X7L
+## forward   {7, 6, 5, 10, 2, 3}  {7, 6, 5, 10, 2, 3, 1}
+## backward {1, 2, 8, 9, 10, 11} {1, 2, 6, 8, 9, 10, 11}
+## best     {1, 2, 3, 5, 10, 11} {1, 2, 3, 5, 9, 10, 11}
+##                                 X8L                           X9L
+## forward  {7, 6, 5, 10, 2, 3, 1, 11} {7, 6, 5, 10, 2, 3, 1, 11, 9}
+## backward {1, 2, 6, 7, 8, 9, 10, 11} {1, 2, 4, 6, 7, 8, 9, 10, 11}
+## best     {1, 2, 3, 5, 8, 9, 10, 11} {1, 2, 3, 4, 5, 8, 9, 10, 11}
+##                                      X10L
+## forward  {7, 6, 5, 10, 2, 3, 1, 11, 9, 8}
+## backward {1, 2, 3, 4, 6, 7, 8, 9, 10, 11}
+## best     {1, 2, 3, 4, 5, 7, 8, 9, 10, 11}
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aic_selectors_}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          X1L     X2L        X3L            X4L               X5L
+## forward  {7}  {7, 6}  {7, 6, 5}  {7, 6, 5, 10}  {7, 6, 5, 10, 2}
+## backward {2} {2, 11} {1, 2, 11} {1, 2, 10, 11} {1, 2, 9, 10, 11}
+## best     {7} {2, 10}  {1, 2, 3}   {1, 2, 3, 5}  {1, 2, 3, 5, 10}
+##                           X6L                     X7L
+## forward   {7, 6, 5, 10, 2, 3}  {7, 6, 5, 10, 2, 3, 1}
+## backward {1, 2, 8, 9, 10, 11} {1, 2, 6, 8, 9, 10, 11}
+## best      {1, 2, 3, 5, 6, 10}  {1, 2, 3, 5, 8, 9, 10}
+##                                 X8L                           X9L
+## forward   {7, 6, 5, 10, 2, 3, 1, 9}  {7, 6, 5, 10, 2, 3, 1, 9, 8}
+## backward {1, 2, 6, 7, 8, 9, 10, 11} {1, 2, 4, 6, 7, 8, 9, 10, 11}
+## best     {1, 2, 3, 5, 8, 9, 10, 11} {1, 2, 3, 4, 5, 8, 9, 10, 11}
+##                                      X10L
+## forward  {7, 6, 5, 10, 2, 3, 1, 9, 8, 11}
+## backward {1, 2, 3, 4, 6, 7, 8, 9, 10, 11}
+## best     {1, 2, 3, 4, 5, 7, 8, 9, 10, 11}
+\end{verbatim}
+
+\pagebreak
+
+\hypertarget{question-4}{%
+\section{Question 4}\label{question-4}}
+
+\hypertarget{a-1}{%
+\subsection{(a)}\label{a-1}}
+
+Q: Split the data set into a training set and a test set using the seed
+1 and the \texttt{sample()} function with 80\% in the training set and
+20\% in the test set. How many observations are there in the training
+and test sets?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"College.csv"}\NormalTok{)}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{trainid_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(df_}\DecValTok{4}\NormalTok{), }\FloatTok{0.8}\OperatorTok{*}\KeywordTok{nrow}\NormalTok{(df_}\DecValTok{4}\NormalTok{))}
+\NormalTok{testid_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\OperatorTok{-}\NormalTok{trainid_}\DecValTok{4}
+\NormalTok{train_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\NormalTok{df_}\DecValTok{4}\NormalTok{[trainid_}\DecValTok{4}\NormalTok{,]}
+\NormalTok{test_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\NormalTok{df_}\DecValTok{4}\NormalTok{[testid_}\DecValTok{4}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+There are 621 observations in the training set, and 156 observations in
+the test set.
+
+\hypertarget{fourb}{%
+\subsection{(b)}\label{fourb}}
+
+Q: Fit a linear model using least squares on the training set. What is
+the average sum of squared error of the model on the training set?
+Report on the average sum of squared error on the test set obtained from
+the model.
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model_}\DecValTok{4}\NormalTok{_b <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Apps }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train_}\DecValTok{4}\NormalTok{)}
+\CommentTok{# summary(model_4)}
+\NormalTok{pred_}\DecValTok{4}\NormalTok{_b <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model_}\DecValTok{4}\NormalTok{_b, }\DataTypeTok{newdata =}\NormalTok{ test_}\DecValTok{4}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{(model_}\DecValTok{4}\NormalTok{_b}\OperatorTok{$}\NormalTok{residuals}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 958950.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{((test_}\DecValTok{4}\OperatorTok{$}\NormalTok{Apps }\OperatorTok{-}\StringTok{ }\NormalTok{pred_}\DecValTok{4}\NormalTok{_b)}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1567324
+\end{verbatim}
+
+The average sum of squared error on the training set is 958950.3 while
+the average sum of squared error on the test set is 1567324.
+
+\hypertarget{c-2}{%
+\subsection{(c)}\label{c-2}}
+
+Q: Use the backward stepwise selection method to select the variables
+for the regression model on the training set. Which is the first
+variable dropped from the set?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(leaps)}
+\NormalTok{regsubsets_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{regsubsets}\NormalTok{(Apps}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data =}\NormalTok{ train_}\DecValTok{4}\NormalTok{,}
+                           \DataTypeTok{nvmax =} \OtherTok{NULL}\NormalTok{,  }\CommentTok{# alternatively, 17}
+                           \DataTypeTok{method =} \StringTok{"backward"}\NormalTok{)}
+\NormalTok{sum_regsubsets_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(regsubsets_}\DecValTok{4}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(sum_regsubsets_}\DecValTok{4}\OperatorTok{$}\NormalTok{which[(}\KeywordTok{ncol}\NormalTok{(train_}\DecValTok{4}\NormalTok{) }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{),] }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Terminal"
+\end{verbatim}
+
+The first variable to be dropped from the set is \texttt{Terminal}.
+
+\hypertarget{fourd}{%
+\subsection{(d)}\label{fourd}}
+
+Q: Plot the adjusted-\(R^{2}\) for all these models. If we choose the
+model based on the best adjusted-\(R^{2}\) value, which variables should
+be included in the model?
+
+A: The plot is easily done in R with the following command:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(sum_regsubsets_}\DecValTok{4}\OperatorTok{$}\NormalTok{adjr2, }\DataTypeTok{ylab =} \KeywordTok{expression}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Adjusted R"}\OperatorTok{^}\StringTok{"2"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{AnalyticsEdgeExercise4-5Soln_files/figure-latex/4_d1-1} \end{center}
+
+The model with the best adjusted-\(R^{2}\) is the model with the highest
+adjusted-\(R^{2}\):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{best_model_size_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{which.max}\NormalTok{(sum_regsubsets_}\DecValTok{4}\OperatorTok{$}\NormalTok{adjr2)}
+\NormalTok{best_model_size_}\DecValTok{4}
+\NormalTok{best_model_vars_}\DecValTok{4}\NormalTok{_d <-}\StringTok{ }\KeywordTok{names}\NormalTok{(}\KeywordTok{which}\NormalTok{(sum_regsubsets_}\DecValTok{4}\OperatorTok{$}\NormalTok{which[best_model_size_}\DecValTok{4}\NormalTok{,]))}
+\NormalTok{best_model_vars_}\DecValTok{4}\NormalTok{_d}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13
+##  [1] "(Intercept)" "PrivateYes"  "Accept"      "Enroll"      "Top10perc"  
+##  [6] "Top25perc"   "F.Undergrad" "P.Undergrad" "Outstate"    "Room.Board" 
+## [11] "PhD"         "S.F.Ratio"   "Expend"      "Grad.Rate"
+\end{verbatim}
+
+In addition to the intercept, the variables \texttt{PrivateYes},
+\texttt{Accept}, \texttt{Enroll}, \texttt{Top10perc},
+\texttt{Top25perc}, \texttt{F.Undergrad}, \texttt{P.Undergrad},
+\texttt{Outstate}, \texttt{Room.Board}, \texttt{PhD},
+\texttt{S.F.Ratio}, \texttt{Expend} and \texttt{Grad.Rate} should be
+included in the model. The variables \texttt{Books}, \texttt{Personal},
+\texttt{Terminal} and \texttt{perc.alumni} should be dropped from the
+model.
+
+\needspace{12\baselineskip}
+
+\hypertarget{e-1}{%
+\subsection{(e)}\label{e-1}}
+
+Q: Use the model identified in part \protect\hyperlink{fourd}{(d)} to
+estimate the average sum of squared test error. Does this improve on the
+model in part \protect\hyperlink{fourb}{(b)} in the prediction accuracy?
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Unfortunately, due to how the original dataframe uses 'Yes' and 'No'}
+\CommentTok{# We need to change how it is encoded here}
+\CommentTok{# Alternatively, just change the original dataframe 'Private' column}
+\CommentTok{# with an ifelse depending on the values}
+\NormalTok{best_model_vars_}\DecValTok{4}\NormalTok{_d <-}\StringTok{ }\KeywordTok{replace}\NormalTok{(best_model_vars_}\DecValTok{4}\NormalTok{_d,}
+\NormalTok{                               best_model_vars_}\DecValTok{4}\NormalTok{_d }\OperatorTok{==}\StringTok{ "PrivateYes"}\NormalTok{,}
+                               \StringTok{"Private"}\NormalTok{)}
+\NormalTok{model_}\DecValTok{4}\NormalTok{_e <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"Apps ~ "}\NormalTok{,}
+                                  \KeywordTok{paste0}\NormalTok{(}\KeywordTok{setdiff}\NormalTok{(best_model_vars_}\DecValTok{4}\NormalTok{_d,}
+                                                 \StringTok{"(Intercept)"}\NormalTok{),}
+                                         \DataTypeTok{collapse =} \StringTok{" + "}\NormalTok{))),}
+                \DataTypeTok{data =}\NormalTok{ train_}\DecValTok{4}\NormalTok{)}
+\CommentTok{# summary(model_4_e)}
+\NormalTok{pred_}\DecValTok{4}\NormalTok{_e <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model_}\DecValTok{4}\NormalTok{_e, }\DataTypeTok{newdata =}\NormalTok{ test_}\DecValTok{4}\NormalTok{)}
+\KeywordTok{mean}\NormalTok{((test_}\DecValTok{4}\OperatorTok{$}\NormalTok{Apps }\OperatorTok{-}\StringTok{ }\NormalTok{pred_}\DecValTok{4}\NormalTok{_e)}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1556920
+\end{verbatim}
+
+Since the test error with this model is 1556920 which is lower than
+1567324, this has improved as compared to the model in part
+\protect\hyperlink{fourb}{(b)} in the prediction accuracy.
+
+\hypertarget{f}{%
+\subsection{(f)}\label{f}}
+
+Q: Fit a LASSO model on the training set. Use the command to define the
+grid for \(\lambda\):
+
+\texttt{grid\ \textless{}-\ 10\^{}seq(10,\ -2,\ length\ =\ 100)}
+
+Plot the behavior of the coefficients as \(\lambda\) changes.
+
+A: First we can initialise the \texttt{grid} then run \texttt{glmnet} to
+fit the LASSO model with differing \(\lambda\) values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{suppressMessages}\NormalTok{(}\KeywordTok{library}\NormalTok{(glmnet))}
+\NormalTok{grid <-}\StringTok{ }\DecValTok{10}\OperatorTok{^}\KeywordTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{-2}\NormalTok{, }\DataTypeTok{length =} \DecValTok{100}\NormalTok{)}
+\NormalTok{glm_x_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{model.matrix}\NormalTok{(Apps}\OperatorTok{~}\NormalTok{., df_}\DecValTok{4}\NormalTok{)}
+\NormalTok{glm_y_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\NormalTok{df_}\DecValTok{4}\OperatorTok{$}\NormalTok{Apps}
+\NormalTok{model_}\DecValTok{4}\NormalTok{_f <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(glm_x_}\DecValTok{4}\NormalTok{[trainid_}\DecValTok{4}\NormalTok{,],}
+\NormalTok{                    glm_y_}\DecValTok{4}\NormalTok{[trainid_}\DecValTok{4}\NormalTok{],}
+                    \DataTypeTok{lambda =}\NormalTok{ grid)}
+\end{Highlighting}
+\end{Shaded}
+
+Then we plot,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(model_}\DecValTok{4}\NormalTok{_f, }\DataTypeTok{xvar =} \StringTok{"lambda"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{AnalyticsEdgeExercise4-5Soln_files/figure-latex/4_f2-1.pdf}
+
+\hypertarget{g}{%
+\subsection{(g)}\label{g}}
+
+Q: Set the seed to 1 before running the cross-validation with LASSO to
+choose the best \(\lambda\). Use 10-fold cross validation. Report the
+test error obtained, along with the number of non-zero coefficient
+estimates.
+
+A:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{model_}\DecValTok{4}\NormalTok{_g <-}\StringTok{ }\KeywordTok{cv.glmnet}\NormalTok{(glm_x_}\DecValTok{4}\NormalTok{[trainid_}\DecValTok{4}\NormalTok{,], glm_y_}\DecValTok{4}\NormalTok{[trainid_}\DecValTok{4}\NormalTok{],}
+                  \DataTypeTok{nfolds =} \DecValTok{10}\NormalTok{, }\DataTypeTok{lambda =}\NormalTok{ grid)  }\CommentTok{# 10-fold cross-validation}
+\NormalTok{best_lambda_ind_}\DecValTok{4}\NormalTok{ <-}\StringTok{ }\KeywordTok{which}\NormalTok{(model_}\DecValTok{4}\NormalTok{_g}\OperatorTok{$}\NormalTok{lambda }\OperatorTok{==}\StringTok{ }\NormalTok{model_}\DecValTok{4}\NormalTok{_g}\OperatorTok{$}\NormalTok{lambda.min)}
+\KeywordTok{mean}\NormalTok{((}\KeywordTok{predict}\NormalTok{(model_}\DecValTok{4}\NormalTok{_g, glm_x_}\DecValTok{4}\NormalTok{[testid_}\DecValTok{4}\NormalTok{,],}
+              \DataTypeTok{s =}\NormalTok{ model_}\DecValTok{4}\NormalTok{_g}\OperatorTok{$}\NormalTok{lambda.min}
+\NormalTok{              ) }\OperatorTok{-}\StringTok{ }\NormalTok{test_}\DecValTok{4}\OperatorTok{$}\NormalTok{Apps)}\OperatorTok{^}\DecValTok{2}\NormalTok{)  }\CommentTok{# test error of best model}
+\NormalTok{model_}\DecValTok{4}\NormalTok{_g}\OperatorTok{$}\NormalTok{nzero[best_lambda_ind_}\DecValTok{4}\NormalTok{]  }\CommentTok{# number of non-zero coefficients}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1565789
+## s99 
+##  17
+\end{verbatim}
+
+The number of non-zero coefficients is 17. This means that the model is
+essentially the same as the model in part \protect\hyperlink{fourb}{(b)}
+as it uses the same predictor variables, the test error of 1565789 is
+approximately the same.
+
+\end{document}
