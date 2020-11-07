@@ -13,7 +13,8 @@ output:
 
 First, we prepare the working environment.
 ```{r}
-rm(list=ls()) # Clear the environment
+rm(list = ls()) # Clear the environment
+setwd("~/Documents/SUTD/Term 6/TAE/W8")
 # setwd("...")  # Setup the working directory
 ```
 
@@ -40,7 +41,7 @@ supreme <- read.csv("supreme.csv") # We have 623 observations and 20 variables
 # head(supreme)    # First part of the dataframe
 
 # Prepare the output variable (justice Stevens' decision)
-stevens <- subset(supreme[,c("docket","term","stevdir","petit","respon","circuit","unconst","lctdir","issue","result")],supreme$stevdir!=9)
+stevens <- subset(supreme[, c("docket", "term","stevdir","petit","respon","circuit","unconst","lctdir","issue","result")],supreme$stevdir!=9)
 stevens$rev <- as.integer((stevens$lctdir=="conser" & stevens$stevdir==0) | (stevens$lctdir=="liberal" & stevens$stevdir==1))
 ```
 
