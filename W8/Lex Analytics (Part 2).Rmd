@@ -13,8 +13,8 @@ output:
 
 First, we prepare the working environment.
 ```{r}
-rm(list=ls()) # Clear the environment
-# setwd("...")  # Setup the working directory
+rm(list = ls()) # Clear the environment
+setwd("~/Documents/SUTD/Term 6/TAE/W8")
 ```
 
 
@@ -24,9 +24,9 @@ rm(list=ls()) # Clear the environment
 
 ```{r, message=FALSE}
 supreme <- read.csv("supreme.csv") # We have 623 observations and 20 variables
-# str(supreme)      # Internal structure of the dataframe 
-# head(supreme)     # First part of the dataframe
-# summary(supreme)  # Summary of the data
+str(supreme)      # Internal structure of the dataframe
+head(supreme)     # First part of the dataframe
+summary(supreme)  # Summary of the data
 ```
 
 Recall the meaning of each variable:
@@ -48,8 +48,8 @@ Recall the meaning of each variable:
 Let's now focus on a specific judge, say Stevens. We remove data with no entry from Stevens and process the variable ```result```. This creates a new variable (```$rev```) in the dataframe that takes a value of 1 if Stevens' decision reverses the lower court decision and 0 if the judge affirms the lower court decision.
 
 ```{r}
-stevens <- subset(supreme[,c("docket","term","stevdir","petit","respon","circuit","unconst","lctdir","issue","result")],supreme$stevdir!=9)
-stevens$rev <- as.integer((stevens$lctdir=="conser" & stevens$stevdir==0) | (stevens$lctdir=="liberal" & stevens$stevdir==1))
+stevens <- subset(supreme[, c("docket", "term", "stevdir", "petit", "respon", "circuit", "unconst", "lctdir", "issue", "result")], supreme$stevdir != 9)
+stevens$rev <- as.integer((stevens$lctdir == "conser" & stevens$stevdir == 0) | (stevens$lctdir == "liberal" & stevens$stevdir == 1))
 ```
 
 Finally, we split the data into training and testing datasets. To this purpose, we use the ```caTools``` package.
@@ -59,10 +59,11 @@ if(!require(caTools)){                          # install or load the package
   install.packages("caTools")
   library(caTools)
 }
+
 set.seed(123)                                   # set seed for random sampling
-spl <- sample.split(stevens$rev,SplitRatio=0.7) # We use 70% of the data for training
-train <- subset(stevens,spl==TRUE);             # training dataset
-test <- subset(stevens,spl==FALSE);             # testing dataset
+spl <- sample.split(stevens$rev, SplitRatio = 0.7) # We use 70% of the data for training
+train <- subset(stevens, spl == TRUE);             # training dataset
+test <- subset(stevens, spl == FALSE);             # testing dataset
 ```
 
 
@@ -71,20 +72,20 @@ test <- subset(stevens,spl==FALSE);             # testing dataset
 Logistic regression
 
 ```{r}
-m1 <- glm(rev~petit+respon+circuit+unconst+issue+lctdir,data=train,family="binomial")
-# summary(m1)
+m1 <- glm(rev ~ petit + respon + circuit + unconst + issue + lctdir, data = train, family = "binomial")
+summary(m1)
 ```
 
 Let's now try to make a prediction on the test data. We cannot use the command ```p1 <- predict(m1,newdata=test,type="response")```, because ```issue``` has only one realization of the IR value (Interstate Relations), which is not estimated in the training set. Let's thus modify the test dataset as follows:
 
 ```{r}
-test <- subset(test,test$issue!="IR")
-p1 <- predict(m1,newdata=test,type="response")
+test <- subset(test, test$issue != "IR")
+p1 <- predict(m1, newdata = test, type = "response")
 ```
 
 How does the model perform?
 ```{r}
-table(p1>=0.5,test$rev)
+table(p1 >= 0.5, test$rev)
 ```
 
 So the accuracy is ```r sum(diag(table(p1>=0.5,test$rev)))/sum(table(p1>=0.5,test$rev))```. 
@@ -106,7 +107,7 @@ if(!require(rpart)){        # rpart is for CART
 The command ```cart1 <- rpart(rev~petit+respon+circuit+lctdir+issue+unconst,data=train)``` will not work, because ```rpart``` builds a regression tree by default. So, remember to specify you are working on a classification problem! 
 
 ```{r}
-cart1 <- rpart(rev~petit+respon+circuit+lctdir+issue+unconst,data=train,method="class")
+cart1 <- rpart(rev ~ petit + respon + circuit + lctdir + issue + unconst, data = train, method = "class")
 # Alternative way of building a classification tree
 # cart1 <- rpart(as.factor(rev)~petit+respon+circuit+lctdir+issue+unconst,data=train)
 ```
@@ -144,11 +145,12 @@ if(!require(rpart.plot)){
   install.packages("rpart.plot")
   library(rpart.plot)
 }
+
 prp(cart1)        # default visualization
-prp(cart1,type=1) # labels all nodes (not just the leaves)
-prp(cart1,type=4) # draws separate labels for left and right directions for all nodes and label nodes
-prp(cart1,type=4,extra=4) # in addition, this also plots the probability per class of observation
-# prp(cart1,type=4,extra=9) # probablities times fraction of observations at the node (the sum across all leaves is 1)
+prp(cart1, type = 1) # labels all nodes (not just the leaves)
+prp(cart1, type = 4) # draws separate labels for left and right directions for all nodes and label nodes
+prp(cart1, type = 4, extra = 4) # in addition, this also plots the probability per class of observation
+prp(cart1, type = 4, extra = 9) # probablities times fraction of observations at the node (the sum across all leaves is 1)
 ```
 
 Other visualization options: see an example with the ```fancyRpartPlot()``` function, which requires ```rpart.plot```, ```rattle```, and ```RColorBrewer```.
@@ -158,10 +160,12 @@ if(!require(rattle)){
   install.packages("rattle")
   library(rattle)
 }
+
 if(!require(RColorBrewer)){
   install.packages("RColorBrewer")
   library(RColorBrewer)
 }
+
 fancyRpartPlot(cart1) # Run fancyRpartPlot
 ```
 
@@ -170,14 +174,14 @@ fancyRpartPlot(cart1) # Run fancyRpartPlot
 The function ```predict()``` uses ```cart1``` and the test data to carry out the predictions. The function chooses the class with the highest probability.
 
 ```{r}
-predictcart1 <- predict(cart1,newdata=test,type="class")
-# predictcart1
+predictcart1 <- predict(cart1, newdata = test, type = "class")
+predictcart1
 ```
 
 How does the model perform?
 
 ```{r}
-table(test$rev,predictcart1)
+table(test$rev, predictcart1)
 ```
 
 So the accuracy is ```r sum(diag(table(test$rev,predictcart1)))/sum(table(test$rev,predictcart1))```. 
@@ -211,25 +215,26 @@ plotcp(cart1)
 Let's now prune the tree
 
 ```{r}
-opt <- which.min(cart1$cptable[,"xerror"]) # get index of CP with lowest xerror
+opt <- which.min(cart1$cptable[, "xerror"]) # get index of CP with lowest xerror
 cp <- cart1$cptable[opt, "CP"]            # get the corresponding value
-cart2 <- prune(cart1,cp)
+cart2 <- prune(cart1, cp)
 ```
 
 As shown below, this is a much smaller tree!
 
 ```{r}
-prp(cart2,type=4,extra=4)
+prp(cart2, type = 4, extra = 4)
 ```
 
 And yet, its accuracy on the test dataset is higher than the one of a fully-grown tree!
 
 ```{r}
-predictcart2 <- predict(cart2,newdata=test,type="class")
-table(test$rev,predictcart2)
+predictcart2 <- predict(cart2, newdata = test, type = "class")
+table(test$rev, predictcart2)
 ```
 
 The accuracy is ```r sum(diag(table(test$rev,predictcart2)))/sum(table(test$rev,predictcart2))```.
+Justice Stevens will affirm the decision of the lower court
 
 
 
