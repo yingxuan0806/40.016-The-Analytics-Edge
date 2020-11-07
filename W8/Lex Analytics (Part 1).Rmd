@@ -145,7 +145,7 @@ The first is to use the function ```print()```: for each node, we know: node num
 
 For example: 38) issue=CP,FA 16   4 0 (0.75 0.25) * (we also see that this is a terminal node)
 
-```{r, message=FALSE}
+```{r, message = FALSE}
 print(cart1)
 ```
 
@@ -172,11 +172,12 @@ if(!require(rpart.plot)){
   install.packages("rpart.plot")
   library(rpart.plot)
 }
+
 prp(cart1) 
-prp(cart1,type=1) # labels all nodes (not just the leaves)
-prp(cart1,type=4) # draws separate labels for left and right directions for all nodes and label nodes
-prp(cart1,type=4,extra=4) # in addition, this also plots the probability per class of observation
-prp(cart1,type=4,extra=9) # probablities times fraction of observations at the node (the sum across all leaves is 1)
+prp(cart1, type = 1) # labels all nodes (not just the leaves)
+prp(cart1, type = 4) # draws separate labels for left and right directions for all nodes and label nodes
+prp(cart1, type = 4, extra = 4) # in addition, this also plots the probability per class of observation
+prp(cart1, type = 4, extra = 9) # probablities times fraction of observations at the node (the sum across all leaves is 1)
 ```
 
 Other visualization options: see an example with the ```fancyRpartPlot()``` function, which requires ```rpart.plot```, ```rattle```, and ```RColorBrewer```.
@@ -186,6 +187,7 @@ if(!require(rattle)){
   install.packages("rattle")
   library(rattle)
 }
+
 if(!require(RColorBrewer)){
   install.packages("RColorBrewer")
   library(RColorBrewer)
@@ -198,24 +200,24 @@ fancyRpartPlot(cart1) # Run fancyRpartPlot
 The function ```predict()``` uses ```cart1``` and the test data to carry out the predictions. The function chooses the class with the highest probability.
 
 ```{r}
-predictcart1 <- predict(cart1,newdata=test,type="class")
-# predictcart1
+predictcart1 <- predict(cart1, newdata = test, type = "class")
+predictcart1
 ```
 
 How does the model perform?
 
 ```{r}
-table(test$rev,predictcart1)
+table(test$rev, predictcart1)
 ```
 
 So the accuracy is ```r sum(diag(table(test$rev,predictcart1)))/sum(table(test$rev,predictcart1))```. Let's plot the ROC Curve.
 
 ```{r}
-predictcart1_prob <- predict(cart1,newdata=test) # predicted probabilities of rev=0 and rev=1 for each test observation
-pred_cart1 <- prediction(predictcart1_prob[,2],test$rev)
-perf_cart1 <- performance(pred_cart1, x.measure="fpr",measure="tpr")
+predictcart1_prob <- predict(cart1, newdata = test) # predicted probabilities of rev=0 and rev=1 for each test observation
+pred_cart1 <- prediction(predictcart1_prob[,2], test$rev)
+perf_cart1 <- performance(pred_cart1, x.measure = "fpr", measure = "tpr")
 plot(perf_cart1)
-# performance(pred_cart1,measure="auc") 
+performance(pred_cart1, measure = "auc")
 ```
 
 In synthesis, we can see that the performance of the logistic regression and CART model are similar.
