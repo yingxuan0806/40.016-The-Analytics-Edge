@@ -14,6 +14,7 @@ output:
 First, we prepare the working environment.
 ```{r}
 rm(list=ls()) # Clear the environment
+setwd("~/Documents/SUTD/Term 6/TAE/W10")
 # setwd("...")  # Setup the working directory
 ```
 
@@ -23,7 +24,7 @@ rm(list=ls()) # Clear the environment
 Load the Enron data. With the option `stringsAsFactors=FALSE` we make sure that character vectors are not converted into factors.
 
 ```{r}
-energy <- read.csv("energy_bid.csv",stringsAsFactors=FALSE)
+energy <- read.csv("energy_bid.csv", stringsAsFactors = FALSE)
 str(energy)
 # head(energy)
 ```
@@ -67,6 +68,7 @@ if(!require(tm)){
   install.packages("tm")
   library(tm)
 }
+
 if(!require(SnowballC)){
   install.packages("SnowballC")
   library(SnowballC)
@@ -89,11 +91,11 @@ strwrap(as.character(corpus[[4]])) # Read the email in the corpus
 Make lower case, remove english stopwords, remove punctuation and numbers, and stem.
 
 ```{r, message=FALSE}
-corpus <- tm_map(corpus,content_transformer(tolower))
-corpus <- tm_map(corpus,removeWords,stopwords("english"))
-corpus <- tm_map(corpus,removePunctuation)
-corpus <- tm_map(corpus,removeNumbers)
-corpus <- tm_map(corpus,stemDocument)
+corpus <- tm_map(corpus, content_transformer(tolower)) # because R is case-sensitive
+corpus <- tm_map(corpus, removeWords, stopwords("english"))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeNumbers)
+corpus <- tm_map(corpus, stemDocument) # reduce all variations of words to root words
 ```
 
 Let's check the fourth email: note that it is much harder to read ... but it is more suitable to apply analytics!
@@ -151,12 +153,13 @@ if(!require(wordcloud)){
   install.packages("wordcloud")
   library(wordcloud)
 }
+
 # Get word counts in decreasing order
-word_freqs = sort(colSums(energysparse), decreasing=TRUE) 
+word_freqs = sort(colSums(energysparse), decreasing = TRUE) 
 # Create data frame with words and their frequencies
-dm = data.frame(word=names(word_freqs), freq=unname(word_freqs))
+dm = data.frame(word = names(word_freqs), freq = unname(word_freqs))
 # Plot wordcloud (we limit the plot to 100 words)
-wordcloud(dm$word, dm$freq, random.order=FALSE, colors=brewer.pal(8, "Dark2"), max.words=100)
+wordcloud(dm$word, dm$freq, random.order = FALSE, colors = brewer.pal(8, "Dark2"), max.words = 100)
 ```
 
 Last step, we add the output variable (response) to the `energysparse` dataframe:
@@ -177,11 +180,12 @@ if(!require(caTools)){
   install.packages("caTools")
   library(caTools)
 }
+
 set.seed(123)
 # Create train and test sets (with balanced response)
-spl   <- sample.split(energysparse$responsive,SplitRatio=0.7)
-train <- subset(energysparse,spl==TRUE)
-test  <- subset(energysparse,spl==FALSE)
+spl   <- sample.split(energysparse$responsive, SplitRatio = 0.7)
+train <- subset(energysparse, spl == TRUE)
+test  <- subset(energysparse, spl == FALSE)
 ```
 
 ## CART
@@ -190,21 +194,21 @@ Train:
 
 ```{r}
 library(rpart)
-model1 <- rpart(as.factor(responsive)~.,data=train)
+model1 <- rpart(as.factor(responsive) ~ ., data = train)
 ```
 
 Visualize:
 
 ```{r}
 library(rpart.plot)
-prp(model1,type=4,extra=2)
+prp(model1, type = 4, extra = 2)
 ```
 
 Prediction:
 
 ```{r}
-predict1 <- predict(model1,newdata=test,type="class")
-table(predict1,test$responsive)
+predict1 <- predict(model1, newdata = test, type = "class")
+table(predict1, test$responsive)
 ```
 
 The model accuracy is `r (205+12)/255`.
@@ -219,12 +223,12 @@ It looks like the cross-validation error (`xerror`) has not reached a local mini
 
 
 ## Random Forests
-
+ 
 Train:
 
 ```{r, message=FALSE}
 library(randomForest)
-model2 <- randomForest(as.factor(responsive)~.,data=train)
+model2 <- randomForest(as.factor(responsive) ~ ., data = train)
 model2
 # summary(model2)
 ```
@@ -238,8 +242,8 @@ varImpPlot(model2)
 Prediction
 
 ```{r}
-predict2 <- predict(model2,newdata=test,type="class")
-table(predict2,test$responsive)
+predict2 <- predict(model2, newdata = test, type = "class")
+table(predict2, test$responsive)
 ```
 
 The model accuracy is `r (212+11)/255`.
@@ -249,9 +253,10 @@ Find out which predictor variables are actually used in the random forest.
 ```{r}
 # ?varUsed 
 # varUsed(model2)
-order2 <- sort(varUsed(model2), decreasing=TRUE, index.return=TRUE) # Return sorted frequency and indices
+order2 <- sort(varUsed(model2), decreasing = TRUE, index.return = TRUE) # Return sorted frequency and indices
 # head(order2$ix)
 names(test[,head(order2$ix)]) # we can see which words are important!
+# returns what are the terms used as determinant in the tree nodes
 ```
 
 
@@ -261,10 +266,11 @@ Run the models and calculate ...
 
 ```{r, message=FALSE}
 library(ROCR)
-predictprob1 <- predict(model1,newdata=test,type="prob")
-predictprob2 <- predict(model2,newdata=test,type="prob")
-pred1 <- prediction(predictprob1[,2],test$responsive)
-pred2 <- prediction(predictprob2[,2],test$responsive)
+
+predictprob1 <- predict(model1, newdata = test, type = "prob")
+predictprob2 <- predict(model2, newdata = test, type = "prob")
+pred1 <- prediction(predictprob1[,2], test$responsive)
+pred2 <- prediction(predictprob2[,2], test$responsive)
 # performance(pred1,measure="auc") 
 # performance(pred2,measure="auc") 
 ```
@@ -272,8 +278,8 @@ pred2 <- prediction(predictprob2[,2],test$responsive)
 Graphical analysis:
 
 ```{r}
-plot(performance(pred1,measure="tpr",x.measure="fpr"))
-plot(performance(pred2,measure="tpr",x.measure="fpr"))
+plot(performance(pred1, measure = "tpr", x.measure = "fpr"))
+plot(performance(pred2, measure = "tpr", x.measure = "fpr"))
 ```
 
 For this specific dataset, it appears that Random Forests have a better performance than CARTs.
@@ -288,8 +294,9 @@ if(!require(e1071)){
   install.packages("e1071")
   library(e1071)
 }
-model3 <- naiveBayes(as.factor(responsive)~.,data=train)
-# summary(model3)
+
+model3 <- naiveBayes(as.factor(responsive) ~ ., data = train)
+summary(model3)
 ```
 
 Conditional probabilities:
@@ -303,13 +310,14 @@ Conditional probabilities for each predictor. For each predictor, we get target 
 ```{r}
 model3$tables$california
 model3$tables$market
+# mean, standard deviation
 ```
 
 Prediction:
 
 ```{r}
-predict3 <- predict(model3,newdata=test,type="class")
-table(predict3,test$responsive)
+predict3 <- predict(model3, newdata = test, type = "class")
+table(predict3, test$responsive)
 ```
 
 The model accuracy is `r (197+19)/255`, roughly comparable to CARTs.
